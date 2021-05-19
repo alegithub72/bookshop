@@ -19,10 +19,12 @@ public class Libro {
 	Date publicazione;
 	@Expose
 	String dataPublicazione;
+	@Expose
+	float prezzo;
 	
 	static private SimpleDateFormat dataformater=new SimpleDateFormat("dd/MM/yyyy");
 	
-	public Libro(long id,String titolo,Date publicazione ,Autore autore, Edizione edizione,Genere genere) {
+	public Libro(long id,String titolo,Date publicazione ,Autore autore,float prezzo, Edizione edizione,Genere genere) {
 		super();
 		this.id=id;
 		this.titolo = titolo;
@@ -30,9 +32,18 @@ public class Libro {
 		this.edizione = edizione;
 		this.genere=genere;
 		this.publicazione=publicazione;
+		this.prezzo=prezzo;
 		valorizeDate();
 	}
 	
+	public float getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
+	}
+
 	public Genere getGenere() {
 		return genere;
 		

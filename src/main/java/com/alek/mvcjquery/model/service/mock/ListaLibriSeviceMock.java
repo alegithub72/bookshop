@@ -34,9 +34,9 @@ public class ListaLibriSeviceMock implements ListaLibriService {
         Edizione ed2=new Edizione(3040,"Bonpiani");
         Edizione ed3=new Edizione(3050,"Feltrinelli");
         Genere genere=new Genere(5000,"Avventura");
-        Libro libro1=new Libro(4060,"i viaggi di Gulliver",new Date(1942,5,12  ) , autore1, ed1,genere);
-        Libro libro2=new Libro(4070,"Tre uomini in barca",new Date(1972,5,12  ), autore2, ed2,genere);
-        Libro libro3=new Libro(4080,"Capitan Mick", new Date(2000,5,12  ),autore3, ed3,genere);
+        Libro libro1=new Libro(4070,"Tre uomini in barca",new Date(1972,5,12  ), autore1,10.5f, ed1,genere );
+        Libro libro2=new Libro(4070,"Tre uomini in barca",new Date(1972,5,12  ), autore2,10.5f, ed2,genere);
+        Libro libro3=new Libro(4080,"Capitan Mick", new Date(2000,5,12  ),autore3,9.99f, ed3,genere);
         listaLibri.add(libro1);
         listaLibri.add(libro2);
         listaLibri.add(libro3);
@@ -55,9 +55,9 @@ public class ListaLibriSeviceMock implements ListaLibriService {
         Edizione ed2=new Edizione(3040,"Bonpiani");
         Edizione ed3=new Edizione(3050,"Feltrinelli");
         Genere genere=new Genere(5000,"Avventura");
-        Libro libro1=new Libro(4060,"i viaggi di Gulliver", new Date(1942,5,12  ),autore1, ed1,genere);
-        Libro libro2=new Libro(4070,"Tre uomini in barca",new Date(1942,5,12  ) ,autore2, ed2,genere);
-        Libro libro3=new Libro(4080,"Capitan Mick",new Date(1942,5,12  ) ,autore3, ed3,genere);
+        Libro libro1=new Libro(4060,"i viaggi di Gulliver", new Date(1942,5,12  ),autore1,25f, ed1,genere);
+        Libro libro2=new Libro(4070,"Tre uomini in barca",new Date(1942,5,12  ) ,autore2,12.99f ,ed2,genere);
+        Libro libro3=new Libro(4080,"Capitan Mick",new Date(1942,5,12  ) ,autore3, 3.5f,ed3,genere);
         listaLibri.add(libro1);
         listaLibri.add(libro2);
         listaLibri.add(libro3);

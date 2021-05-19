@@ -61,12 +61,12 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 				int genereId=res.getInt("genere_id");
 				int editoreId=res.getInt("editore_id");
 				int autoreId=res.getInt("autore_id");
-				
+				float prezzo=res.getFloat("prezzo");
 				
 				Autore autore=getAutore(autoreId);
 				Edizione edizione=getEdizione(editoreId);
 				Genere genere=getGenere(genereId);
-				Libro libro=new Libro(id, titolo,dataPublicazione, autore, edizione,genere);
+				Libro libro=new Libro(id, titolo,dataPublicazione,autore,prezzo, edizione,genere); 
 				list.add(libro);
 			}
 

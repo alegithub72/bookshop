@@ -105,6 +105,7 @@ $(document).ready(function(){
 				return;
 			}
 			stampaLibro();
+
 			
 		})
 	.fail(function(){
@@ -139,13 +140,28 @@ function stampaLibro(){
 		"<span style=\"display:flex;flex-direction:row;\">"+
 		"<span class=\"nomi\">Edzione:</span> <span class=\"valori\">"+libro.dataPublicazione+", "+libro.edizione.editore+","+libro.genere.tipologia+"</span>"+
 		"</span>"+
+		"<span style=\"display:flex;flex-direction:row;justify-content:flex-end;\">"+
+		"<span class=\"nomi\">"+libro.prezzo+" &euro;   &nbsp;&nbsp;&nbsp;&nbsp;</span><span class=\"valori\"><button id=\"buttonCart"+libro.id+"\">Add</button></span>"+
+		"</span>"+	
 		"</span>"+
 		"</span>";
-		
+
 	});
 	$("#listalibri").append(htmlEspositore);
-	
+	addCartBottoni(listalibri1);
 }
+
+let cart=0;
+function addCartBottoni(lista){
+	for(let  i =0;i<lista.length;i++)
+	$("#buttonCart"+lista[i].id).click(function(){
+		$("#cartItems").html(cart++);
+	});
+
+}
+	
+	
+	
 
 </script> 
 
@@ -171,5 +187,5 @@ function stampaLibro(){
 <p>Trova le email in un lampo
 Con l'efficace strumento di Ricerca Google nella Posta in arrivo, 
 puoi archiviare tutte le email e trovarle successivamente in un attimo.
- La tua casella di Posta in arrivo rimane ordinata e non ti dovrai più preoccupare
+ La tua casella di Posta in arrivo rimane ordinata e non ti dovrai piÃ¹ preoccupare
   di quali email tenere.</p>
