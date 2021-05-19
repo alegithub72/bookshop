@@ -85,10 +85,44 @@ color: #ffff;
 
     </style>
 <script>
+let listageneri;
+$(document).ready(function(){
+	
+	$.getJSON("../jsonlistalibri?function=generi",function(data){
+
+		listageneri=data;
+		console.log(data);
+		})
+		.done(function(){
+				if(listageneri.errore) {
+					$("#allertText").text("Errore Applicativo!!!!!!!");
+					$("#allerta").css("display","inherit");
+					
+					return;
+				}
+			buildGenereMenu();
+
+				
+			})
+		.fail(function(){
+			$("#allertText").text("Errore Applicativo!!!!!!!");
+			$("#allerta").css("display","inherit");
+			
+		
+		});
+	
+	
+})
+
+
+
+
+
+
 var opcl=false;
 function closeAllMenu(){
 	
-	$("#sottog").css("display","none");
+	$("#smgenere").css("display","none");
 	$("#sottob").css("display","none");
 	
 }
@@ -98,7 +132,7 @@ $(document).ready(function(){
 		$("#genere").click(function(){
 	
 		if(!opcl) {
-			$("#sottog").css("display","inline");
+			$("#smgenere").css("display","inline");
 			opcl=!opcl;
 		}
 		else {
@@ -119,7 +153,17 @@ $(document).ready(function(){
 		
 	});	
 });
-
+function buildGenereMenu(){
+	let htmlLi="";
+	for(let i=0;i<listageneri.length;i++)
+		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\"listalibri.jsp?function=ricercaPergenere&genere="+listageneri[i].id+"\" class=\"mainmas\" >"
+				+listageneri[i].tipologia+"</a></li>";
+	
+	$("#smgenere").html(htmlLi);
+	
+	
+	
+}
 </script>
 <div style="display:flex;flex-direction:row;width:100%">
 
@@ -141,11 +185,7 @@ $(document).ready(function(){
     <li id="about" class="mainm"><a href="#" class="mainma">About&nbsp;Us</a></li>
     <li id="genere" class="mainm">
     <a href="#" class="mainma">Libri&nbsp;Genere</a>
-    <ul id="sottog" class="smenus">
-    <li class="sottogs"><a href="listalibri.jsp" class="mainmas" >Avvenutra</a></li>
-    <li class="sottogs"><a href="#" class="mainmas">Thriller</a></li>
-    <li class="sottogs"><a href="#" class="mainmas">Gialli</a></li>
-     <li class="sottogs"><a href="#" class="mainmas">Classici</a></li>    
+    <ul id="smgenere" class="smenus">
     </ul>
     </li>
     <li id="best" class="mainm">

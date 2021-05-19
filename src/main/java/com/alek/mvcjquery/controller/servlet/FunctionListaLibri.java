@@ -3,6 +3,7 @@ package com.alek.mvcjquery.controller.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -62,17 +63,28 @@ public class FunctionListaLibri extends GenericJSONServlet {
  
 
 	@Override
-	void createjson(HttpServletResponse resp) throws ErrorService,IOException{
+	void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService,IOException{
 		
-				List listaLibri=consultazioneLibreriaService.listaLibri();
-				System.out.println("Lista Libri 8");
-				resp.getWriter().append(gson.toJson(listaLibri));
-	
-
-		
+		List list=null;
+		String strFunction=req.getParameter("function");
+		if("generi".equals(strFunction)) list=listaGeneri();
+		else if ("ricercaPergenere".equals(strFunction)) 
+			list=listaLibriPerGenere(req);
+		String json=gson.toJson(list);
+		System.out.println("trasformazione json:"+json);
+		resp.getWriter().append(json);
 	}
 	
-	
+	private List listaLibriPerGenere(HttpServletRequest req)throws ErrorService {
+		String idgenere=req.getParameter("genere");
+		List listaLibri=consultazioneLibreriaService.listaLibriPerGeneri(idgenere);
+		System.out.println("Lista Libri 8");
+		return listaLibri;
+	}
 
+	private List listaGeneri() throws ErrorService {
+		
+		return consultazioneLibreriaService.listaGeneri();
+	}
 
 }

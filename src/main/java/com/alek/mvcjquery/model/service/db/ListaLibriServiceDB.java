@@ -44,13 +44,14 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 	}
 
 	@Override
-	public List listaGeneri() throws ErrorService{
+	public List listaLibriPerGeneri(String idgenere) throws ErrorService{
 		List list=new ArrayList();
 		Connection conn=null;
 		try {
 			conn=ds.getConnection();
 			list = new ArrayList<Libro>();
-			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM LIBRO_BKS ");
+			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM LIBRO_BKS where  genere_id=? ");
+			prep.setString(1, idgenere);
 			ResultSet res=  prep.executeQuery();
 			while(res.next()) {
 				
@@ -164,6 +165,36 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		}
 		return autore;
 		
+	}
+
+	@Override
+	public List listaGeneri() throws ErrorService {
+		Connection con=null;
+		List list=new ArrayList();
+		
+		try {
+			con=ds.getConnection();
+			PreparedStatement prep=con.prepareStatement("SELECT * FROM GENERE_BKS");
+			ResultSet res=prep.executeQuery();
+			while(res.next()) {
+				int id=res.getInt("id");
+				String tipologia=res.getString("tipologia");
+				Genere gen=new Genere(id, tipologia);
+				list.add(gen);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new ErrorService(e.getMessage());
+		}finally {
+			try {
+				con.close();
+				
+			}catch(SQLException e) {	}
+		}
+		
+		
+		return list;
 	}
 
 }

@@ -13,8 +13,13 @@ public class ConsultazioneLibreriaService {
 	}
 	
 	
-	public List listaLibri() throws ErrorService  {
+	public List listaLibriPerGeneri(String idgenere) throws ErrorService  {
 		
+		return listaService.listaLibriPerGeneri(idgenere);
+		
+	}
+	
+	public List listaGeneri() throws ErrorService{
 		return listaService.listaGeneri();
 		
 	}

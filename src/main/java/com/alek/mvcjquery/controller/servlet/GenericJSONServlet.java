@@ -57,7 +57,7 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		}			
 	}
 
-	abstract void createjson(HttpServletResponse resp) throws ErrorService,IOException;
+	abstract void createjson(HttpServletRequest req,  HttpServletResponse resp) throws ErrorService,IOException;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -66,7 +66,7 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		try {
 			checkProfile(req, resp);
 			printURLInfo(req);
-			createjson(resp);
+			createjson(req,resp);
 		} catch (ErroreDataSourceException e) {
 			e.printStackTrace();
 			throw new ServletException("DataSource Problem");

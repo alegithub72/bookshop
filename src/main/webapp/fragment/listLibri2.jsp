@@ -84,7 +84,7 @@ var listalibri1;
 var libroId;
 $(document).ready(function(){
 	let erroreApp=false;
-	$.getJSON("../jsonlistalibri",function(data){
+	$.getJSON("../jsonlistalibri?function=ricercaPergenere&genere=<%=request.getParameter("genere")%>",function(data){
 
 	//const json = cleanIt(data);  // {"name":"John Smith"}
 	//console.log(json);
@@ -147,7 +147,13 @@ function stampaLibro(){
 		"</span>";
 
 	});
+	if(listalibri1.length==0) {
+		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun Libro</h2>";
+	
+	}
 	$("#listalibri").append(htmlEspositore);
+	
+	
 	addCartSimulationBottoni(listalibri1);
 }
 

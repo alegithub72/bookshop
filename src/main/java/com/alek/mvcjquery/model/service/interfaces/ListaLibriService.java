@@ -8,6 +8,7 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 public interface ListaLibriService {
 
 	public List listaLibri(Edizione edi);
+	public List listaLibriPerGeneri(String idgenere) throws ErrorService;
 	public List listaGeneri() throws ErrorService;
 
  
