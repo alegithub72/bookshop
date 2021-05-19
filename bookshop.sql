@@ -28,9 +28,11 @@ titolo varchar(1000),
 descrizione varchar(200),
 data_publicazione date,
 copertina blob,
+prezzo float, 
 genere_id int,
 editore_id int,
 autore_id int
+
 );
 -----------------------------------------------------
 create table genere_bks(

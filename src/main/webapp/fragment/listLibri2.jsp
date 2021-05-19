@@ -148,11 +148,11 @@ function stampaLibro(){
 
 	});
 	$("#listalibri").append(htmlEspositore);
-	addCartBottoni(listalibri1);
+	addCartSimulationBottoni(listalibri1);
 }
 
-let cart=0;
-function addCartBottoni(lista){
+let cart=1;
+function addCartSimulationBottoni(lista){
 	for(let  i =0;i<lista.length;i++)
 	$("#buttonCart"+lista[i].id).click(function(){
 		$("#cartItems").html(cart++);
