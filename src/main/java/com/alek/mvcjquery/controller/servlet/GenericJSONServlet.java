@@ -16,6 +16,7 @@ import com.alek.mvcjquery.model.libri.ErrorResponse;
 import com.alek.mvcjquery.model.service.ConsultazioneLibreriaService;
 import com.alek.mvcjquery.model.service.db.ListaLibriServiceDB;
 import com.alek.mvcjquery.model.service.db.UserCheckServiceDB;
+import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
@@ -26,21 +27,21 @@ import com.alek.mvcjquery.model.user.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public abstract class GenericServlet extends HttpServlet {
+public abstract class GenericJSONServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3901434231348304332L;
 
-	public GenericServlet() {
+	public GenericJSONServlet() {
 		super();
 	}
 	Context initContext ;
 	Context envContext  ;	
 	
 	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-	
+
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
@@ -52,12 +53,12 @@ public abstract class GenericServlet extends HttpServlet {
 			envContext  = (Context)initContext.lookup("java:/comp/env");
 			
 		} catch (NamingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();			
 		}			
 	}
 
-	abstract void createjson(HttpServletResponse resp) throws ServletException,IOException;
+	abstract void createjson(HttpServletResponse resp) throws ErrorService,IOException;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/jason");
@@ -75,8 +76,12 @@ public abstract class GenericServlet extends HttpServlet {
 			String json=gson.toJson(error);
 			resp.getWriter().append(json);
 			System.out.println(json);
-		
-					
+		} catch (ErrorService e) {
+			e.printStackTrace();
+			ErrorResponse error=new ErrorResponse(e.getMessage(),"1010");
+			String json=gson.toJson(error);
+			resp.getWriter().append(json);
+			System.out.println(json);			
 		}
 
 	}
@@ -110,20 +115,19 @@ public abstract class GenericServlet extends HttpServlet {
 		try {
 
 			ds = (DataSource)envContext.lookup("jdbc/bookshop");
-			System.out.println("Conessione riuscita");
+			System.out.println("dasource trovato");
 			
 		}catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				msg=e.getMessage();
+				throw new ErroreDataSourceException(msg);
 						
 		}
-		
-		if (ds==null) throw new ErroreDataSourceException(msg); 
 		return ds;
+
 		
 	}
-	private ConsultazioneLibreriaService getConsulatazioneServiceMock() throws ErroreDataSourceException {
+	protected ConsultazioneLibreriaService getConsulatazioneServiceMock() throws ErroreDataSourceException {
 		ListaLibriService  listaLibriService=ListaLibriSeviceMock.getInstance(null);
 		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
 	return 	consultazioneLibreriaService;

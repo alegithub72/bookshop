@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 import com.alek.mvcjquery.model.libri.ErrorResponse;
 import com.alek.mvcjquery.model.libri.Libro;
 import com.alek.mvcjquery.model.service.ConsultazioneLibreriaService;
+import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDBException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
@@ -31,7 +32,7 @@ import com.google.gson.reflect.TypeToken;
  * Servlet implementation class ListaLibri
  */
 @WebServlet(name = "listalibri", urlPatterns = { "/jsonlistalibri" })
-public class FunctionListaLibri extends GenericServlet {
+public class FunctionListaLibri extends GenericJSONServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -43,13 +44,17 @@ public class FunctionListaLibri extends GenericServlet {
         super();
       
     }
-    
+	ConsultazioneLibreriaService consultazioneLibreriaService;
     
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
 		super.init();
-
+		try {
+			consultazioneLibreriaService= getConsulatazioneServiceDB();
+		} catch (ErroreDataSourceException e) {
+			e.printStackTrace();
+			throw new ServletException(e.getMessage());
+		}
 	}
 	
 	
@@ -57,16 +62,13 @@ public class FunctionListaLibri extends GenericServlet {
  
 
 	@Override
-	void createjson(HttpServletResponse resp) throws ServletException,IOException{
-		try {
-			ConsultazioneLibreriaService consultazioneLibreriaService= getConsulatazioneServiceDB();
-			List listaLibri=consultazioneLibreriaService.listaLibri();
-			System.out.println("Lista Libri 8");
-			resp.getWriter().append(gson.toJson(listaLibri));
-		} catch (ErroreDataSourceException e) {
-			e.printStackTrace();
-			throw new ServletException("DataSource Problem");
-		}
+	void createjson(HttpServletResponse resp) throws ErrorService,IOException{
+		
+				List listaLibri=consultazioneLibreriaService.listaLibri();
+				System.out.println("Lista Libri 8");
+				resp.getWriter().append(gson.toJson(listaLibri));
+	
+
 		
 	}
 	

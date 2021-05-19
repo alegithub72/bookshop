@@ -15,6 +15,7 @@ import com.alek.mvcjquery.model.libri.Edizione;
 import com.alek.mvcjquery.model.libri.Genere;
 import com.alek.mvcjquery.model.libri.Libro;
 import com.alek.mvcjquery.model.service.GenericService;
+import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
 
 public class ListaLibriServiceDB extends GenericService implements ListaLibriService{
@@ -43,7 +44,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 	}
 
 	@Override
-	public List listaGeneri() {
+	public List listaGeneri() throws ErrorService{
 		List list=new ArrayList();
 		Connection conn=null;
 		try {
@@ -70,8 +71,8 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new ErrorService("Errore applicativo!!!");
 		}finally {
 			try {
 				conn.close();

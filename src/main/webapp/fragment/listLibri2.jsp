@@ -106,7 +106,7 @@ $(document).ready(function(){
 			
 		})
 	.fail(function(){
-		alert("Errore applicativo");
+		alert("Errore applicativo!!");
 		
 	
 	});

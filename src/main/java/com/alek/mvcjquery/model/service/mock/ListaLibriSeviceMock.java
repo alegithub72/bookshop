@@ -9,6 +9,7 @@ import com.alek.mvcjquery.model.libri.Autore;
 import com.alek.mvcjquery.model.libri.Edizione;
 import com.alek.mvcjquery.model.libri.Genere;
 import com.alek.mvcjquery.model.libri.Libro;
+import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
 
 
@@ -45,7 +46,7 @@ public class ListaLibriSeviceMock implements ListaLibriService {
 		
 	}
 	@Override
-	public List listaGeneri() {
+	public List listaGeneri() throws ErrorService{
         List<Libro> listaLibri = new ArrayList<Libro>();
         Autore autore1=new Autore(2001,"Smith","Wilbur","Professore");
         Autore autore2=new Autore(2010,"Pablo","Allende","Attore");

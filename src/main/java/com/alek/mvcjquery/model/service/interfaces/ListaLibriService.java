@@ -3,11 +3,12 @@ package com.alek.mvcjquery.model.service.interfaces;
 import java.util.List;
 
 import com.alek.mvcjquery.model.libri.Edizione;
+import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 
 public interface ListaLibriService {
 
 	public List listaLibri(Edizione edi);
-	public List listaGeneri();
+	public List listaGeneri() throws ErrorService;
 
  
 }
