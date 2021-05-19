@@ -7,6 +7,8 @@
 <meta charset="ISO-8859-1">
 <title>Book Shop Online</title>
 <script src="../jslib/jquery-3.6.0.js"></script>
+ <script src="../jslib/jquery-ui.js"></script>
+ <link rel="stylesheet" href="../css/jquery-ui.css">
 <style type="text/css">
     .centerPage {
     background-color: white;
@@ -27,5 +29,10 @@
 <img src="../img/bannerBook2.jpg" width="100%">
 
 <%@include file="./menu.jsp" %>
-
+<div id="allerta" class="ui-widget" style="display:none;">
+	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+		<p><span class="ui-icon ui-icon-alert" style="float: none; margin-right: .3em;"></span>
+		<strong>Alert:</strong> <span id="allertText" ></span></p>
+	</div>
+</div>
 </div>

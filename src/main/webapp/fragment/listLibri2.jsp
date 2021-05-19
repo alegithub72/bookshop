@@ -99,14 +99,17 @@ $(document).ready(function(){
 		//console.log(listalibri1[0].titolo); 
 		//console.log(listalibri.length);
 			if(listalibri1.errore) {
-				alert(listalibri1.msg);
+				$("#allertText").text("Errore Applicativo!!!!!!!");
+				$("#allerta").css("display","inherit");
+				
 				return;
 			}
 			stampaLibro();
 			
 		})
 	.fail(function(){
-		alert("Errore applicativo!!");
+		$("#allertText").text("Errore Applicativo!!!!!!!");
+		$("#allerta").css("display","inherit");
 		
 	
 	});
