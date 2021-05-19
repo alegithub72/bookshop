@@ -156,7 +156,7 @@ $(document).ready(function(){
 function buildGenereMenu(){
 	let htmlLi="";
 	for(let i=0;i<listageneri.length;i++)
-		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\"listalibri.jsp?function=ricercaPergenere&genere="+listageneri[i].id+"\" class=\"mainmas\" >"
+		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\"listalibri.jsp?function=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"\" class=\"mainmas\" >"
 				+listageneri[i].tipologia+"</a></li>";
 	
 	$("#smgenere").html(htmlLi);

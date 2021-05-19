@@ -126,6 +126,7 @@ function stampaLibro(){
 	let id=$("#titoli").val();
 	console.log($("#titoli").val());
 	let htmlEspositore="";
+	let categoria;
 	$.each(listalibri1,function(i,libro){
 		console.log("id="+libro.id)
 		 htmlEspositore=htmlEspositore+
@@ -145,6 +146,7 @@ function stampaLibro(){
 		"</span>"+	
 		"</span>"+
 		"</span>";
+		categoria=libro.genere.tipologia;
 
 	});
 	if(listalibri1.length==0) {
@@ -152,7 +154,7 @@ function stampaLibro(){
 	
 	}
 	$("#listalibri").append(htmlEspositore);
-	
+	$("#categoria").text("Libri per Categoria:<%=request.getParameter("generenome")%>");
 	
 	addCartSimulationBottoni(listalibri1);
 }
@@ -173,7 +175,7 @@ function addCartSimulationBottoni(lista){
 
 
 
-<h1>Libri per Categorie</h1>
+<h1 id="categoria">Libri per Categorie</h1>
 
    
 
