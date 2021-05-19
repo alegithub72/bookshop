@@ -1,7 +1,7 @@
 package com.alek.mvcjquery.controller.servlet;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
