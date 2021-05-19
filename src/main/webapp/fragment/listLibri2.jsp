@@ -154,7 +154,8 @@ function stampaLibro(){
 	
 	}
 	$("#listalibri").append(htmlEspositore);
-	$("#categoria").text("Libri per Categoria:<%=request.getParameter("generenome")%>");
+	
+	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>");
 	
 	addCartSimulationBottoni(listalibri1);
 }
@@ -175,7 +176,7 @@ function addCartSimulationBottoni(lista){
 
 
 
-<h1 id="categoria">Libri per Categorie</h1>
+<h1 id="categoria">Libri per Categorie:</h1>
 
    
 
