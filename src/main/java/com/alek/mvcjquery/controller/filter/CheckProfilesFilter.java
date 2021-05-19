@@ -33,7 +33,7 @@ public class CheckProfilesFilter implements Filter {
      * Default constructor. 
      */
     public CheckProfilesFilter() {
-        // TODO Auto-generated constructor stub
+        // TODO Alessio Prova
     }
 
 	/**
