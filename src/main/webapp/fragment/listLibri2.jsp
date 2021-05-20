@@ -99,8 +99,7 @@ $(document).ready(function(){
 		//console.log(listalibri1[0].titolo); 
 		//console.log(listalibri.length);
 			if(listalibri1.errore) {
-				$("#allertText").text("Errore Applicativo!!!!!!!");
-				$("#allerta").css("display","inherit");
+				displayAllerta(listalibri1.errore);
 				
 				return;
 			}
@@ -109,8 +108,7 @@ $(document).ready(function(){
 			
 		})
 	.fail(function(){
-		$("#allertText").text("Errore Applicativo!!!!!!!");
-		$("#allerta").css("display","inherit");
+		displayAllerta(errore);
 		
 	
 	});
@@ -150,7 +148,7 @@ function stampaLibro(){
 
 	});
 	if(listalibri1.length==0) {
-		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun Libro</h2>";
+		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun risultato</h2>";
 	
 	}
 	$("#listalibri").append(htmlEspositore);

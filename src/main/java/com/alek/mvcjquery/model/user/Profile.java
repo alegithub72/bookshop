@@ -1,6 +1,9 @@
 package com.alek.mvcjquery.model.user;
 
+import com.google.gson.annotations.Expose;
+
 public class Profile {
+	@Expose
 	int id;
 	String nome;
 	

@@ -1,13 +1,18 @@
 package com.alek.mvcjquery.model.user;
 
+import com.google.gson.annotations.Expose;
+
 public class User {
 	
 	
-	
+	@Expose
 	int id;
+	@Expose
 	String name;
 	String pass;
+	@Expose
 	String email;
+	@Expose
 	Profile profile;
 	
 

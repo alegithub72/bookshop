@@ -169,12 +169,12 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 
 	@Override
 	public List listaGeneri() throws ErrorService {
-		Connection con=null;
+		Connection conn=null;
 		List list=new ArrayList();
 		
 		try {
-			con=ds.getConnection();
-			PreparedStatement prep=con.prepareStatement("SELECT * FROM GENERE_BKS");
+			conn=ds.getConnection();
+			PreparedStatement prep=conn.prepareStatement("SELECT * FROM GENERE_BKS");
 			ResultSet res=prep.executeQuery();
 			while(res.next()) {
 				int id=res.getInt("id");
@@ -188,7 +188,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			throw new ErrorService(e.getMessage());
 		}finally {
 			try {
-				con.close();
+				conn.close();
 				
 			}catch(SQLException e) {	}
 		}

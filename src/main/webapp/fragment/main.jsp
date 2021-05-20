@@ -29,6 +29,15 @@
 <img src="../img/bannerBook2.jpg" width="100%">
 
 <%@include file="./menu.jsp" %>
+<%@include file="./login.jsp" %>
+<script type="text/javascript">
+function displayAllerta(errore){
+	$("#allertText").text("Errore Applicativo:"+errore.msg);
+	$("#allerta").css("display","inherit");
+	
+}
+
+</script>
 <div id="allerta" class="ui-widget" style="display:none;">
 	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
 		<p><span class="ui-icon ui-icon-alert" style="float: none; margin-right: .3em;"></span>

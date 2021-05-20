@@ -9,8 +9,10 @@ import javax.sql.DataSource;
 
 import com.alek.mvcjquery.model.service.GenericService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
+import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 import com.alek.mvcjquery.model.service.interfaces.UserCheckService;
 import com.alek.mvcjquery.model.user.Profile;
+import com.alek.mvcjquery.model.user.User;
 
 public class UserCheckServiceDB extends GenericService implements UserCheckService{
 
@@ -62,5 +64,16 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 		
 		return allowfunc;
 	}
+
+	@Override
+	public User loginuser(String userid, String password) throws ErroreLoginAccess {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+	
+	
 	
 }

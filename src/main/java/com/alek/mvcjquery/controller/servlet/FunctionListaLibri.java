@@ -51,6 +51,7 @@ public class FunctionListaLibri extends GenericJSONServlet {
 	public void init() throws ServletException {
 		super.init();
 		try {
+			getDataSource();
 			consultazioneLibreriaService= getConsulatazioneServiceDB();
 		} catch (ErroreDataSourceException e) {
 			e.printStackTrace();

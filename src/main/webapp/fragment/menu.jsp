@@ -95,8 +95,7 @@ $(document).ready(function(){
 		})
 		.done(function(){
 				if(listageneri.errore) {
-					$("#allertText").text("Errore Applicativo!!!!!!!");
-					$("#allerta").css("display","inherit");
+					displayAllerta(listageneri.errore);
 					
 					return;
 				}
@@ -105,8 +104,7 @@ $(document).ready(function(){
 				
 			})
 		.fail(function(){
-			$("#allertText").text("Errore Applicativo!!!!!!!");
-			$("#allerta").css("display","inherit");
+			displayAllerta(listageneri.errore);
 			
 		
 		});
@@ -200,11 +198,19 @@ function buildGenereMenu(){
     </li>
     <li id="contact" class="mainm"><a href="#" class="mainma">Contact</a></li>
 </ul>
+<% if(request.getSession().getAttribute("user")!=null){
+User usr=(User)request.getSession().getAttribute("user");
+%>
 
-<img src="../img/omino2.jpg"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
-<a href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;">Accedi</a>
+<img id="omino" src="../img/ominoin.jpg"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
+<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;"><%=usr.getName()%></a>
 <div style="position:relative;">
-
+	
+<% } else {%>
+<img id="omino" src="../img/outomino.png"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
+<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;">Accedi</a>
+<div style="position:relative;">
+<%} %>
     
 <span id="cartItems" style="font-family: monospace;position:absolute;top:-4px;right: 14px;font-weight: bold;font-size: 17px;font-size: 17px;color:rgb(2,40,79);">0</span>
 <img src="../img/cart2.png" style="background-color:rgb(0, 123, 247);margin-top:-4px;margin-right:3px;" width="35px" height="35px"  />
@@ -212,3 +218,4 @@ function buildGenereMenu(){
 </div>
 
 
+ 

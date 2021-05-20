@@ -19,9 +19,11 @@ import com.alek.mvcjquery.model.service.db.UserCheckServiceDB;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
+import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
 import com.alek.mvcjquery.model.service.interfaces.UserCheckService;
 import com.alek.mvcjquery.model.service.mock.ListaLibriSeviceMock;
+import com.alek.mvcjquery.model.service.mock.UserCheckServiceMock;
 import com.alek.mvcjquery.model.user.Profile;
 import com.alek.mvcjquery.model.user.User;
 import com.google.gson.Gson;
@@ -39,18 +41,17 @@ public abstract class GenericJSONServlet extends HttpServlet {
 	}
 	Context initContext ;
 	Context envContext  ;	
-	
+	DataSource ds;
 	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
-    	Context initContext;
-		try {
-			
+		try {		
 			initContext = new InitialContext();
 			envContext  = (Context)initContext.lookup("java:/comp/env");
+	
 			
 		} catch (NamingException e) {
 			e.printStackTrace();			
@@ -59,8 +60,24 @@ public abstract class GenericJSONServlet extends HttpServlet {
 
 	abstract void createjson(HttpServletRequest req,  HttpServletResponse resp) throws ErrorService,IOException;
 	
+	
+	
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		genericRequest(req, resp);
+	}
+
+	
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		genericRequest(req, resp);
+	}
+
+	protected void genericRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/jason");
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		try {
@@ -82,12 +99,19 @@ public abstract class GenericJSONServlet extends HttpServlet {
 			String json=gson.toJson(error);
 			resp.getWriter().append(json);
 			System.out.println(json);			
+		} catch (ErroreLoginAccess e) {
+			e.printStackTrace();
+			ErrorResponse error=new ErrorResponse("Accesso negato", "1030");
+			String json=gson.toJson(error);
+			resp.getWriter().append(json);
+			System.out.println(json);
+		
 		}
 
 	}
 
 
-	protected void checkProfile(HttpServletRequest request, HttpServletResponse response) throws ErroreDataSourceException,ErroreFunctionPermission {
+	protected void checkProfile(HttpServletRequest request, HttpServletResponse response) throws ErroreDataSourceException,ErroreFunctionPermission,ErroreLoginAccess {
 		
 		String functionStr;
 		Profile prf;
@@ -109,12 +133,13 @@ public abstract class GenericJSONServlet extends HttpServlet {
 
 
 
-	DataSource getDataSource() throws ErroreDataSourceException{
-		DataSource ds=null ;
+	void getDataSource() throws ErroreDataSourceException{
+		 ;
 		String msg="";
 		try {
-
+			if(ds==null)
 			ds = (DataSource)envContext.lookup("jdbc/bookshop");
+			
 			System.out.println("dasource trovato");
 			
 		}catch (NamingException e) {
@@ -123,7 +148,7 @@ public abstract class GenericJSONServlet extends HttpServlet {
 				throw new ErroreDataSourceException(msg);
 						
 		}
-		return ds;
+		
 
 		
 	}
@@ -135,14 +160,14 @@ public abstract class GenericJSONServlet extends HttpServlet {
 	}
 
 	protected ConsultazioneLibreriaService getConsulatazioneServiceDB() throws ErroreDataSourceException {
-		ListaLibriService  listaLibriService=new ListaLibriServiceDB(getDataSource());
+		ListaLibriService  listaLibriService=new ListaLibriServiceDB(ds);
 		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
 	return 	consultazioneLibreriaService;		
 		
 	}
-	private UserCheckService getUserCheckService() throws ErroreDataSourceException {
+	protected UserCheckService getUserCheckService() throws ErroreDataSourceException {
 		
-		UserCheckService userCheckService=new UserCheckServiceDB(getDataSource());
+		UserCheckService userCheckService=new UserCheckServiceMock(ds);
 		return userCheckService;
 	}
 
@@ -179,6 +204,8 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		
 		
 	}
+
+
 
 
 }
