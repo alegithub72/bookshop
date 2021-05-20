@@ -208,7 +208,7 @@ User usr=(User)request.getSession().getAttribute("user");
 	
 <% } else {%>
 <img id="omino" src="../img/outomino.png"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
-<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;">Accedi</a>
+<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;" >Accedi</a>
 <div style="position:relative;">
 <%} %>
     

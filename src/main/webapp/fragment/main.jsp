@@ -29,7 +29,29 @@
 <img src="../img/bannerBook2.jpg" width="100%">
 
 <%@include file="./menu.jsp" %>
-<%@include file="./login.jsp" %>
+<%
+Object obj=request.getSession().getAttribute("user");
+
+if(obj!=null && ((User)obj).getId()!=0){%>
+
+		
+	
+		<%@include file="./logout.jsp" %>
+		
+	<% } else { %>
+	
+		<%@include file="./login.jsp" %>
+
+		
+		
+	<% } %>
+
+
+
+	
+	
+
+
 <script type="text/javascript">
 function displayAllerta(errore){
 	$("#allertText").text("Errore Applicativo:"+errore.msg);

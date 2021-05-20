@@ -15,7 +15,7 @@ public class UserCheckServiceMock implements UserCheckService {
 
 	@Override
 	public User loginuser(String userid, String password) throws ErroreLoginAccess {
-		User usr=new User(0, 400, userid, password, userid);
+		User usr=new User(10, 400, userid, password, userid);
 		return usr;
 	}
 

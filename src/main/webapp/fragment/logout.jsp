@@ -1,36 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-	
+
+
+
 	<script>
-	$(document).ready(function(){
+$(document).ready(function(){
 		
-		$( "#login" ).dialog({
+		$( "#logout" ).dialog({
 			autoOpen: false,
 			width: 300,
-			title: "Sign in to bookshop",
+			title: "Logout from bookshop",
 			buttons: [
 				{
-					text: "Ok",
+					text: "Logout",
 					click: function() {
 						
 						console.log($("#loginform").serializeArray());
 						var request = $.ajax({
-							  url: "../loginuser",
+							  url: "../logout",
 							  method: "POST",
-							  data: $("#loginform").serializeArray(),
+							  //data: $("#loginform").serializeArray(),
 							  dataType: "json"
 							});
 							 
 							request.done(function( user ) {
 							  console.log( user );
 							  if (user.errore) displayAllerta(msg);
-							  $("#omino").attr("src","../img/ominoin.jpg");
-							  $("#accedi").text(user.name);
+							  $("#omino").attr("src","../img/outomino.jpg");
+							  $("#accedi").text("Accedi");
 
 //							  $("#dialogcont div").remove();
 							  //$("#accedi").unbind("click");
 							 // $("#accedi").click(function(){console.log("Non si attiva piu");})
-							 if(user.profile.id>200) location.reload(true);
+//							 if(user.profile.id>200) location.reload(true);
 							});
 							 
 							request.fail(function( jqXHR, textStatus ) {
@@ -53,27 +55,14 @@
 		
 		$("#accedi").click(function(){
 			
-			$("#login").dialog("open");
+			$("#logout").dialog("open");
 			
 		});
 		
 	})
+	
+	
 	</script>
+	<div id="logout" style="display:none;" class="ui-helper-hidden"> 
 
-	<div id="login" style="display:none;" class="ui-helper-hidden"> 
-	
-	<form id="loginform" style="display:flex;" >
-	<span style="width:100%;">
-	User:
-	<input name="userid" type="text" size="10" />	
-	</span>
-	<span style="width:100%;">
-	Password:
-	<input  name="password" type="password" size="10" />	
-	</span>
-	</form> 
 	</div> 
-
-
-	
-	
