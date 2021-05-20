@@ -2,6 +2,8 @@ package com.alek.mvcjquery.model.user;
 
 public class User {
 	
+	
+	
 	int id;
 	String name;
 	String pass;

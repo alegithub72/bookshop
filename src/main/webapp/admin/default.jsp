@@ -5,7 +5,7 @@
 
 <%
 User usrTmp=(User)request.getSession().getAttribute("user");
-if(!usrTmp.getProfile().getNome().equals("Administrator"))
+if(usrTmp.getProfile().getId()>=300)
 	response.sendRedirect("../default.jsp");
 
 

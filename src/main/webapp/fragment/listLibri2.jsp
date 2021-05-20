@@ -84,7 +84,7 @@ var listalibri1;
 var libroId;
 $(document).ready(function(){
 	let erroreApp=false;
-	$.getJSON("../jsonlistalibri?function=ricercaPergenere&genere=<%=request.getParameter("genere")%>",function(data){
+	$.getJSON("../ricercalibrijson?function=ricercaPergenere&genere=<%=request.getParameter("genere")%>",function(data){
 
 	//const json = cleanIt(data);  // {"name":"John Smith"}
 	//console.log(json);

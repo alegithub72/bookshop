@@ -91,11 +91,11 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		
 		String functionStr;
 		Profile prf;
-		User usr= (User)request.getSession().getAttribute("user");
+		User usr = (User)request.getSession().getAttribute("user");
 		functionStr = request.getServletPath().substring(1);
 		prf = null;
 		if(usr==null)
-			 usr=new User(0, 0, "utente", null, null);
+			 usr=new User(0, 100, "webuser", null, null);
 		 prf= usr.getProfile();	
 		 
 //		 prf.setNome("Administrator");

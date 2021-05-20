@@ -1,5 +1,5 @@
 create table users_bks (
-name varchar(20),
+nome varchar(20),
 cognome varchar(20),
 email varchar(100),
 password varchar(20),
@@ -16,7 +16,7 @@ id_function int
 );
 
 -----------------------------------------------------
-create table functkion_bks(
+create table function_bks(
 id int primary key,
 nome varchar(40),
 url_function varchar(200)

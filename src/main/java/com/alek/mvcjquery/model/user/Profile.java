@@ -13,7 +13,7 @@ public class Profile {
 		this.nome = nome;
 	}
 	public Profile(int profileid) {
-		this.id = id;
+		this.id = profileid;
 	}
 	public int getId() {
 		return id;

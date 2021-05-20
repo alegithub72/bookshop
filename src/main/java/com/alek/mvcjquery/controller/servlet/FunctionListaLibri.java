@@ -32,7 +32,7 @@ import com.google.gson.reflect.TypeToken;
 /**
  * Servlet implementation class ListaLibri
  */
-@WebServlet(name = "listalibri", urlPatterns = { "/jsonlistalibri" })
+@WebServlet(name = "listalibri", urlPatterns = { "/ricercalibrijson" })
 public class FunctionListaLibri extends GenericJSONServlet {
 	private static final long serialVersionUID = 1L;
 

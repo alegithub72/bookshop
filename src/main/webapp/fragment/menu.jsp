@@ -88,7 +88,7 @@ color: #ffff;
 let listageneri;
 $(document).ready(function(){
 	
-	$.getJSON("../jsonlistalibri?function=generi",function(data){
+	$.getJSON("../ricercalibrijson?function=generi",function(data){
 
 		listageneri=data;
 		console.log(data);
@@ -171,7 +171,7 @@ function buildGenereMenu(){
 <%if(request.getSession().getAttribute("user")!=null){
 	
 	User usr=(User) request.getSession().getAttribute("user");
-	if(usr.getProfile().getNome().equals("Administrator")){
+	if(usr.getProfile().getId()>=300){
 		out.print("<li style='background-color:red' id=\"Administrator\" class=\"mainm\">"+
 				"<a href=\"../admin/default.jsp\" class=\"mainma\">Administrator</a>"+
 				"</li>");
