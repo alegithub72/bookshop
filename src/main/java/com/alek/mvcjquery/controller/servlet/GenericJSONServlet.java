@@ -153,7 +153,7 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		
 	}
 	protected ConsultazioneLibreriaService getConsulatazioneServiceMock() throws ErroreDataSourceException {
-		ListaLibriService  listaLibriService=ListaLibriSeviceMock.getInstance(null);
+		ListaLibriService  listaLibriService=new ListaLibriSeviceMock(ds);
 		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
 	return 	consultazioneLibreriaService;
 		

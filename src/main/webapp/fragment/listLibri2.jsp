@@ -82,9 +82,10 @@
 
 var listalibri1;
 var libroId;
-$(document).ready(function(){
+
+function ricercaLibri(start,page){
 	let erroreApp=false;
-	$.getJSON("../ricercalibrijson?function=ricercaPergenere&genere=<%=request.getParameter("genere")%>",function(data){
+	$.getJSON("../ricercalibrijson?function=ricercaPergenere&genere=<%=request.getParameter("genere")%>&start="+start+"&page="+page,function(data){
 
 	//const json = cleanIt(data);  // {"name":"John Smith"}
 	//console.log(json);
@@ -103,7 +104,7 @@ $(document).ready(function(){
 				
 				return;
 			}
-			stampaLibro();
+			dataTableRicercaLibri();
 
 			
 		})
@@ -112,14 +113,33 @@ $(document).ready(function(){
 		
 	
 	});
-	
-	
-	
-});
 
+}
+var startRow=1,page=5;
+function nextRicerca(){
+	$("#listalilbri").html("");
+	startRow=startRow+page;
+	ricercaLibri(startRow,page);
+
+}
+function prevRicerca(){
+	$("#listalibri").html("");
+	startRow=startRow-page;
+	if(startRow<0)startRow=0;
+	ricercaLibri(startRow,page);
+}
+$(document).ready(function(){
+	
+	ricercaLibri(1,5);
+
+	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>");
+	
+}
+
+);
 
 	
-function stampaLibro(){
+function dataTableRicercaLibri(){
 
 	let id=$("#titoli").val();
 	console.log($("#titoli").val());
@@ -151,9 +171,15 @@ function stampaLibro(){
 		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun risultato</h2>";
 	
 	}
-	$("#listalibri").append(htmlEspositore);
+	htmlEspositore=htmlEspositore+"<div style=\"width:100%;\"><div id=\"nextprev\">"+
+	"<a id=\"idprev\" href=\"#\">prev</a>&nbsp;&nbsp;&nbsp;"+ 
+	"<a id=\"idnext\"  href=\"#\" >next</a>"+
+	"</div></div>"
+	$("#listalibri").html(htmlEspositore);
+	$("#idnext").click(nextRicerca);
 	
-	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>");
+	if(startRow>1) $("#idprev").click(prevRicerca);
+	else $("#idprev").css("text-decoration","none");
 	
 	addCartSimulationBottoni(listalibri1);
 }
@@ -191,6 +217,7 @@ function addCartSimulationBottoni(lista){
 
 
 </div>
+
 <p>Trova le email in un lampo
 Con l'efficace strumento di Ricerca Google nella Posta in arrivo, 
 puoi archiviare tutte le email e trovarle successivamente in un attimo.

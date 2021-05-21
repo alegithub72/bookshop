@@ -33,6 +33,51 @@ values (1040,'Il giro del mondo in 80 giorni','Una spy story ambientata in antar
 insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
 values (1050,'Il loto bianco','Una spy story ambientata in antartide.','10/10/1970',5010,3010,4010,7);
 
+-------------------------DELETE BEFORE INSERT-----------------------------------
+delete from LIBRO_BKS where id =1060;
+delete from LIBRO_BKS where id =1070;
+delete from LIBRO_BKS where id =1080;
+delete from LIBRO_BKS where id =1090;
+delete from LIBRO_BKS where id =1100;
+delete from LIBRO_BKS where id =1110;
+------------------------------INSERT---LIBRO_BKS-------------------------------
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1060,'La guerra dei mondi','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1070,'Minority report','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25.6);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1080,'Ocean eleven','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,7.12);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1090,'Nome della rosa','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1100,'Tre uomini a zonzo','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1110,'L ultimo dei moicani','Una spy story ambientata in antartide.','10/10/1970',5010,3010,4010,7);
+
+-------------------------DELETE BEFORE INSERT-----------------------------------
+delete from LIBRO_BKS where id =1120;
+delete from LIBRO_BKS where id =1130;
+delete from LIBRO_BKS where id =1140;
+delete from LIBRO_BKS where id =1150;
+delete from LIBRO_BKS where id =1160;
+delete from LIBRO_BKS where id =1170;
+------------------------------INSERT---LIBRO_BKS-------------------------------
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1120,'Dune','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1130,'Blad runner','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25.6);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1140,'I pilastri della terra','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,7.12);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1150,'Ulisse','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25);
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1160,'I  promessi sposi','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+
+insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
+values (1170,'Divina commedia','Una spy story ambientata in antartide.','10/10/1970',5010,3010,4010,7);
+
 ----------------------------------DELETE  GENERE BKS------------------------------------------
 
 delete from genere_bks where id=5000;

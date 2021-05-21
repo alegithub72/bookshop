@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import com.alek.mvcjquery.model.libri.Autore;
 import com.alek.mvcjquery.model.libri.Edizione;
 import com.alek.mvcjquery.model.libri.Genere;
@@ -18,9 +20,8 @@ public class ListaLibriSeviceMock implements ListaLibriService {
 	
 	private static ListaLibriService service;
 	
-	public static  ListaLibriService  getInstance(Connection conn) {
-		if(service==null) service=new ListaLibriSeviceMock();
-		return service;
+	public ListaLibriSeviceMock(DataSource ds) {
+
 	}
 	
 

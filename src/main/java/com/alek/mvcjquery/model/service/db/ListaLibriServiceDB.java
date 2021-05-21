@@ -44,16 +44,21 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 	}
 
 	@Override
-	public List listaLibriPerGeneri(String idgenere) throws ErrorService{
+	public List listaLibriPerGeneri(String idgenere,int start,int page) throws ErrorService{
 		List list=new ArrayList();
 		Connection conn=null;
+		ResultSet res=null;
 		try {
 			conn=ds.getConnection();
 			list = new ArrayList<Libro>();
-			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM LIBRO_BKS where  genere_id=? ");
+			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM LIBRO_BKS where  genere_id=? ",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			prep.setString(1, idgenere);
-			ResultSet res=  prep.executeQuery();
+			
+			res=  prep.executeQuery();
+			int max=0;
+			res.absolute(start);
 			while(res.next()) {
+				if (max>=page) break;
 				
 				int id=res.getInt("id");
 				String titolo=res.getString("titolo");
@@ -69,6 +74,9 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 				Genere genere=getGenere(genereId);
 				Libro libro=new Libro(id, titolo,dataPublicazione,autore,prezzo, edizione,genere); 
 				list.add(libro);
+	
+				max++;
+				
 			}
 
 		} catch (SQLException e) {
@@ -76,6 +84,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			throw new ErrorService("Errore applicativo!!!");
 		}finally {
 			try {
+				res.close();
 				conn.close();
 			} catch (Exception e) {
 

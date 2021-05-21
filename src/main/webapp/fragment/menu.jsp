@@ -169,16 +169,19 @@ function buildGenereMenu(){
 <%if(request.getSession().getAttribute("user")!=null){
 	
 	User usr=(User) request.getSession().getAttribute("user");
-	if(usr.getProfile().getId()>=300){
-		out.print("<li style='background-color:red' id=\"Administrator\" class=\"mainm\">"+
-				"<a href=\"../admin/default.jsp\" class=\"mainma\">Administrator</a>"+
-				"</li>");
-		
-	}
-}
+	if(usr.getProfile().getId()>=300){%>
 	
+		<li style='background-color:red' id="Administrator" class="mainm">
+				<a href="../admin/default.jsp" class="mainma">Administrator</a>
+		</li>
+		
+	<% }   
+	}
 	
 	%>
+	
+	
+
     <li id="home" class="mainm"><a href="./" class="mainma">Home</a></li>
     <li id="about" class="mainm"><a href="#" class="mainma">About&nbsp;Us</a></li>
     <li id="genere" class="mainm">

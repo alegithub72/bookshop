@@ -78,7 +78,10 @@ public class FunctionListaLibri extends GenericJSONServlet {
 	
 	private List listaLibriPerGenere(HttpServletRequest req)throws ErrorService {
 		String idgenere=req.getParameter("genere");
-		List listaLibri=consultazioneLibreriaService.listaLibriPerGeneri(idgenere);
+
+		int start=convertParameterToInt(req.getParameter("start"),1);
+		int page=convertParameterToInt(req.getParameter("page"),5);
+		List listaLibri=consultazioneLibreriaService.listaLibriPerGeneri(idgenere,start,page);
 		System.out.println("Lista Libri 8");
 		return listaLibri;
 	}
@@ -88,4 +91,18 @@ public class FunctionListaLibri extends GenericJSONServlet {
 		return consultazioneLibreriaService.listaGeneri();
 	}
 
+	private int convertParameterToInt(String p,int valueDefault) {
+		int n=valueDefault;
+		try {
+			n=Integer.parseInt(p);			
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}finally{
+			System.out.println("p="+p+",n"+n);
+			
+		}
+		return n;
+		
+	}
+	
 }
