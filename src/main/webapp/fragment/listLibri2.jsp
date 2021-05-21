@@ -13,6 +13,7 @@
     flex-direction: row;
     /* flex-flow: wrap; */
     display: flex;
+    justify-content: center;
 	}
 	.titolo   {
 	
@@ -64,9 +65,8 @@
 	tr:nth-child(even) {background-color: rgb(128,255,128);}
 	tr:nth-child(odd) {background-color: rgb(128,255,128);}
 	.dettaglio {
-	
-		text-align:left;
-    background-color: yellow;
+	text-align:left;
+    background-color: rgb(166,210,255);
     margin: 4px;		
 	}
 	.columnValori {
@@ -80,7 +80,7 @@
 
 <script>
 
-var listalibri1;
+var listaricerca;
 var libroId;
 
 function ricercaLibri(start,page){
@@ -91,7 +91,7 @@ function ricercaLibri(start,page){
 	//console.log(json);
 	//console.log("---------------------unquoted-------------------");
 	//console.log(unquoted);  // {name:"John Smith"}
-	listalibri1=data;
+	listaricerca=data;
 
 	console.log(data);
 	})
@@ -99,8 +99,8 @@ function ricercaLibri(start,page){
 		//alert("sucess :"+listalibri1.nome);
 		//console.log(listalibri1[0].titolo); 
 		//console.log(listalibri.length);
-			if(listalibri1.errore) {
-				displayAllerta(listalibri1.errore);
+			if(listaricerca.errore) {
+				displayAllerta(listaricerca.errore);
 				
 				return;
 			}
@@ -115,16 +115,18 @@ function ricercaLibri(start,page){
 	});
 
 }
-var startRow=1,page=5;
+var startRow=1,page=5,pageNum=1;
 function nextRicerca(){
 	$("#listalilbri").html("");
 	startRow=startRow+page;
+	pageNum++;
 	ricercaLibri(startRow,page);
 
 }
 function prevRicerca(){
 	$("#listalibri").html("");
 	startRow=startRow-page;
+	pageNum--;
 	if(startRow<0)startRow=0;
 	ricercaLibri(startRow,page);
 }
@@ -145,13 +147,15 @@ function dataTableRicercaLibri(){
 	console.log($("#titoli").val());
 	let htmlEspositore="";
 	let categoria;
-	$.each(listalibri1,function(i,libro){
+	$.each(listaricerca,function(i,libro){
 		console.log("id="+libro.id)
 		 htmlEspositore=htmlEspositore+
 		"<span class=\"dettaglio\">"+
 		"<span  id=\"dettagli\" class=\"columnValori\" >"+
 		"<span style=\"display:flex;flex-direction:row;\">"+
-		"<img src=\"noimage.png\" width=\"60px\" height=\"60px\"/><span class=\"titolo\">Titolo:</span><span class=\"titolovalori\">"+libro.titolo+"</span>"+
+		"<img src=\"../img/book"+(i+1)+".jpg\" width=\"60px\" height=\"60px\"/>"+
+		//"<span class=\"titolo\">Titolo:</span>"+
+		"<span class=\"titolovalori\">"+libro.titolo+"</span>"+
 		"</span>"+
 		"<span style=\"display:flex;flex-direction:row;\">"+
 		"<span class=\"altreinfo\">Autore:</span> <span class=\"altreinfovalori\">"+libro.autore.cognome+" "+libro.autore.nome+"</span>"+
@@ -167,21 +171,24 @@ function dataTableRicercaLibri(){
 		categoria=libro.genere.tipologia;
 
 	});
-	if(listalibri1.length==0) {
+	if(listaricerca.length==0) {
 		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun risultato</h2>";
 	
 	}
 	htmlEspositore=htmlEspositore+"<div style=\"width:100%;\"><div id=\"nextprev\">"+
-	"<a id=\"idprev\" href=\"#\">prev</a>&nbsp;&nbsp;&nbsp;"+ 
+	"<a id=\"idprev\" href=\"#\">prev</a>"+ 
+	"&nbsp;&nbsp;&nbsp;<span>"+pageNum+"</span>&nbsp;&nbsp;&nbsp;"+
 	"<a id=\"idnext\"  href=\"#\" >next</a>"+
 	"</div></div>"
 	$("#listalibri").html(htmlEspositore);
-	$("#idnext").click(nextRicerca);
+	
 	
 	if(startRow>1) $("#idprev").click(prevRicerca);
-	else $("#idprev").css("text-decoration","none");
+	else $("#idprev").remove()//css("text-decoration","none");
+	if(listaricerca.length<page) $("#idnext").remove()//css("text-decoration","none");
+	else $("#idnext").click(nextRicerca); 
 	
-	addCartSimulationBottoni(listalibri1);
+	addCartSimulationBottoni(listaricerca);
 }
 
 let cart=1;
