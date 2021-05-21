@@ -163,26 +163,34 @@ function dataTableRicercaLibri(){
 		"<span style=\"display:flex;flex-direction:row;\">"+
 		"<span class=\"nomi\">Edzione:</span> <span class=\"valori\">"+libro.dataPublicazione+", "+libro.edizione.editore+","+libro.genere.tipologia+"</span>"+
 		"</span>"+
-		"<span style=\"display:flex;flex-direction:row;justify-content:flex-end;\">"+
-		"<span class=\"nomi\">"+libro.prezzo+" &euro;   &nbsp;&nbsp;&nbsp;&nbsp;</span><span class=\"valori\"><button id=\"buttonCart"+libro.id+"\">Add</button></span>"+
-		"</span>"+	
+		"<span style=\"display:flex;flex-direction:row;flex-direction: column;justify-content:center;\">"+		
+		"</span>"+		
+		"<span class=\"nomi\" style=\"text-align:center;\">"+libro.prezzo+" &euro;   &nbsp;&nbsp;&nbsp;&nbsp;</span>"+
+		"<span class=\"valori\"  style=\"text-align:center;\"  ><button id=\"buttonCart"+libro.id+"\">Add</button></span>"+
 		"</span>"+
 		"</span>";
 		categoria=libro.genere.tipologia;
 
 	});
-	if(listaricerca.length==0) {
+	if(listaricerca.length==0) { 
 		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun risultato</h2>";
 	
 	}
 	htmlEspositore=htmlEspositore+"<div style=\"width:100%;\"><div id=\"nextprev\">"+
-	"<a id=\"idprev\" href=\"#\">prev</a>"+ 
+	"<button id=\"idprev\" href=\"#\">prev</button>"+ 
 	"&nbsp;&nbsp;&nbsp;<span>"+pageNum+"</span>&nbsp;&nbsp;&nbsp;"+
-	"<a id=\"idnext\"  href=\"#\" >next</a>"+
+	"<button id=\"idnext\"  href=\"#\" >next</button>"+
 	"</div></div>"
 	$("#listalibri").html(htmlEspositore);
 	
-	
+	$( "#idprev" ).button({
+		icon: "ui-icon-circle-arrow-w",
+		showLabel: false
+	});
+	$( "#idnext" ).button({
+		icon: "ui-icon-circle-arrow-e",
+		showLabel: false
+	}); 
 	if(startRow>1) $("#idprev").click(prevRicerca);
 	else $("#idprev").remove()//css("text-decoration","none");
 	if(listaricerca.length<page) $("#idnext").remove()//css("text-decoration","none");
@@ -193,10 +201,14 @@ function dataTableRicercaLibri(){
 
 let cart=1;
 function addCartSimulationBottoni(lista){
-	for(let  i =0;i<lista.length;i++)
-	$("#buttonCart"+lista[i].id).click(function(){
-		$("#cartItems").html(cart++);
-	});
+	for(let  i =0;i<lista.length;i++){
+		$("#buttonCart"+lista[i].id).button({label:"Add to cart"});
+		$("#buttonCart"+lista[i].id).click(function(){
+			$("#cartItems").html(cart++);
+		});
+	}
+
+
 
 }
 	

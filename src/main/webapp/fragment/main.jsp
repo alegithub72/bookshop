@@ -8,7 +8,7 @@
 <title>Book Shop Online</title>
 <script src="../jslib/jquery-3.6.0.js"></script>
  <script src="../jslib/jquery-ui.js"></script>
- <link rel="stylesheet" href="../css/jquery-ui.css">
+ <link rel="stylesheet" href="../css/jquery-local-ui.css">
 <style type="text/css">
     .centerPage {
     background-color: white;
