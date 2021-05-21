@@ -140,80 +140,113 @@ $(document).ready(function(){
 
 );
 
-	
+let cart=1;
 function dataTableRicercaLibri(){
 
 	let id=$("#titoli").val();
 	console.log($("#titoli").val());
 	let htmlEspositore="";
 	let categoria;
+	$("#risultatiricerca").html("");
+	$("#idprevnext").remove();
 	$.each(listaricerca,function(i,libro){
 		console.log("id="+libro.id)
-		 htmlEspositore=htmlEspositore+
-		"<span class=\"dettaglio\">"+
-		"<span  id=\"dettagli\" class=\"columnValori\" >"+
-		"<span style=\"display:flex;flex-direction:row;\">"+
-		"<img src=\"../img/book"+(i+1)+".jpg\" width=\"60px\" height=\"60px\"/>"+
-		//"<span class=\"titolo\">Titolo:</span>"+
-		"<span class=\"titolovalori\">"+libro.titolo+"</span>"+
-		"</span>"+
-		"<span style=\"display:flex;flex-direction:row;\">"+
-		"<span class=\"altreinfo\">Autore:</span> <span class=\"altreinfovalori\">"+libro.autore.cognome+" "+libro.autore.nome+"</span>"+
-		"</span>"+
-		"<span style=\"display:flex;flex-direction:row;\">"+
-		"<span class=\"nomi\">Edzione:</span> <span class=\"valori\">"+libro.dataPublicazione+", "+libro.edizione.editore+","+libro.genere.tipologia+"</span>"+
-		"</span>"+
-		"<span style=\"display:flex;flex-direction:row;flex-direction: column;justify-content:center;\">"+		
-		"</span>"+		
-		"<span class=\"nomi\" style=\"text-align:center;\">"+libro.prezzo+" &euro;   &nbsp;&nbsp;&nbsp;&nbsp;</span>"+
-		"<span class=\"valori\"  style=\"text-align:center;\"  ><button id=\"buttonCart"+libro.id+"\">Add</button></span>"+
-		"</span>"+
-		"</span>";
+		var divdettaglio=$("<div>")
+		.css({"display":"flex",
+			"flex-direction":"column",
+			"margin": "10px",
+	    	"align-items": "center"	,
+	    	"background-color":" rgb(166,210,255)",
+	    	"width":"15%"
+		})
+		.attr("id","iddettaglio"+libro.id);
+		var copertina =$("<img>")
+		.attr("src","../img/book"+(i+1)+".jpg")
+		.attr("width","100px")
+		.attr("height","150px");
+		var titolo=$("<span>")
+		.text(libro.titolo)
+		.css({
+			"font-size": "larger",
+	    	"font-weight": "bold"
+	    	});
+		var autore=$("<span>")
+		.text("Autore:"+libro.autore.cognome+" "+libro.autore.nome);
+		var tipo=$("<span>")
+		.text("Tipo:"+libro.genere.tipologia);
+		var editore=$("<span>")
+		.text("Editore:"+libro.edizione.editore);
+		var prezzo=$("<span>").html("Prezzo:")
+		.append($("<span>")		
+				.text(libro.prezzo)
+				.css({"margin-block-start":"auto","color":"blue"}));
+
+		
+		var  addCart=$("<button>")
+		.attr("id","buttonCart"+libro.id)
+		.button({"label":"Add to cart","classes":{"width":"100%"}})
+		.css({"margin-top":"auto"});
+		addCart.click(function(){$("#cartItems").html(cart++);});
+		
+		divdettaglio
+		.append(copertina)
+		.append(titolo)
+		.append(tipo)
+		.append(autore)
+		.append(editore)
+		.append(prezzo)
+		.append(addCart)
+
+		
+		
+		$("#risultatiricerca")
+		.append(divdettaglio)
+		.css({"display":"flex","flex-direction":"row"});		
+
 		categoria=libro.genere.tipologia;
 
 	});
-	if(listaricerca.length==0) { 
-		htmlEspositore="<h2 style=\"margin: inherit;color:blue;\">Nessun risultato</h2>";
+
 	
-	}
-	htmlEspositore=htmlEspositore+"<div style=\"width:100%;\"><div id=\"nextprev\">"+
-	"<button id=\"idprev\" href=\"#\">prev</button>"+ 
-	"&nbsp;&nbsp;&nbsp;<span>"+pageNum+"</span>&nbsp;&nbsp;&nbsp;"+
-	"<button id=\"idnext\"  href=\"#\" >next</button>"+
-	"</div></div>"
-	$("#listalibri").html(htmlEspositore);
-	
-	$( "#idprev" ).button({
+	var buttonprev=$( "<button>" ).button({
 		icon: "ui-icon-circle-arrow-w",
 		showLabel: false
-	});
-	$( "#idnext" ).button({
+	})
+	.attr("id","idprev");
+	
+	
+	var buttonnext=$( "<button>" ).button({
 		icon: "ui-icon-circle-arrow-e",
 		showLabel: false
-	}); 
+	})
+	.attr("id","idnext"); 
+	
+	var nextprev=$("<div>")
+	.css({"display":"flex","flex-direction":"row"})
+	.append(buttonprev)
+	.append($("<span>").text(pageNum))
+	.append(buttonnext)
+	.attr("id","idprevnext");
+	
+	$("#risultatiricerca")
+	.after(nextprev);
+	
 	if(startRow>1) $("#idprev").click(prevRicerca);
 	else $("#idprev").remove()//css("text-decoration","none");
 	if(listaricerca.length<page) $("#idnext").remove()//css("text-decoration","none");
 	else $("#idnext").click(nextRicerca); 
 	
-	addCartSimulationBottoni(listaricerca);
+	if(listaricerca.length==0) { 
+		var zeroRisultati=$("<h2>")
+		.css({"margin": "inherit","color":"blue"})
+		.html("Nessun Risultato");
+		$("#risultatiricerca").html(zeroRisultati);
+		$("#idprevnext").remove();
+	}	
+	
+
 }
 
-let cart=1;
-function addCartSimulationBottoni(lista){
-	for(let  i =0;i<lista.length;i++){
-		$("#buttonCart"+lista[i].id).button({label:"Add to cart",width:"100%"});
-		$("#buttonCart"+lista[i].id).click(function(){
-			$("#cartItems").html(cart++);
-		});
-	}
-
-
-
-}
-	
-	
-	
 
 </script> 
 
@@ -223,7 +256,7 @@ function addCartSimulationBottoni(lista){
 
    
 
-<div id="listalibri"  class="espositore">
+<div id="risultatiricerca"  class="espositore">
 
 
 
