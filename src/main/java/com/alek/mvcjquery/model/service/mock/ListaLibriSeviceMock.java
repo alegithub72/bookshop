@@ -26,7 +26,7 @@ public class ListaLibriSeviceMock implements ListaLibriService {
 	
 
 	@Override
-	public List listaLibriPerGeneri(String idgenere) throws ErrorService{
+	public List listaLibriPerGeneri(String idgenere,int start,int page) throws ErrorService{
         List<Libro> listaLibri = new ArrayList<Libro>();
         Autore autore1=new Autore(2001,"Smith","Wilbur","Professore");
         Autore autore2=new Autore(2010,"Pablo","Allende","Attore");
