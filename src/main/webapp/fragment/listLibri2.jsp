@@ -115,7 +115,7 @@ function ricercaLibri(start,page){
 	});
 
 }
-var startRow=1,page=5,pageNum=1;
+var startRow=1,page=4,pageNum=1;
 function nextRicerca(){
 	$("#listalilbri").html("");
 	startRow=startRow+page;
@@ -132,7 +132,7 @@ function prevRicerca(){
 }
 $(document).ready(function(){
 	
-	ricercaLibri(1,5);
+	ricercaLibri(1,page);
 
 	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>");
 	
@@ -202,7 +202,7 @@ function dataTableRicercaLibri(){
 let cart=1;
 function addCartSimulationBottoni(lista){
 	for(let  i =0;i<lista.length;i++){
-		$("#buttonCart"+lista[i].id).button({label:"Add to cart"});
+		$("#buttonCart"+lista[i].id).button({label:"Add to cart",width:"100%"});
 		$("#buttonCart"+lista[i].id).click(function(){
 			$("#cartItems").html(cart++);
 		});
