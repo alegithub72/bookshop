@@ -38,7 +38,7 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 			prep.setString(1, urlfunction);
 			ResultSet res=  prep.executeQuery();
 			profallowed = null;
-			System.out.println("----------------checkpermission------------");
+			System.out.println("--checkpermission--");
 			System.out.println("url fiunction:"+urlfunction);
 			System.out.println("id:"+id);
 			while(res.next()) {
@@ -47,7 +47,7 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 				profallowed=new Profile(idallowed, nome);
 				System.out.println("profile:"+idallowed+", nome:"+nome);
 			}
-			System.out.println("----------------checkpermission------------");
+			System.out.println("--checkpermission--");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new ErroreFunctionPermission("Richiesta non permessa!!!");

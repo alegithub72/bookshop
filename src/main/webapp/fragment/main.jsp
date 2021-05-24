@@ -21,6 +21,10 @@
     }
     
 </style>
+<script type="text/javascript">
+var urlRicerca;
+
+</script>
 </head>
 <body>
 
@@ -53,8 +57,11 @@ if(obj!=null && ((User)obj).getId()!=0){%>
 
 
 <script type="text/javascript">
+
 function displayAllerta(errore){
-	$("#allertText").text("Errore Applicativo:"+errore.msg);
+	if(errore)
+		$("#allertText").text("Errore Applicativo:"+errore.msg);
+	else $("#allertText").text("Servizio non siponibile!!");
 	$("#allerta").css("display","inherit");
 	
 }

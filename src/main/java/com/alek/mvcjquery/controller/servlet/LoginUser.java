@@ -45,13 +45,22 @@ public class LoginUser extends GenericJSONServlet {
 			throws ErroreDataSourceException, ErroreFunctionPermission,ErroreLoginAccess {
 		String userid=request.getParameter("userid");
 		String pass=request.getParameter("password");
-		System.out.println("------------------------------------------------------------");
+		String ricercaUSR=request.getParameter("ricercaUSR");
+		String startRow=request.getParameter("startRow");
+		String ricercaPage=request.getParameter("ricercaPage");
+		System.out.println("--");
 		System.out.println("user="+userid);
 		System.out.println("pass="+pass);
-		System.out.println("------------------------------------------------------------");
+		System.out.println("ricercaUSR="+ricercaUSR);
+		System.out.println("startRow="+startRow);
+		System.out.println("ricercaPage="+ricercaPage);
+		System.out.println("--");
 		UserCheckService service=getUserCheckService();
 		User usr=service.loginuser(userid, pass);
 		if(usr!=null) {
+			usr.setRicercaURL(ricercaUSR);
+			usr.setStartRow(startRow);
+			usr.setRicercaPage(ricercaPage);
 			request.getSession().setAttribute("user", usr);
 			
 		} else throw new ErroreLoginAccess("Acessso non permesso!!!");

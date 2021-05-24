@@ -88,10 +88,10 @@ color: #ffff;
 let listageneri;
 $(document).ready(function(){
 	
-	$.getJSON("../ricercalibrijson?function=generi",function(data){
+	$.getJSON("../ricercalibrijson?webfunction=generi",function(data){
 
 		listageneri=data;
-		console.log(data);
+		console.log("----------------->"+data);
 		})
 		.done(function(){
 				if(listageneri.errore) {
@@ -104,7 +104,7 @@ $(document).ready(function(){
 				
 			})
 		.fail(function(){
-			displayAllerta(listageneri.errore);
+			displayAllerta(listageneri);
 			
 		
 		});
@@ -154,10 +154,26 @@ $(document).ready(function(){
 function buildGenereMenu(){
 	let htmlLi="";
 	for(let i=0;i<listageneri.length;i++)
-		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\"listalibri.jsp?function=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"\" class=\"mainmas\" >"
-				+listageneri[i].tipologia+"</a></li>";
+		$("#smgenere").append(
+				$("<li>")
+				.attr("class","sottogs")
+				.append(
+						$("<a>").
+						attr("href",
+							"listalibri.jsp?webfunction=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"&startRow=1&ricercaPage=4"
+						).attr("class","mainmas")
+						.text(listageneri[i].tipologia)		
+						)
+		
+		);
+
+		
+				
+		
+//		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\ class=\"mainmas\" >"
+	//			+listageneri[i].tipologia+"</a></li>";
 	
-	$("#smgenere").html(htmlLi);
+
 	
 	
 	

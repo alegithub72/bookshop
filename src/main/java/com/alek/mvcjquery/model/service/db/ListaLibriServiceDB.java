@@ -141,7 +141,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		}finally {
 			try {
 				conn.close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 			}
 		}
 		return edizione;
@@ -168,7 +168,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		}finally {
 			try {
 				conn.close();
-			} catch (SQLException e) {
+			} catch (Exception e) {
 
 			}
 		}
@@ -199,7 +199,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			try {
 				conn.close();
 				
-			}catch(SQLException e) {	}
+			}catch(Exception e) {	}
 		}
 		
 		

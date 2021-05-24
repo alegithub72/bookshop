@@ -2,8 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 	
 	<script>
+
 	$(document).ready(function(){
-		
+
 		$( "#login" ).dialog({
 			autoOpen: false,
 			width: 300,
@@ -12,12 +13,18 @@
 				{
 					text: "Ok",
 					click: function() {
-						
-						console.log($("#loginform").serializeArray());
+						console.log("urlRicerca-->"+urlRicerca);	
+						dataTmp=$("#loginform").serializeArray();
+						dataTmp[2]={name:"startRow",value:startRow};
+						dataTmp[3]={name:"ricercaPage",value:ricercaPage};
+						//var dataTmp2=$.extend({},dataTmp,extraParam); sostiuisce il valore
+
+						console.log("data--->"+dataTmp);						
+		
 						var request = $.ajax({
 							  url: "../loginuser",
 							  method: "POST",
-							  data: $("#loginform").serializeArray(),
+							  data: dataTmp,
 							  dataType: "json"
 							});
 							 
@@ -30,7 +37,11 @@
 //							  $("#dialogcont div").remove();
 							  //$("#accedi").unbind("click");
 							 // $("#accedi").click(function(){console.log("Non si attiva piu");})
-							 if(user.profile.id>200) location.reload(true);
+
+							//var risultati=location.origin+location.pathname+"&startRow="+startRow+"&ricercaPage="+ricercaPage;
+							//console.log("--->"+risultati);
+							//location.replace(risultati);
+							if(user.profile.id>200) location.reload(true);
 							});
 							 
 							request.fail(function( jqXHR, textStatus ) {

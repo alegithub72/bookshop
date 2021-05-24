@@ -1,7 +1,20 @@
+<%@page import="com.alek.mvcjquery.controller.servlet.FunctionListaLibri"%>
+<%@page import="com.alek.mvcjquery.model.user.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+<%
 
+User usr;
+String startRow=""+1;
+String ricercaPage=""+FunctionListaLibri.PAGE;
+Object obj2=request.getSession().getAttribute("user");
+
+if(obj2!=null && ((User)obj2).getId()!=0){
+	startRow=((User)obj2).getStartRow();
+	ricercaPage=((User)obj2).getRicercaPage();
+}
+%>
 <style>
 	.espositore {
 	
@@ -82,24 +95,20 @@
 
 var listaricerca;
 var libroId;
-
+var startRow=1,ricercaPage=4,pageNum=1;
 function ricercaLibri(start,page){
 	let erroreApp=false;
-	$.getJSON("../ricercalibrijson?function=ricercaPergenere&genere=<%=request.getParameter("genere")%>&start="+start+"&page="+page,function(data){
+	urlRicerca="../ricercalibrijson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
+	$.getJSON(urlRicerca,function(data){
 
-	//const json = cleanIt(data);  // {"name":"John Smith"}
-	//console.log(json);
-	//console.log("---------------------unquoted-------------------");
-	//console.log(unquoted);  // {name:"John Smith"}
 	listaricerca=data;
-
+	console.log("JSON return:")
 	console.log(data);
+	
 	})
 	.done(function(){
-		//alert("sucess :"+listalibri1.nome);
-		//console.log(listalibri1[0].titolo); 
-		//console.log(listalibri.length);
-			if(listaricerca.errore) {
+
+		if(listaricerca.errore) {
 				displayAllerta(listaricerca.errore);
 				
 				return;
@@ -115,24 +124,26 @@ function ricercaLibri(start,page){
 	});
 
 }
-var startRow=1,page=4,pageNum=1;
+
 function nextRicerca(){
 	$("#listalilbri").html("");
-	startRow=startRow+page;
+	startRow=startRow+ricercaPage;
 	pageNum++;
-	ricercaLibri(startRow,page);
+	ricercaLibri(startRow,ricercaPage);
 
 }
 function prevRicerca(){
 	$("#listalibri").html("");
-	startRow=startRow-page;
+	startRow=startRow-ricercaPage;
 	pageNum--;
 	if(startRow<0)startRow=0;
-	ricercaLibri(startRow,page);
+	ricercaLibri(startRow,ricercaPage);
 }
 $(document).ready(function(){
-	
-	ricercaLibri(1,page);
+	startRow=<%=startRow%>;
+	ricercaPage=<%=ricercaPage%>;
+	pageNum=Math.round(startRow/ricercaPage)+1;
+	ricercaLibri(startRow,ricercaPage);
 
 	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>");
 	
@@ -143,37 +154,45 @@ $(document).ready(function(){
 let cart=1;
 function dataTableRicercaLibri(){
 
-	let id=$("#titoli").val();
-	console.log($("#titoli").val());
 	let htmlEspositore="";
 	let categoria;
 	$("#risultatiricerca").html("");
 	$("#idprevnext").remove();
 	$.each(listaricerca,function(i,libro){
+		
+		
 		console.log("id="+libro.id)
+		
 		var divdettaglio=$("<div>")
 		.css({"display":"flex",
 			"flex-direction":"column",
 			"margin": "10px",
 	    	"align-items": "center"	,
 	    	"background-color":" rgb(166,210,255)",
-	    	"width":"15%"
+	    	"width":"15%",
+	    //	"height":"400px"
 		})
 		.attr("id","iddettaglio"+libro.id);
+		
 		var copertina =$("<img>")
 		.attr("src","../img/book"+(i+1)+".jpg")
 		.attr("width","100px")
 		.attr("height","150px");
+		
 		var titolo=$("<span>")
 		.text(libro.titolo)
 		.css({
 			"font-size": "larger",
 	    	"font-weight": "bold"
 	    	});
+		
+		
 		var autore=$("<span>")
 		.text("Autore:"+libro.autore.cognome+" "+libro.autore.nome);
+		
 		var tipo=$("<span>")
 		.text("Tipo:"+libro.genere.tipologia);
+		
 		var editore=$("<span>")
 		.text("Editore:"+libro.edizione.editore);
 		var prezzo=$("<span>").html("Prezzo:")
@@ -185,17 +204,22 @@ function dataTableRicercaLibri(){
 		var  addCart=$("<button>")
 		.attr("id","buttonCart"+libro.id)
 		.button({"label":"Add to cart","classes":{"width":"100%"}})
-		.css({"margin-top":"auto"});
+		.css({"margin-top":"auto",
+		"margin-top": "10px",
+	    "margin-bottom": "10px"	
+		
+		});
 		addCart.click(function(){$("#cartItems").html(cart++);});
 		
 		divdettaglio
 		.append(copertina)
+		.append(addCart)
 		.append(titolo)
 		.append(tipo)
 		.append(autore)
 		.append(editore)
 		.append(prezzo)
-		.append(addCart)
+
 
 		
 		
@@ -233,7 +257,7 @@ function dataTableRicercaLibri(){
 	
 	if(startRow>1) $("#idprev").click(prevRicerca);
 	else $("#idprev").remove()//css("text-decoration","none");
-	if(listaricerca.length<page) $("#idnext").remove()//css("text-decoration","none");
+	if(listaricerca.length<ricercaPage) $("#idnext").remove()//css("text-decoration","none");
 	else $("#idnext").click(nextRicerca); 
 	
 	if(listaricerca.length==0) { 

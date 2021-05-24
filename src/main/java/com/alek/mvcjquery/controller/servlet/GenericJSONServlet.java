@@ -81,9 +81,11 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		resp.setContentType("application/jason");
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		try {
+			System.out.println("-------------------------GENERIC REQUEST------------------------------------");
 			checkProfile(req, resp);
 			printURLInfo(req);
 			createjson(req,resp);
+			System.out.println("----------------------------------------------------------------------------");
 		} catch (ErroreDataSourceException e) {
 			e.printStackTrace();
 			throw new ServletException("DataSource Problem");

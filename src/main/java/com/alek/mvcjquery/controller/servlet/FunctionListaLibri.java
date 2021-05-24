@@ -36,7 +36,7 @@ import com.google.gson.reflect.TypeToken;
 public class FunctionListaLibri extends GenericJSONServlet {
 	private static final long serialVersionUID = 1L;
 
-
+public static int  PAGE=4; 
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -67,10 +67,12 @@ public class FunctionListaLibri extends GenericJSONServlet {
 	void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService,IOException{
 		
 		List list=null;
-		String strFunction=req.getParameter("function");
+		String strFunction=req.getParameter("webfunction");
+
 		if("generi".equals(strFunction)) list=listaGeneri();
 		else if ("ricercaPergenere".equals(strFunction)) 
 			list=listaLibriPerGenere(req);
+		else throw new ErrorService("Funzione non prevista!!!");
 		String json=gson.toJson(list);
 		System.out.println("trasformazione json:"+json);
 		resp.getWriter().append(json);
@@ -79,8 +81,9 @@ public class FunctionListaLibri extends GenericJSONServlet {
 	private List listaLibriPerGenere(HttpServletRequest req)throws ErrorService {
 		String idgenere=req.getParameter("genere");
 
-		int start=convertParameterToInt(req.getParameter("start"),1);
-		int page=convertParameterToInt(req.getParameter("page"),5);
+		int start=convertParameterToInt(req.getParameter("startRow"),1);
+		int page=convertParameterToInt(req.getParameter("ricercaPage"),5);
+		if(page!=FunctionListaLibri.PAGE) throw new ErrorService("Paging fault");
 		List listaLibri=consultazioneLibreriaService.listaLibriPerGeneri(idgenere,start,page);
 		System.out.println("Lista Libri 8");
 		return listaLibri;
