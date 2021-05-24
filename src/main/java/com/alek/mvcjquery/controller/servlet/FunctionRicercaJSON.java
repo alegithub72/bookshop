@@ -32,8 +32,8 @@ import com.google.gson.reflect.TypeToken;
 /**
  * Servlet implementation class ListaLibri
  */
-@WebServlet(name = "listalibri", urlPatterns = { "/ricercalibrijson" })
-public class FunctionListaLibri extends GenericJSONServlet {
+@WebServlet(name = "ricercalistejson", urlPatterns = { "/ricercalistejson" })
+public class FunctionRicercaJSON extends GenericJSONServlet {
 	private static final long serialVersionUID = 1L;
 
 public static int  PAGE=4; 
@@ -41,7 +41,7 @@ public static int  PAGE=4;
     /**
      * @see HttpServlet#HttpServlet()
      */ 
-    public FunctionListaLibri() {
+    public FunctionRicercaJSON() {
         super();
       
     }
@@ -68,7 +68,7 @@ public static int  PAGE=4;
 		
 		List list=null;
 		String strFunction=req.getParameter("webfunction");
-
+		
 		if("generi".equals(strFunction)) list=listaGeneri();
 		else if ("ricercaPergenere".equals(strFunction)) 
 			list=listaLibriPerGenere(req);
@@ -83,7 +83,7 @@ public static int  PAGE=4;
 
 		int start=convertParameterToInt(req.getParameter("startRow"),1);
 		int page=convertParameterToInt(req.getParameter("ricercaPage"),5);
-		if(page!=FunctionListaLibri.PAGE) throw new ErrorService("Paging fault");
+		if(page!=FunctionRicercaJSON.PAGE) throw new ErrorService("Paging fault");
 		List listaLibri=consultazioneLibreriaService.listaLibriPerGeneri(idgenere,start,page);
 		System.out.println("Lista Libri 8");
 		return listaLibri;

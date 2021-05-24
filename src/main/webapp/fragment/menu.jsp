@@ -88,7 +88,7 @@ color: #ffff;
 let listageneri;
 $(document).ready(function(){
 	
-	$.getJSON("../ricercalibrijson?webfunction=generi",function(data){
+	$.getJSON("../ricercalistejson?webfunction=generi",function(data){
 
 		listageneri=data;
 		console.log("----------------->"+data);

@@ -6,7 +6,7 @@
 
 <div class="centerPage"  >
 
-<%@include file="../fragment/listLibri2.jsp" %>
+<%@include file="../fragment/ricercaGeneri.jsp" %>
 
 </div>
 

@@ -1,13 +1,12 @@
-<%@page import="com.alek.mvcjquery.controller.servlet.FunctionListaLibri"%>
+<%@page import="com.alek.mvcjquery.controller.servlet.FunctionRicercaJSON"%>
 <%@page import="com.alek.mvcjquery.model.user.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
 <%
-
 User usr;
 String startRow=""+1;
-String ricercaPage=""+FunctionListaLibri.PAGE;
+String ricercaPage=""+FunctionRicercaJSON.PAGE;
 Object obj2=request.getSession().getAttribute("user");
 
 if(obj2!=null && ((User)obj2).getId()!=0){
@@ -98,7 +97,7 @@ var libroId;
 var startRow=1,ricercaPage=4,pageNum=1;
 function ricercaLibri(start,page){
 	let erroreApp=false;
-	urlRicerca="../ricercalibrijson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
+	urlRicerca="../ricercalistejson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
 	$.getJSON(urlRicerca,function(data){
 
 	listaricerca=data;
