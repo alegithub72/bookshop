@@ -3,7 +3,6 @@ package com.alek.mvcjquery.controller.filter;
 import java.io.IOException;
 
 import javax.naming.Context;
-import javax.naming.NamingException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,20 +11,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-
-import com.alek.mvcjquery.model.service.db.UserCheckServiceDB;
-import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
-import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
-import com.alek.mvcjquery.model.service.interfaces.UserCheckService;
-import com.alek.mvcjquery.model.user.Profile;
-import com.alek.mvcjquery.model.user.User;
 
 /**
  * Servlet Filter implementation class CheckProfilesFilter
  */
-@WebFilter("/jsonservice/*")
+@WebFilter("/*")
 public class CheckProfilesFilter implements Filter {
 	Context initContext ;
 	Context envContext  ;	
@@ -42,7 +32,40 @@ public class CheckProfilesFilter implements Filter {
 	public void destroy() {
 		// TODO Alessio2
 	}
-
+	protected void printURLInfo(HttpServletRequest cont) {
+	   String url = cont.getRequestURL().toString();
+	
+	    // Getting servlet request query string.
+	  //  String queryString = cont.getQueryString();
+	
+	    // Getting request information without the hostname.
+	    String uri = cont.getRequestURI();
+	
+	    // Below we extract information about the request object path
+	    // information.
+	    String scheme = cont.getScheme();
+	    String serverName = cont.getServerName();
+	    int portNumber = cont.getServerPort();
+	    String contextPath = cont.getContextPath();
+	    String servletPath = cont.getServletPath();
+	    String pathInfo = cont.getPathInfo();
+	    String query = cont.getQueryString();
+	    String localadress=cont.getLocalAddr();
+	
+	    System.out.println("Url: " + url + " ");
+	    System.out.println("Uri: " + uri + " ");
+	    System.out.println("Scheme: " + scheme + " ");
+	    System.out.println("Server Name: " + serverName + " ");
+	    System.out.println("Port: " + portNumber + " ");
+	    System.out.println("Context Path: " + contextPath + " ");
+	  //  System.out.println("Servlet Path: " + servletPath.substring(1) + " ");
+	    System.out.println("Path Info: " + pathInfo + " ");
+	    System.out.println("Query: " + query);
+	    System.out.println("Query: " + localadress);
+	    
+		
+		
+	}
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
@@ -51,6 +74,16 @@ public class CheckProfilesFilter implements Filter {
 		// place your code here
 		//if(!checkProfile(request, response)) request.setAttribute("autorization", "not permitted");
 		// pass the request along the filter chain
+		System.out.println("-------------------------filter--------------------------");
+		HttpServletRequest req=(HttpServletRequest)request;
+	//	HttpServletResponse resp=(HttpServletResponse)response;
+		printURLInfo(req);
+		String uri =req.getRequestURI();
+		String[] path= uri.split("/");
+		System.out.println("path deep="+(path.length-1));
+		req.setAttribute("deep", (path.length-1));
+
+		System.out.println("---------------------------------------------------------");
 		chain.doFilter(request, response);
 	}
 
@@ -61,43 +94,7 @@ public class CheckProfilesFilter implements Filter {
 
 	}
 	
-	protected void checkProfile(HttpServletRequest request, HttpServletResponse response) throws ErroreDataSourceException,ErroreFunctionPermission {
-		
-		String functionStr;
-		Profile prf;
-		User usr= (User)request.getSession().getAttribute("user");
-		functionStr = request.getServletPath().substring(1);
-		prf = null;
-		if(usr==null)
-			 usr=new User(0, 0, "utente", null, null);
-		 prf= usr.getProfile();	
-		 UserCheckService userCheckService = getUserCheckService();
-		 if (!userCheckService.isFunctionAllowed(prf.getId(),functionStr))
-				 throw new ErroreFunctionPermission("Funtion Not Allowed with this user");				 
-}	
-	
-	DataSource getDataSource() throws ErroreDataSourceException{
-		DataSource ds=null ;
-		String msg="";
-		try {
 
-			ds = (DataSource)envContext.lookup("jdbc/bookshop");
-			System.out.println("Conessione riuscita");
-			
-		}catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				msg=e.getMessage();
-						
-		}
+
 		
-		if (ds==null) throw new ErroreDataSourceException(msg); 
-		return ds;
-		
-	}
-	private UserCheckService getUserCheckService() throws ErroreDataSourceException {
-		
-		UserCheckService userCheckService=new UserCheckServiceDB(getDataSource());
-		return userCheckService;
-	}
 }

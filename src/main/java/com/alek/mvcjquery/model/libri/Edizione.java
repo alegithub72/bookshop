@@ -1,8 +1,5 @@
 package com.alek.mvcjquery.model.libri;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-
 import com.google.gson.annotations.Expose;
 
 public class Edizione {

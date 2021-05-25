@@ -2,29 +2,19 @@ package com.alek.mvcjquery.controller.servlet;
 
 import java.io.IOException;
 
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import com.alek.mvcjquery.model.libri.ErrorResponse;
 import com.alek.mvcjquery.model.service.ConsultazioneLibreriaService;
 import com.alek.mvcjquery.model.service.db.ListaLibriServiceDB;
-import com.alek.mvcjquery.model.service.db.UserCheckServiceDB;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
-import com.alek.mvcjquery.model.service.interfaces.UserCheckService;
 import com.alek.mvcjquery.model.service.mock.ListaLibriSeviceMock;
-import com.alek.mvcjquery.model.service.mock.UserCheckServiceMock;
-import com.alek.mvcjquery.model.user.Profile;
-import com.alek.mvcjquery.model.user.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

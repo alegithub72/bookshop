@@ -1,6 +1,5 @@
 package com.alek.mvcjquery.model.service.mock;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;

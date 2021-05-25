@@ -188,7 +188,7 @@ function buildGenereMenu(){
 	if(usr.getProfile().getId()>=300){%>
 	
 		<li style='background-color:red' id="Administrator" class="mainm">
-				<a href="../admin/default.jsp" class="mainma">Administrator</a>
+				<a href="../page/admin" class="mainma">Administrator</a>
 		</li>
 		
 	<% }   
@@ -198,7 +198,7 @@ function buildGenereMenu(){
 	
 	
 
-    <li id="home" class="mainm"><a href="./" class="mainma">Home</a></li>
+    <li id="home" class="mainm"><a href="../page/default" class="mainma">Home</a></li>
     <li id="about" class="mainm"><a href="#" class="mainma">About&nbsp;Us</a></li>
     <li id="genere" class="mainm">
     <a href="#" class="mainma">Libri&nbsp;Genere</a>

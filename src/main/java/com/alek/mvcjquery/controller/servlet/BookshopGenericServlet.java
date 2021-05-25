@@ -84,7 +84,7 @@ public abstract class BookshopGenericServlet extends HttpServlet {
 	    String servletPath = request.getServletPath();
 	    String pathInfo = request.getPathInfo();
 	    String query = request.getQueryString();
-	
+	    String localadress=request.getLocalAddr();
 	
 	    System.out.println("Url: " + url + " ");
 	    System.out.println("Uri: " + uri + " ");
@@ -95,6 +95,8 @@ public abstract class BookshopGenericServlet extends HttpServlet {
 	  //  System.out.println("Servlet Path: " + servletPath.substring(1) + " ");
 	    System.out.println("Path Info: " + pathInfo + " ");
 	    System.out.println("Query: " + query);
+	    System.out.println("Query: " + localadress);
+	    
 		
 		
 	}
