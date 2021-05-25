@@ -18,12 +18,12 @@ import com.alek.mvcjquery.model.user.User;
 /**
  * Servlet implementation class LoginUser
  */
-@WebServlet("/loginuser")
-public class LoginUser extends GenericJSONServlet {
+@WebServlet("/service/loginuser")
+public class LoginUser extends BookshopGenericJSONServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see GenericJSONServlet#GenericJSONServlet()
+     * @see BookshopGenericJSONServlet#GenericJSONServlet()
      */
     public LoginUser() {
         super();

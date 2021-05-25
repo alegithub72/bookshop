@@ -7,7 +7,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
@@ -29,34 +28,20 @@ import com.alek.mvcjquery.model.user.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public abstract class GenericJSONServlet extends HttpServlet {
+public abstract class BookshopGenericJSONServlet extends BookshopGenericServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3901434231348304332L;
 
-	public GenericJSONServlet() {
+	public BookshopGenericJSONServlet() {
 		super();
 	}
-	Context initContext ;
-	Context envContext  ;	
-	DataSource ds;
+
 	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
-	@Override
-	public void init() throws ServletException {
-		// TODO Auto-generated method stub
-		super.init();
-		try {		
-			initContext = new InitialContext();
-			envContext  = (Context)initContext.lookup("java:/comp/env");
-	
-			
-		} catch (NamingException e) {
-			e.printStackTrace();			
-		}			
-	}
+
 
 	abstract void createjson(HttpServletRequest req,  HttpServletResponse resp) throws ErrorService,IOException;
 	
@@ -113,47 +98,16 @@ public abstract class GenericJSONServlet extends HttpServlet {
 	}
 
 
-	protected void checkProfile(HttpServletRequest request, HttpServletResponse response) throws ErroreDataSourceException,ErroreFunctionPermission,ErroreLoginAccess {
-		
-		String functionStr;
-		Profile prf;
-		User usr = (User)request.getSession().getAttribute("user");
-		functionStr = request.getServletPath().substring(1);
-		prf = null;
-		if(usr==null)
-			 usr=new User(0, 100, "webuser", null, null);
-		 prf= usr.getProfile();	
-		 
-//		 prf.setNome("Administrator");
-//		 request.getSession().setAttribute("user", usr);
-		 
-		 UserCheckService userCheckService = getUserCheckService();
-		 if (!userCheckService.isFunctionAllowed(prf.getId(),functionStr))
-				 throw new ErroreFunctionPermission("Funtion Not Allowed with this user");				 
-}	
+
 	
 
 
 
-	void getDataSource() throws ErroreDataSourceException{
-		 ;
-		String msg="";
-		try {
-			if(ds==null)
-			ds = (DataSource)envContext.lookup("jdbc/bookshop");
-			
-			System.out.println("dasource trovato");
-			
-		}catch (NamingException e) {
-				e.printStackTrace();
-				msg=e.getMessage();
-				throw new ErroreDataSourceException(msg);
-						
-		}
+
 		
 
 		
-	}
+	
 	protected ConsultazioneLibreriaService getConsulatazioneServiceMock() throws ErroreDataSourceException {
 		ListaLibriService  listaLibriService=new ListaLibriSeviceMock(ds);
 		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
@@ -165,45 +119,6 @@ public abstract class GenericJSONServlet extends HttpServlet {
 		ListaLibriService  listaLibriService=new ListaLibriServiceDB(ds);
 		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
 	return 	consultazioneLibreriaService;		
-		
-	}
-	protected UserCheckService getUserCheckService() throws ErroreDataSourceException {
-		
-		UserCheckService userCheckService=new UserCheckServiceMock(ds);
-		return userCheckService;
-	}
-
-
-	protected void printURLInfo(HttpServletRequest request) {
-	    String url = request.getRequestURL().toString();
-	
-	    // Getting servlet request query string.
-	    String queryString = request.getQueryString();
-	
-	    // Getting request information without the hostname.
-	    String uri = request.getRequestURI();
-	
-	    // Below we extract information about the request object path
-	    // information.
-	    String scheme = request.getScheme();
-	    String serverName = request.getServerName();
-	    int portNumber = request.getServerPort();
-	    String contextPath = request.getContextPath();
-	    String servletPath = request.getServletPath();
-	    String pathInfo = request.getPathInfo();
-	    String query = request.getQueryString();
-	
-	
-	    System.out.println("Url: " + url + " ");
-	    System.out.println("Uri: " + uri + " ");
-	    System.out.println("Scheme: " + scheme + " ");
-	    System.out.println("Server Name: " + serverName + " ");
-	    System.out.println("Port: " + portNumber + " ");
-	    System.out.println("Context Path: " + contextPath + " ");
-	    System.out.println("Servlet Path: " + servletPath.substring(1) + " ");
-	    System.out.println("Path Info: " + pathInfo + " ");
-	    System.out.println("Query: " + query);
-		
 		
 	}
 

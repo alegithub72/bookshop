@@ -97,7 +97,7 @@ var libroId;
 var startRow=1,ricercaPage=4,pageNum=1;
 function ricercaLibri(start,page){
 	let erroreApp=false;
-	urlRicerca="../ricercalistejson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
+	urlRicerca="../service/ricercalistejson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
 	$.getJSON(urlRicerca,function(data){
 
 	listaricerca=data;
@@ -117,7 +117,7 @@ function ricercaLibri(start,page){
 			
 		})
 	.fail(function(){
-		displayAllerta(errore);
+		displayAllerta(listaricerca);
 		
 	
 	});

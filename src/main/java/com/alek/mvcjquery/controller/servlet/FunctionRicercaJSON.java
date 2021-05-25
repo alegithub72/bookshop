@@ -32,8 +32,8 @@ import com.google.gson.reflect.TypeToken;
 /**
  * Servlet implementation class ListaLibri
  */
-@WebServlet(name = "ricercalistejson", urlPatterns = { "/ricercalistejson" })
-public class FunctionRicercaJSON extends GenericJSONServlet {
+@WebServlet(name = "ricercalistejson", urlPatterns = { "/service/ricercalistejson" })
+public class FunctionRicercaJSON extends BookshopGenericJSONServlet {
 	private static final long serialVersionUID = 1L;
 
 public static int  PAGE=4; 

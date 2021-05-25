@@ -22,7 +22,7 @@
 						console.log("data--->"+dataTmp);						
 		
 						var request = $.ajax({
-							  url: "../loginuser",
+							  url: "../service/loginuser",
 							  method: "POST",
 							  data: dataTmp,
 							  dataType: "json"
