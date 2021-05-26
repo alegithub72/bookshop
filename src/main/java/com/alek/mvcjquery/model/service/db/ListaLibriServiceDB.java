@@ -39,7 +39,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 	 */
 	@Override
 	public List listaLibri(Edizione edi) {
-		//TODO da implementAre
+		//TODO da implementare sul database listalisbri...
 		return null;
 	}
 
@@ -93,7 +93,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		return list;
 	}
 	
-	private Genere getGenere(int id) {
+	private Genere getGenere(int id){
 		Genere genere=new Genere(id);
 		Connection conn=null;
 		try {
@@ -108,7 +108,6 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
@@ -137,7 +136,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		}finally {
 			try {
 				conn.close();

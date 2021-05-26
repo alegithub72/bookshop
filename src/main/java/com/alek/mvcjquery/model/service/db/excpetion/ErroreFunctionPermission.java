@@ -4,7 +4,7 @@ public class ErroreFunctionPermission extends Exception{
 
 	public ErroreFunctionPermission(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	

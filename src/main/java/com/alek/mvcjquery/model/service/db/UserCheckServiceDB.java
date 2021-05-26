@@ -67,7 +67,7 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 
 	@Override
 	public User loginuser(String userid, String password) throws ErroreLoginAccess {
-		// TODO Auto-generated method stub
+		// TODO Implementare la ricerca dell'utente sul DB
 		return null;
 	}
 

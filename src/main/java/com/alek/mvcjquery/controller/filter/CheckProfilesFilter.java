@@ -19,18 +19,13 @@ import javax.servlet.http.HttpServletRequest;
 public class CheckProfilesFilter implements Filter {
 	Context initContext ;
 	Context envContext  ;	
-    /**
-     * Default constructor. 
-     */
-    public CheckProfilesFilter() {
-        // TODO Alessio Prova
-    }
+
 
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Alessio2
+		// TODO implemetare la destroy , niente da eliminare
 	}
 	protected void printURLInfo(HttpServletRequest cont) {
 	   String url = cont.getRequestURL().toString();
@@ -70,9 +65,7 @@ public class CheckProfilesFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-		//if(!checkProfile(request, response)) request.setAttribute("autorization", "not permitted");
+
 		// pass the request along the filter chain
 		System.out.println("-------------------------filter--------------------------");
 		HttpServletRequest req=(HttpServletRequest)request;

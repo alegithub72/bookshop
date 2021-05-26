@@ -9,8 +9,9 @@ import com.alek.mvcjquery.model.user.User;
 
 public class UserCheckServiceMock implements UserCheckService {
 
+
 	public UserCheckServiceMock(DataSource ds) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override

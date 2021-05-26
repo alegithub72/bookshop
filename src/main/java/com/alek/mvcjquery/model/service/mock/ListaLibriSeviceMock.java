@@ -48,7 +48,7 @@ public class ListaLibriSeviceMock implements ListaLibriService {
 
 	@Override
 	public List listaLibri(Edizione edi) {
-		// TODO Auto-generated method stub
+		// TODO Implementare il mock di listalibri edi
 		return null;
 	}
 

@@ -25,7 +25,7 @@ public class LoginUser extends BookshopGenericJSONServlet {
      */
     public LoginUser() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	@Override
