@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+<script type="text/javascript">
+$(document).ready(
+		function(){
+			
+			$("#centerPageid").css("background-color","rgb(128,0,0)");
+		}
+		);
+</script>
 
+<h1 style="color:white;">Admin Page</h1>
+<br><br><br><br><br>
+<h2 style="text-align: justify;color:white;">Questa è la pagina di amministrazione del Bookshop</h2>
+<br><br><br><br><br><br>
 
- <img src="../img/logo.jpg" width="200" height="180">
-    <h2>Mission</h2>
-<h1 style="text-align: justify;">
-Questa è la pagina di amministrazione del Bookshop
- 
-
-
-
-
-</h1>

@@ -12,12 +12,12 @@ $(document).ready(function(){
 			title: "Logout from bookshop",
 			buttons: [
 				{
-					text: "Logout",
+					text: "Yes",
 					click: function() {
 						
 						console.log($("#loginform").serializeArray());
 						var request = $.ajax({
-							  url: "../logout",
+							  url: "../service/logout",
 							  method: "POST",
 							  //data: $("#loginform").serializeArray(),
 							  dataType: "json"
@@ -44,7 +44,7 @@ $(document).ready(function(){
 					}
 				},
 				{
-					text: "Cancel",
+					text: "No",
 					click: function() {
 						$( this ).dialog( "close" );
 					}
@@ -64,5 +64,5 @@ $(document).ready(function(){
 	
 	</script>
 	<div id="logout" style="display:none;" class="ui-helper-hidden"> 
-
+	Do you  want to logout ?
 	</div> 

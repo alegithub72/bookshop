@@ -16,7 +16,7 @@
     width: 98%;
 
 }
-.mainm {
+.menu0 {
 	background-color: rgb(0, 123, 247);
     border-bottom: 5px solid rgb(0, 64, 128);
     display: flex;
@@ -27,7 +27,7 @@
     text-align: center;
     padding-inline-start: 0 !important;
 }
-.mainma {
+.menulink {
 	color: #ffff;
     display: flex;
     flex-direction: row;
@@ -40,11 +40,30 @@
     margin-left: 10px;
     margin-right: 10px;
 } 
-ul#menu li.active, ul#menu li:hover {
+
+ul#menusid li:active,ul#menusid li:hover {
     background-color: rgb(166, 210, 255);/*#54BAE2;*/
 /*     border-bottom: 5px solid rgb(0, 64, 128); */
 }
-.smenus {
+
+
+ul#menusid li#gestione_menuid:hover{
+	background-color: yellow;
+}
+
+li#gestione_menuid {
+	background-color: red;
+	border-color: orange;
+}
+
+li#gestione_menuid li{
+	background-color: red;
+}
+li#gestione_menuid li:hover,li#gestione_menuid li:hover{
+	background-color: yellow;
+
+}
+.sottomenu0 {
 font-family: Verdana, sans-serif;
     font-size: 11px;
     display: none;
@@ -59,7 +78,7 @@ font-family: Verdana, sans-serif;
 
 
 }
-.sottogs {
+.sottomenu1 {
 background-color: rgb(0, 123, 247);
     /* border-bottom: 5px solid rgb(0, 64, 128); */
     /* display: block; */
@@ -71,17 +90,17 @@ background-color: rgb(0, 123, 247);
     list-style: none;
 }
 
-.mainmas {
-color: #ffff;
-    /* display: block; */
-    font-weight: bold;
-    /* line-height: 80px; */
-    font-size: large;
-    text-decoration: none;
-    /* width: 18%; */
-    /* height: 30px; */
-    /* text-align: justify;
-} 
+/* .mainmas { */
+/* color: #ffff; */
+/*     /* display: block; */ */
+/*     font-weight: bold; */
+/*     /* line-height: 80px; */ */
+/*     font-size: large; */
+/*     text-decoration: none; */
+/*     /* width: 18%; */ */
+/*     /* height: 30px; */ */
+/*     /* text-align: justify; */
+/* }  */
 
     </style>
 <script>
@@ -120,17 +139,17 @@ $(document).ready(function(){
 var opcl=false;
 function closeAllMenu(){
 	
-	$("#smgenere").css("display","none");
-	$("#sottob").css("display","none");
+	$("#sottomenu0_generiid").css("display","none");
+	$("#sottomenu_bestid").css("display","none");
 	
 }
 $(document).ready(function(){
 	
 		
-		$("#genere").click(function(){
+		$("#genereid").click(function(){
 	
 		if(!opcl) {
-			$("#smgenere").css("display","inline");
+			$("#sottomenu0_generiid").css("display","inline");
 			opcl=!opcl;
 		}
 		else {
@@ -139,9 +158,9 @@ $(document).ready(function(){
 		}
 		
 	});
-	$("#best").click(function(){
+	$("#bestid").click(function(){
 		if(!opcl) {
-			$("#sottob").css("display","inline");
+			$("#sottomenu_bestid").css("display","inline");
 			opcl=!opcl;
 		}
 		else {
@@ -154,14 +173,14 @@ $(document).ready(function(){
 function buildGenereMenu(){
 	let htmlLi="";
 	for(let i=0;i<listageneri.length;i++)
-		$("#smgenere").append(
+		$("#sottomenu0_generiid").append(
 				$("<li>")
-				.attr("class","sottogs")
+				.attr("class","sottomenu1")
 				.append(
 						$("<a>").
 						attr("href",
 							"../page/listalibri?webfunction=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"&startRow=1&ricercaPage=4"
-						).attr("class","mainmas")
+						).attr("class","menulink")
 						.text(listageneri[i].tipologia)		
 						)
 		
@@ -181,15 +200,38 @@ function buildGenereMenu(){
 </script>
 <div style="display:flex;flex-direction:row;width:100%">
 
-<ul id="menu" class="menus">
+<ul id="menusid" class="menus">
 <%if(request.getSession().getAttribute("user")!=null){
 	
 	User usr=(User) request.getSession().getAttribute("user");
 	if(usr.getProfile().getId()>=300){%>
 	
-		<li style='background-color:red' id="Administrator" class="mainm">
-				<a href="../admin/default" class="mainma">Administrator</a>
+		<li id="gestione_menuid"   class="menu0">
+		<a href="#" class="menulink">Gestione Bookshop</a>
+			<ul id="gestione_sottomenuid" class="sottomenu0" style="background-color:red;">
+				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiugi Libro</a></li>
+				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li>
+				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggoungi Autore</a></li>
+				
+			</ul>
+				 
 		</li>
+
+	   <script>
+		$(document).ready(
+		function(){
+			$("#gestione_menuid").click(function(){
+				$("#gestione_sottomenuid").attr("style","display:flex;flex-direction:column;");
+				
+				
+			})
+			
+			
+			
+		}		
+		)
+		
+		</script>
 		
 	<% }   
 	}
@@ -198,24 +240,24 @@ function buildGenereMenu(){
 	
 	
 
-    <li id="home" class="mainm"><a href="../page/default" class="mainma">Home</a></li>
-    <li id="about" class="mainm"><a href="#" class="mainma">About&nbsp;Us</a></li>
-    <li id="genere" class="mainm">
-    <a href="#" class="mainma">Libri&nbsp;Genere</a>
-    <ul id="smgenere" class="smenus">
-    </ul>
+    <li id="homeid" class="menu0"><a href="<%=request.getContextPath() %>/page/default" class="menulink">Home</a></li>
+    
+    <li id="aboutid" class="menu0"><a href="#" class="menulink">About&nbsp;Us</a></li>
+    
+    <li id="genereid" class="menu0"><a href="#" class="menulink">Libri&nbsp;Genere</a>
+    <ul id="sottomenu0_generiid" class="sottomenu0"></ul>
     </li>
-    <li id="best" class="mainm">
-    <a href="#" class="mainma">Best&nbsp;Seller</a>
-    <ul id="sottob" class="smenus">
-    <li class="sottogs"><a href="#" class="mainmas" >Piu Venduti</a></li>
-    <li class="sottogs"><a href="#" class="mainmas">I piu recensiti</a></li>
-    <li class="sottogs"><a href="#" class="mainmas">Economici</a></li>
-         
+   
+   	<li id="bestid" class="menu0"><a href="#" class="menulink">Best&nbsp;Seller</a>
+  
+    <ul id="sottomenu_bestid" class="sottomenu0">
+    <li class="sottomenu1"><a href="#" class="menulink" >Piu Venduti</a></li>
+    <li class="sottomenu1"><a href="#" class="menulink">I piu recensiti</a></li>
+    <li class="sottomenu1"><a href="#" class="menulink">Economici</a></li>
     </ul>
     
     </li>
-    <li id="contact" class="mainm"><a href="#" class="mainma">Contact</a></li>
+    <li id="contact" class="menu0"><a href="#" class="menulink">Contact</a></li>
 </ul>
 <% if(request.getSession().getAttribute("user")!=null){
 User usr=(User)request.getSession().getAttribute("user");

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,8 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			prep.setString(1, idgenere);
 			
 			res=  prep.executeQuery();
+			ResultSetMetaData data=  res.getMetaData();
+
 			int max=0;
 			res.absolute(start);
 			while(res.next()) {

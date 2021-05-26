@@ -94,7 +94,7 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 
 var listaricerca;
 var libroId;
-var startRow=1,ricercaPage=4,pageNum=1;
+startRow=1,ricercaPage=4,pageNum=1;
 function ricercaLibri(start,page){
 	let erroreApp=false;
 	urlRicerca="../service/ricercalistejson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
@@ -208,6 +208,7 @@ function dataTableRicercaLibri(){
 	    "margin-bottom": "10px"	
 		
 		});
+		
 		addCart.click(function(){$("#cartItems").html(cart++);});
 		
 		divdettaglio
@@ -297,4 +298,5 @@ function dataTableRicercaLibri(){
 Con l'efficace strumento di Ricerca Google nella Posta in arrivo, 
 puoi archiviare tutte le email e trovarle successivamente in un attimo.
  La tua casella di Posta in arrivo rimane ordinata e non ti dovrai più preoccupare
-  di quali email tenere.</p>
+  di quali email tenere.
+  </p>

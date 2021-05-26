@@ -8,7 +8,7 @@
 
 
 
-<div class="centerPage"  >
+<div id="centerPageid" class="centerPage"  >
 
 <%@include file="/WEB-INF/jsp/fragment/home.jsp" %>
 

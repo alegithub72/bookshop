@@ -19,7 +19,7 @@ if(usrTmp.getProfile().getId()<300){
 
 
 
-<div class="centerPage"  >
+<div  id="centerPageid" class="centerPage"  >
 
 <%@include file="/WEB-INF/jsp/fragment/homeadmin.jsp" %>
 
