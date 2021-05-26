@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%response.sendRedirect("bookshop/error.jsp"); %>
+<%response.sendRedirect("/WEB-INF/jsp/bookshop/error.jsp"); %>
 </body>
 </html>

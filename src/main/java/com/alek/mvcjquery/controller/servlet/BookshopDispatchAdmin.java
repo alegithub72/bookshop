@@ -17,14 +17,14 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 /**
  * Servlet implementation class BookshopDispachServlet
  */
-@WebServlet(name="dispatchservlet",urlPatterns="/page/*")
-public class BookshopDispatchServlet extends  BookshopGenericServlet {
+@WebServlet(name="dispatchadminservlet",urlPatterns="/admin/*")
+public class BookshopDispatchAdmin extends  BookshopGenericServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookshopDispatchServlet() {
+    public BookshopDispatchAdmin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,7 @@ public class BookshopDispatchServlet extends  BookshopGenericServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("-------------------------dispatch---page-----------------------");
+		System.out.println("-------------------------dispatch---admin-----------------------");
 		this.printURLInfo(request);
 	    String uri = request.getRequestURI();
 		try {
@@ -44,6 +44,7 @@ public class BookshopDispatchServlet extends  BookshopGenericServlet {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
+
 	    String paths[]=uri.split("/");
 		int deep=(int) request.getAttribute("deep");
 		if(deep>=4 || deep<3) {
@@ -52,10 +53,7 @@ public class BookshopDispatchServlet extends  BookshopGenericServlet {
 			return;
 		}
 		String urlString=
-				"/WEB-INF/jsp/bookshop/"+paths[3]+".jsp";
-
-
-
+				"/WEB-INF/jsp/admin/"+paths[3]+".jsp";
 		System.out.println("dispatch  to :"+urlString);
 		RequestDispatcher requestDispatcher=  request.getRequestDispatcher(urlString);
 		request.setAttribute(uri, requestDispatcher);

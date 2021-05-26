@@ -43,23 +43,9 @@ public class BookshopDispatchError extends  BookshopGenericServlet {
 			e.printStackTrace();
 			return;
 		}
-		String urlString="bookshop/error.jsp";
-		String back="../";
-		int deep=(int)request.getAttribute("deep");
-		if(deep>=4) {
-			for(int i=3;i<deep;i++) back=back+"../";
-			response.sendRedirect(back+urlString);			
-			return;
-			
-		}
-		if(deep<3) {
-			urlString="error.jsp";
-			System.out.println("dispatch  to :"+urlString);
-			response.sendRedirect(urlString);			
-			return;
-			
-		}
-		System.out.println("dispatch  to :"+urlString);
+		String urlString="/WEB-INF/jsp/bookshop/error.jsp";
+		String back="";
+		System.out.println("dispatch  to :"+back+urlString);
 		RequestDispatcher requestDispatcher=  request.getRequestDispatcher(back+urlString);
 		request.setAttribute(uri, requestDispatcher);
 		//response.sendRedirect(urlString);

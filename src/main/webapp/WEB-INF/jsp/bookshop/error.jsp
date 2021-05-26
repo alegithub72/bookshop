@@ -10,7 +10,7 @@
 <div class="centerPage"  >
 
 
-<%@include file="../fragment/main.jsp" %>
+<%@include file="/WEB-INF/jsp/fragment/main.jsp" %>
 
 
 
@@ -28,7 +28,7 @@ $(document).ready(
 		);
 
 </script>
-<%@include file="../fragment/error.jsp" %>
+<%@include file="/WEB-INF/jsp/fragment/error.jsp" %>
 
 </div>
 

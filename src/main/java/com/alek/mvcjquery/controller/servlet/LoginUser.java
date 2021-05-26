@@ -55,7 +55,7 @@ public class LoginUser extends BookshopGenericJSONServlet {
 		System.out.println("--");
 		UserCheckService service=getUserCheckService();
 		User usr=service.loginuser(userid, pass);
-		if(usr!=null) {
+		if(usr!=null ) {
 			usr.setRicercaURL(ricercaUSR);
 			usr.setStartRow(startRow);
 			usr.setRicercaPage(ricercaPage);

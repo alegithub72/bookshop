@@ -31,7 +31,7 @@
 							request.done(function( user ) {
 							  console.log( user );
 							  if (user.errore) displayAllerta(msg);
-							  $("#omino").attr("src","../img/ominoin.jpg");
+							  $("#omino").attr("src","<%=request.getContextPath()%>/img/ominoin.jpg");
 							  $("#accedi").text(user.name);
 
 //							  $("#dialogcont div").remove();
