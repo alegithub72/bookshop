@@ -31,9 +31,19 @@ border: yellow;
 color:red;
 active:yellow;
 }
-.ui-button button:hover {
-color:yellow;
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #003eff;
+    background: yellow;
+    font-weight: normal;
+    color: red;
 }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+    border: 1px solid red;
+    background:red ;/*rgb(0 123 247);*/
+    font-weight: normal;
+    color: white;
+}
+
 </style>  
 <fieldset>
 <legend>Aggiungi un libro</legend>
