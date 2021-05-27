@@ -25,7 +25,7 @@ var urlRicerca;
 var startRow=1,ricercaPage=4,pageNum=1;
 </script>
 </head>
-<body>
+<body id="bodyid">
 
 <div style="width:100%;background-color:white;">
 

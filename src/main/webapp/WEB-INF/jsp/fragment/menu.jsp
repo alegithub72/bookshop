@@ -209,7 +209,7 @@ function buildGenereMenu(){
 		<li id="gestione_menuid"   class="menu0">
 		<a href="#" class="menulink">Gestione Bookshop</a>
 			<ul id="gestione_sottomenuid" class="sottomenu0" style="background-color:red;">
-				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiugi Libro</a></li>
+				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li>
 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li>
 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggoungi Autore</a></li>
 				

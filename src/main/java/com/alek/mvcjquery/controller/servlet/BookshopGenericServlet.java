@@ -48,9 +48,13 @@ public abstract class BookshopGenericServlet extends HttpServlet {
 		User usr = (User)request.getSession().getAttribute("user");
 		functionStr = request.getServletPath().substring(1);
 		prf = null;
-		if(usr==null)
+		if(usr==null) {
+			// prf.setNome("Administrator");
 			 usr=new User(0, 100, "webuser", null, null);
-		 prf= usr.getProfile();	
+			 request.getSession().setAttribute("user", usr);
+
+		}
+		 	 prf= usr.getProfile();	
 		 
 //		 prf.setNome("Administrator");
 //		 request.getSession().setAttribute("user", usr);
