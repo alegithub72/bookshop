@@ -5,7 +5,7 @@
 $(document).ready(
 		function(){
 			
-			$("#centerPageid").css("background-color","rgb(128,0,0)");
+			$("#centerPageid").css("background-color","red");
 		}
 		);
 </script>

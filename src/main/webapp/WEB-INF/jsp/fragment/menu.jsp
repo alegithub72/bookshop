@@ -58,10 +58,11 @@ li#gestione_menuid {
 
 li#gestione_menuid li{
 	background-color: red;
+
 }
 li#gestione_menuid li:hover,li#gestione_menuid li:hover{
 	background-color: yellow;
-
+	border-color: orange;
 }
 .sottomenu0 {
 font-family: Verdana, sans-serif;
@@ -141,6 +142,7 @@ function closeAllMenu(){
 	
 	$("#sottomenu0_generiid").css("display","none");
 	$("#sottomenu_bestid").css("display","none");
+	$("#gestione_sottomenuid").css("display","none");
 	
 }
 $(document).ready(function(){
@@ -150,24 +152,24 @@ $(document).ready(function(){
 	
 		if(!opcl) {
 			$("#sottomenu0_generiid").css("display","inline");
-			opcl=!opcl;
+
 		}
 		else {
 			 closeAllMenu();
-			opcl=!opcl;
+
 		}
-		
+		opcl=!opcl;
 	});
 	$("#bestid").click(function(){
 		if(!opcl) {
 			$("#sottomenu_bestid").css("display","inline");
-			opcl=!opcl;
+
 		}
 		else {
 			closeAllMenu();
-			opcl=!opcl;
+
 		}
-		
+		opcl=!opcl;
 	});	
 });
 function buildGenereMenu(){
@@ -216,12 +218,19 @@ function buildGenereMenu(){
 			</ul>
 				 
 		</li>
-
+		
 	   <script>
 		$(document).ready(
 		function(){
 			$("#gestione_menuid").click(function(){
-				$("#gestione_sottomenuid").attr("style","display:flex;flex-direction:column;");
+				if(!opcl) $("#gestione_sottomenuid").css("display","inline")
+				else {
+					$("#gestione_sottomenuid").css("display","none")
+					closeAllMenu();
+				}
+				opcl=!opcl;
+//				attr("style","display:flex;flex-direction:column;")
+;
 				
 				
 			})

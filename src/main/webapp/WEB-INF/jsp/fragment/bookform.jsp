@@ -3,17 +3,17 @@
     
     
 <script type="text/javascript">
+/*rgb(128,0,0) dark red */
 $(document).ready(
 		function(){
 		
 
 
 			
-		$("#centerPageid").css({"background-color":"rgb(128,0,0)","color":"yellow"})
+		$("#centerPageid").css({"background-color":"red","color":"yellow"})
 		.addClass("ui-widget")
 		.addClass("ui-widget-content");	
-		$("#bodyid")
-		.css({"background-color":"rgb(128,0,0)"})
+
 		;
 		$("button").button();
 		$("button").click(function(){
@@ -30,25 +30,27 @@ input , textarea  {
 background-color: orange;
 
 }
-.ui-widget button {
-background: red;/*rgb(255,58,2);*/
-border: none;
-color:white;
+.ui-button,
+.ui-button:hover,
+.ui-button:focus{
+background:rgb(128,0,0) ;/*rgb(255,58,2);*/
+border: 1px solid black;
+color:yellow;
 margin:8px;
 
 }
 
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
-    border: hidden;/*1px solid orange;*/
+.ui-button:hover {
+    border: 1px solid black;/*1px solid orange;*/
     background: rgb(255 28 28);
     font-weight: normal;
-	color:white;
+/* 	color:white; */
 }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
-    border: 2px solid orange;
-    background: yellow;
+ .ui-button:active {
+    border: hidden;
+    background: rgb(80,0,0);
     font-weight: normal;
-
+	color:black;
 }
 </style>  
 <fieldset>
