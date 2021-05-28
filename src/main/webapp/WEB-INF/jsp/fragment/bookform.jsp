@@ -10,7 +10,8 @@ $(document).ready(
 
 
 			
-		$("#centerPageid").css({"background-color":"red","color":"yellow"})
+		$("#centerPageid")
+		.css({"background-color":"red","color":"yellow"})
 		.addClass("ui-widget")
 		.addClass("ui-widget-content");	
 

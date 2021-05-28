@@ -7,8 +7,10 @@
 
 		$( "#login" ).dialog({
 			autoOpen: false,
-			width: 300,
-			title: "Sign in to bookshop",
+			resizable:false,
+			modal: true,
+			width: 350,
+			title: "Log in to bookshop",
 			buttons: [
 				{
 					text: "Ok",
@@ -71,17 +73,16 @@
 	})
 	</script>
 
-	<div id="login" class="ui-widget ui-helper-hidden"> 
-	
-	<form id="loginform" style="display:flex;" >
-	<span style="width:100%;">
-	User:
-	<input name="userid" type="text" size="10" />	
-	</span>
-	<span style="width:100%;">
-	Password:
-	<input  name="password" type="password" size="10" />	
-	</span>
+	<div id="login"> 
+	<p>Enter your email and password!!</p>
+	<form id="loginform" >
+	<fieldset>
+	<label for="name">User:</label><br>
+	<input name="userid" type="text" class="text ui-widget-content ui-corner-all" /><br>
+	<label for="password">Password:</label><br>
+	<input  name="password" type="password"  class="text ui-widget-content ui-corner-all" />
+
+	</fieldset>	
 	</form> 
 	</div> 
 

@@ -8,6 +8,8 @@ $(document).ready(function(){
 		
 		$( "#logout" ).dialog({
 			autoOpen: false,
+			resizable:false,
+			modal: true,
 			width: 300,
 			title: "Logout from bookshop",
 			buttons: [
@@ -50,7 +52,8 @@ $(document).ready(function(){
 					}
 				}
 			]
-		});		
+		})
+		;		
 		
 		
 		$("#accedi").click(function(){
@@ -63,6 +66,9 @@ $(document).ready(function(){
 	
 	
 	</script>
-	<div id="logout"  class="ui-widget ui-helper-hidden"> 
+	<div id="logout"  class="ui-helper-hidden"> 
+	<p>
+	<span class="ui-icon ui-icon-alert"></span>
 	Do you  want to logout ?
+	</p>
 	</div> 
