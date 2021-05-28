@@ -106,11 +106,6 @@ Data publicazione:
 <tr>
 <td class="formaTitle" >Autore:</td>
 <td class="formValue">
-<select>
-	<option>A. Manzoni</option>
-	<option>Wilbur Smith</option>
-	<option>Banana Yoshimoto</option>
-</select>
 <button>+</button>
 </td>
 </tr>
@@ -119,10 +114,7 @@ Data publicazione:
 Editore:
 </td>
 <td class="formValue">
-<select>
-<option>Feltrinelli</option>
-<option>Mondadori</option>
-</select>
+<button>+</button>
 </td>
 </tr>
 <tr>

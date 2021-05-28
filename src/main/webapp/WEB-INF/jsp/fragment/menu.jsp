@@ -65,6 +65,9 @@ li#gestione_menuid li:hover,li#gestione_menuid li:hover{
 	background-color: yellow;
 	/*border-color: orange;*/
 }
+ul#gestione_menuid {
+	background-color:none;
+}
 .sottomenu0 {
 font-family: Verdana, sans-serif;
     font-size: 11px;
@@ -211,7 +214,7 @@ function buildGenereMenu(){
 	
 		<li id="gestione_menuid"   class="menu0">
 		<a href="#" class="menulink">Gestione Bookshop</a>
-			<ul id="gestione_sottomenuid" class="sottomenu0" style="background-color:red;">
+			<ul id="gestione_sottomenuid" class="sottomenu0" >
 				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li>
 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li>
 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggoungi Autore</a></li>
