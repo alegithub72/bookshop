@@ -71,7 +71,7 @@
 	})
 	</script>
 
-	<div id="login" style="display:none;" class="ui-helper-hidden"> 
+	<div id="login" class="ui-widget ui-helper-hidden"> 
 	
 	<form id="loginform" style="display:flex;" >
 	<span style="width:100%;">

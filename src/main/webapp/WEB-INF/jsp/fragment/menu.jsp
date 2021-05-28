@@ -53,20 +53,22 @@ ul#menusid li#gestione_menuid:hover{
 
 li#gestione_menuid {
 	background-color: red;
-	border-color: orange;
+	border-color: rgb(174,0,0);
 }
 
 li#gestione_menuid li{
 	background-color: red;
-/*	border:1px solid orange;*/
+	border: 2px solid yellow;
+
 
 }
 li#gestione_menuid li:hover,li#gestione_menuid li:hover{
 	background-color: yellow;
-	/*border-color: orange;*/
+
 }
 ul#gestione_menuid {
 	background-color:none;
+
 }
 .sottomenu0 {
 font-family: Verdana, sans-serif;
@@ -82,6 +84,7 @@ font-family: Verdana, sans-serif;
     text-align: center;
 
 
+
 }
 .sottomenu1 {
 background-color: rgb(0, 123, 247);
@@ -89,10 +92,11 @@ background-color: rgb(0, 123, 247);
     /* display: block; */
     /* width: 15%; */
     /* height: 80px; */
-    margin: 1px;
+    margin: 3px;
     /* text-align: -webkit-center; */
     /* float: left; */
     list-style: none;
+    border: 3px  solid  rgb(166, 210, 255);
 }
 
 /* .mainmas { */
@@ -217,7 +221,8 @@ function buildGenereMenu(){
 			<ul id="gestione_sottomenuid" class="sottomenu0" >
 				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li>
 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li>
-				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggoungi Autore</a></li>
+				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Autore</a></li>
+				<li class="sottomenu1"><a href="../admin/default" class="menulink">Aggiungi Genere</a>
 				
 			</ul>
 				 
@@ -265,7 +270,7 @@ function buildGenereMenu(){
   
     <ul id="sottomenu_bestid" class="sottomenu0">
     <li class="sottomenu1"><a href="#" class="menulink" >Piu Venduti</a></li>
-    <li class="sottomenu1"><a href="#" class="menulink">I piu recensiti</a></li>
+    <li class="sottomenu1"><a href="#" class="menulink">Tascabili</a></li>
     <li class="sottomenu1"><a href="#" class="menulink">Economici</a></li>
     </ul>
     

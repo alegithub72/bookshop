@@ -63,6 +63,6 @@ $(document).ready(function(){
 	
 	
 	</script>
-	<div id="logout" style="display:none;" class="ui-helper-hidden"> 
+	<div id="logout"  class="ui-widget ui-helper-hidden"> 
 	Do you  want to logout ?
 	</div> 
