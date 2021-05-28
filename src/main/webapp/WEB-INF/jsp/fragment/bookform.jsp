@@ -26,10 +26,20 @@ $(document).ready(
  		});
 </script>  
 <style>
-input , textarea  {
-background-color: orange;
+.formTitle{
+text-align:end;
+color:yellow;
+vertical-align:baseline;
+}
+.formValue{
+text-align:initial;
 
 }
+
+input , textarea,select  { 
+ background-color: orange; 
+
+ } 
 .ui-button,
 .ui-button:hover,
 .ui-button:focus{
@@ -52,6 +62,7 @@ margin:8px;
     font-weight: normal;
 	color:black;
 }
+
 </style>  
 <fieldset>
 <legend>Aggiungi un libro</legend>
@@ -60,37 +71,70 @@ margin:8px;
 <form id="addbookformid">
 <table  id="formdivid">
 <tr>
-<td style="text-align:end;">
+<td class="formTitle">
 
 Titolo:
 </td>
-<td style="text-align:initial;">
+<td class="formValue">
 <input type="text"   size="98" class="ui-input" />
 </td>
 </tr>
 <tr>
-<td style="text-align:end;vertical-align:baseline;">
+<td class="formTitle">
 Descrizione:
 </td>
-<td>
+<td class="formValue">
 <textarea rows="5" cols="100">Inserire un breve descrizione!!</textarea>
 </td>
 </tr>
 <tr>
-<td style="text-align:end;">
+<td class="formTitle">
 Prezzo:
 </td>
-<td style="text-align:initial;">
+<td class="formValue">
 <input type="number"  />
 </td>
 </tr>
 <tr>
-<td style="text-align:end;">
+<td class="formTitle">
 Data publicazione:
 </td>
-<td style="text-align:initial;">
+<td class="formValue">
 <input type="date"  />
 </td>
+</tr>
+<tr>
+<td class="formaTitle" >Autore:</td>
+<td class="formValue">
+<select>
+	<option>A. Manzoni</option>
+	<option>Wilbur Smith</option>
+	<option>Banana Yoshimoto</option>
+</select>
+<button>+</button>
+</td>
+</tr>
+<tr>
+<td class="formTitle">
+Editore:
+</td>
+<td class="formValue">
+<select>
+<option>Feltrinelli</option>
+<option>Mondadori</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class="formTitle">Genere:</td>
+<td class="formValue">
+<select>
+<option>Avventura</option>
+<option>Romanzo</option>
+</select>
+
+</td>
+
 </tr>
 </table>
 <br><br>

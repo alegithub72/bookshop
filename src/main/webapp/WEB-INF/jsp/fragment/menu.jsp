@@ -58,11 +58,12 @@ li#gestione_menuid {
 
 li#gestione_menuid li{
 	background-color: red;
+/*	border:1px solid orange;*/
 
 }
 li#gestione_menuid li:hover,li#gestione_menuid li:hover{
 	background-color: yellow;
-	border-color: orange;
+	/*border-color: orange;*/
 }
 .sottomenu0 {
 font-family: Verdana, sans-serif;
