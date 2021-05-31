@@ -10,17 +10,19 @@ $(document).ready(
 
 
 			
-		$("#centerPageid")
-		.css({"background-color":"red","color":"yellow"})
-		.addClass("ui-widget")
-		.addClass("ui-widget-content");	
+		$("centerPageid");
 
 		;
-		$("button").button();
+		$("button").button(); 
+		
 		$("button").click(function(){
 			 event.preventDefault();
 		});
-		$("select").selectmenu();
+			
+		
+		$("select").selectmenu()
+
+		;
 
 		
 		
@@ -30,53 +32,27 @@ $(document).ready(
 <style>
 .formTitle{
 text-align:end;
-color:yellow;
+color:;
 vertical-align:baseline;
 }
+
 .formValue{
 text-align:initial;
 vertical-align: baseline;
 
 }
 
-input , textarea { 
- background-color: orange; 
-	color:yellow;
- } 
-.ui-button,
-.ui-button:hover,
-.ui-button:focus{
-background:rgb(128,0,0) ;/*rgb(255,58,2);*/
-border: 1px solid black;
-color:yellow;
-margin:8px;
 
-}
-.ui-widget-content{
+.custom-red{
 color:yellow;
-background:rgb(128,0,0) ;/*rgb(255,58,2);*/
+background-color:red; 
+}
+.centerPageRed input,select,textarea{
+background-color:red;
+color:yellow;
+}
 
-}
-.ui-widget.ui-widget-content{
-border: 1px solid black;
-}
-.ui-widget-content .ui-state-active{
-background: rgb(255 28 28);
-border:1px solid yellow;
-color:yellow;
-}
-.ui-button:hover {
-    border: 1px solid black;/*1px solid orange;*/
-    background: rgb(255 28 28);
-    font-weight: normal;
-/* 	color:white; */
-}
- .ui-button:active {
-    border: hidden;
-    background: rgb(80,0,0);
-    font-weight: normal;
-	color:black;
-}
+
 
 </style>  
 <fieldset>

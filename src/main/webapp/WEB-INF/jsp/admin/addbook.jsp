@@ -17,7 +17,7 @@ if(usrTmp.getProfile().getId()<300){
 <%@include file="/WEB-INF/jsp/fragment/main.jsp" %>
 
 
-<div  id="centerPageid" class="centerPage"  >
+<div  id="centerPageid" class="centerPageRed"  >
 
 <%@include file="/WEB-INF/jsp/fragment/bookform.jsp" %>
 

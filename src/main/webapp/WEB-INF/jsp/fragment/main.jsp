@@ -6,8 +6,22 @@
 <meta charset="ISO-8859-1">
 <title>Book Shop Online</title>
 <script src="<%=request.getContextPath()%>/jslib/jquery-3.6.0.js"></script>
- <script src="<%=request.getContextPath() %>/jslib/jquery-ui.js"></script>
- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-local-ui.css">
+<script src="<%=request.getContextPath() %>/jslib/jquery-ui.js"></script>
+
+ <% if(request.getRequestURI().indexOf("admin")>0) { 
+	 System.out.println("red:"+request.getContextPath());
+	 
+	 %>
+
+  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-red-ui.css">
+  <%}else {
+	  
+	  	 System.out.println("blue:"+request.getContextPath());
+	  	 
+%>
+ <script src="<%=request.getContextPath() %>/jslib/jquery-blue-ui.js"></script>
+  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-blue-ui.css">
+<%} %>
 <style type="text/css">
     .centerPage {
     background-color: white;
@@ -18,8 +32,19 @@
     align-items:center;
     
     }
+    .centerPageRed {
+    background-color: red;
+    color:yellow;
+    /* float: left; */
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    align-items:center;
+    
+    }    
     
 </style>
+
 <script type="text/javascript">
 var urlRicerca;
 var startRow=1,ricercaPage=4,pageNum=1;
@@ -27,7 +52,7 @@ var startRow=1,ricercaPage=4,pageNum=1;
 </head>
 <body id="bodyid">
 
-<div style="width:100%;background-color:white;">
+<div style="width:100%;">
 
 <img src="<%=request.getContextPath() %>/img/bannerBook2.jpg" width="100%">
 

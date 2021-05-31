@@ -66,7 +66,8 @@
 		
 		$("#accedi").click(function(){
 			
-			$("#login").dialog("open");
+			$("#login").dialog("open")
+			.removeClass("custom-red");
 			
 		});
 		

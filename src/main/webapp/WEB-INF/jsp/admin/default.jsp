@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
+
 <%
 User usrTmp=(User)request.getSession().getAttribute("user");
 if(usrTmp.getProfile().getId()<300){
@@ -18,8 +19,7 @@ if(usrTmp.getProfile().getId()<300){
 
 
 
-
-<div  id="centerPageid" class="centerPage"  >
+<div  id="centerPageid" class="centerPageRed"  >
 
 <%@include file="/WEB-INF/jsp/fragment/homeadmin.jsp" %>
 
