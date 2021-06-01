@@ -7,9 +7,8 @@
 $(document).ready(
 		function(){
 		
+		$("#idcss").attr("href","<%=request.getContextPath() %>/css/jquery-red-ui.css");
 
-
-			
 		$("centerPageid");
 
 		;

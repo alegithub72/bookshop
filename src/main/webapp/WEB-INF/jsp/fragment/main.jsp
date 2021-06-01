@@ -8,20 +8,10 @@
 <script src="<%=request.getContextPath()%>/jslib/jquery-3.6.0.js"></script>
 <script src="<%=request.getContextPath() %>/jslib/jquery-ui.js"></script>
 
- <% if(request.getRequestURI().indexOf("admin")>0) { 
-	 System.out.println("red:"+request.getContextPath());
-	 
-	 %>
 
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-red-ui.css">
-  <%}else {
-	  
-	  	 System.out.println("blue:"+request.getContextPath());
-	  	 
-%>
  <script src="<%=request.getContextPath() %>/jslib/jquery-blue-ui.js"></script>
-  <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-blue-ui.css">
-<%} %>
+ <link id="idcss" rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-blue-ui.css">
+
 <style type="text/css">
     .centerPage {
     background-color: white;
