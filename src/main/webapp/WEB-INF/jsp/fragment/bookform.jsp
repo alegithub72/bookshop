@@ -60,7 +60,7 @@ function createEditoreDialog() {
 			]
 		});			
 		$( "#ideditoreauto" ).autocomplete({
-					  source: [ "Feltrinnelli", "Mondadori", "Utet", "EditoreA", "EditoreB", "EditoreC", "EditoreD" ]
+					  source: [ "Feltrinnelli", "Mondadori", "Utet", "Laterza", "EditoreB", "Nord", "Giunti" ]
 					});
 			
 }
@@ -94,7 +94,7 @@ function createAutoreDialog() {
 		]
 	});			
 	$( "#idautoreauto" ).autocomplete({
-				  source: [ "W.Smith", "A. Manzoni", "A.Dante", "F.Petrarca", "A.Barricco", "B.Yoshimoto" ]
+				  source: [ "W.Smith", "A. Manzoni", "A.Dante", "F.Petrarca", "A.Barricco", "B.Yoshimoto" ,"Dan Brown"]
 				});
 		
 }
@@ -169,7 +169,27 @@ color:yellow;
 </tr>
 <tr>
 <td class="formTitle">Genere:</td>
-<td class="formValue"><select><option>Avventura</option><option>Romanzo</option><option>Giallo</option><option>Fantascienza</option></select></td>
+<td class="formValue">
+
+<select>
+<option>Avventura</option>
+<option>Classici greci e latini</option>
+<option>Fantascienza</option>
+<option>Fantasy</option>
+<option>Horror</option>
+<option>Narrativa classica</option>
+<option>Narrativa di viaggio</option>
+<option>Narrativa erotica</option>
+<option>Narrativa moderna e contemporanea</option>
+<option>Narrativa rosa</option>
+<option>Poesia</option>
+<option>Romanzo storico</option>
+<option>Storie vere</option>
+<option>Teatro</option>
+<option>Thriller e gialli</option>
+</select>
+
+</td>
 
 </tr>
 </table>
