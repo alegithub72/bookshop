@@ -17,16 +17,12 @@ $(document).ready(
 		
 		$("button").click(function(){
 			 event.preventDefault();
-		});
-			
+		});		
 		
-		$("select").selectmenu()
-
-		;
-
+		$("select").selectmenu();
 		
-		
-		
+		var data=$("#iddatapubblicazione").datepicker();
+	
  		});
 </script>  
 <style>
@@ -75,7 +71,9 @@ color:yellow;
 </tr>
 <tr>
 <td class="formTitle">Data publicazione:</td>
-<td class="formValue"><input type="date"  /></td>
+<td class="formValue"><input id="iddatapubblicazione" type="text"  >
+
+</td>
 </tr>
 <tr>
 <td class="formTitle" >Autore:</td>

@@ -58,9 +58,7 @@ $(document).ready(function(){
 		
 		$("#accedi").click(function(){
 			
-			$("#logout").dialog("open")
-			.removeClass("custom-red")
-			;
+			$("#logout").dialog("open");
 		});
 		
 	})

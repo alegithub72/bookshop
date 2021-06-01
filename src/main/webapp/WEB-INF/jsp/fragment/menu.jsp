@@ -277,7 +277,7 @@ function buildGenereMenu(){
     </li>
     <li id="contact" class="menu0"><a href="#" class="menulink">Contact</a></li>
 </ul>
-<% if(request.getSession().getAttribute("user")!=null){
+<% if(request.getSession().getAttribute("user")!=null && ((User)request.getSession().getAttribute("user")).getId()!=0){
 User usr=(User)request.getSession().getAttribute("user");
 %>
 
