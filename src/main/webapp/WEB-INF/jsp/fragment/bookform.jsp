@@ -11,18 +11,90 @@ $(document).ready(
 
 		$("centerPageid");
 
-		;
-		$("button").button(); 
+		$("button").button();
+		$("#idbuttonautore").click(function(){
+			createAutoreDialog();	
+			$( "#iddialogautore" ).dialog("open");
+			 event.preventDefault();
+		}); 
 		
-		$("button").click(function(){
+		$("#idbuttoneditore").click(function(){
+			createEditoreDialog();	
+			$( "#iddialogeditore" ).dialog("open");
 			 event.preventDefault();
 		});		
 		
 		$("select").selectmenu();
 		
 		var data=$("#iddatapubblicazione").datepicker({dateFormat:"dd/MM/yy"});
+		
+
+		
+		});
+		
+function createEditoreDialog() {
+
 	
- 		});
+		$( "#iddialogeditore" ).dialog({
+			autoOpen: false,
+			resizable:false,
+			modal: true,
+			width: 350,
+			title: "Scegli l'editore?",
+			buttons: [
+				{
+					text: "add",
+					click: function() {
+						console.log("add editore....");		
+						$("#idlabeleditore").val($("#ideditoreauto").val());
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});			
+		$( "#ideditoreauto" ).autocomplete({
+					  source: [ "Feltrinnelli", "Mondadori", "Utet", "EditoreA", "EditoreB", "EditoreC", "EditoreD" ]
+					});
+			
+}
+
+function createAutoreDialog() {
+
+	
+	$( "#iddialogautore" ).dialog({
+		autoOpen: false,
+		resizable:false,
+		modal: true,
+		width: 350,
+		title: "Scegli l'autore?",
+		buttons: [
+			{
+				text: "add",
+				click: function() {
+					console.log("add editore....");		
+					$("#idlabelautore").val($("#idautoreauto").val());
+					$( this ).dialog( "close" );
+				}
+			},
+			{
+				text: "Cancel",
+				click: function() {
+					$( this ).dialog( "close" );
+				}
+			}
+		]
+	});			
+	$( "#idautoreauto" ).autocomplete({
+				  source: [ "W.Smith", "A. Manzoni", "A.Dante", "F.Petrarca", "A.Barricco", "B.Yoshimoto" ]
+				});
+		
+}
 </script>  
 <style>
 .formTitle{
@@ -76,11 +148,11 @@ color:yellow;
 </tr>
 <tr>
 <td class="formTitle" >Autore:</td>
-<td class="formValue"><button>+</button></td>
+<td class="formValue"><input type="text" id="idlabelautore" disabled="disabled"><button id="idbuttonautore">+</button></td>
 </tr>
 <tr>
 <td class="formTitle">Editore:</td>
-<td class="formValue"><button>+</button></td>
+<td class="formValue"><input type="text" id="idlabeleditore" disabled="disabled"><button id="idbuttoneditore">+</button></td>
 </tr>
 <tr>
 <td class="formTitle">Genere:</td>
@@ -98,3 +170,25 @@ color:yellow;
 </form>
 
 </fieldset>
+<div id="iddialogeditore" >
+
+<fieldset>
+<form>
+<input id="ideditoreauto" >
+</form>
+
+
+</fieldset>
+</div>
+
+<div id="iddialogautore" >
+
+<fieldset>
+<form>
+<input id="idautoreauto" >
+</form>
+
+
+</fieldset>
+</div>
+
