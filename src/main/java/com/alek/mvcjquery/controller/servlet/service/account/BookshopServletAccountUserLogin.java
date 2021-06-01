@@ -1,4 +1,4 @@
-package com.alek.mvcjquery.controller.servlet;
+package com.alek.mvcjquery.controller.servlet.service.account;
 
 import java.io.IOException;
 
@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alek.mvcjquery.controller.servlet.service.generic.BookshopServletJSONGeneric;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
@@ -17,19 +18,19 @@ import com.alek.mvcjquery.model.user.User;
  * Servlet implementation class LoginUser
  */
 @WebServlet("/service/loginuser")
-public class LoginUser extends BookshopGenericJSONServlet {
+public class BookshopServletAccountUserLogin extends BookshopServletJSONGeneric {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see BookshopGenericJSONServlet#GenericJSONServlet()
+     * @see BookshopServletJSONGeneric#GenericJSONServlet()
      */
-    public LoginUser() {
+    public BookshopServletAccountUserLogin() {
         super();
 
     }
 
 	@Override
-	void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
+	protected void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
 		Object obj=req.getSession().getAttribute("user");
 		User usr=null;
 		if(obj!=null) usr=(User)obj;

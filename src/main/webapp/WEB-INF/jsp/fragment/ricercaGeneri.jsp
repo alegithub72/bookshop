@@ -1,4 +1,4 @@
-<%@page import="com.alek.mvcjquery.controller.servlet.FunctionRicercaJSON"%>
+<%@page import="com.alek.mvcjquery.controller.servlet.service.BookshopServletJSONRicercaBook"%>
 <%@page import="com.alek.mvcjquery.model.user.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -6,7 +6,7 @@
 <%
 User usr;
 String startRow=""+1;
-String ricercaPage=""+FunctionRicercaJSON.PAGE;
+String ricercaPage=""+BookshopServletJSONRicercaBook.PAGE;
 Object obj2=request.getSession().getAttribute("user");
 
 if(obj2!=null && ((User)obj2).getId()!=0){

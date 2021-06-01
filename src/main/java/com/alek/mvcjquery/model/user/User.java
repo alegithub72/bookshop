@@ -1,6 +1,6 @@
 package com.alek.mvcjquery.model.user;
 
-import com.alek.mvcjquery.controller.servlet.FunctionRicercaJSON;
+import com.alek.mvcjquery.controller.servlet.service.BookshopServletJSONRicercaBook;
 import com.google.gson.annotations.Expose;
 
 public class User {
@@ -32,7 +32,7 @@ public class User {
 		this.pass = pass;
 		this.email = email;
 		this.startRow="1";
-		this.ricercaPage=""+FunctionRicercaJSON.PAGE;
+		this.ricercaPage=""+BookshopServletJSONRicercaBook.PAGE;
 
 	}
 	

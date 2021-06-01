@@ -1,4 +1,4 @@
-package com.alek.mvcjquery.controller.servlet;
+package com.alek.mvcjquery.controller.servlet.service.generic;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -17,15 +17,15 @@ import com.alek.mvcjquery.model.service.mock.UserCheckServiceMock;
 import com.alek.mvcjquery.model.user.Profile;
 import com.alek.mvcjquery.model.user.User;
 
-public abstract class BookshopGenericServlet extends HttpServlet {
+public abstract class BookshopServletGeneric extends HttpServlet {
 
-	public BookshopGenericServlet() {
+	public BookshopServletGeneric() {
 		super();
 	}
 	Context initContext ;
 	Context envContext  ;	
 	DataSource ds;
-	void getDataSource() throws ErroreDataSourceException{
+	protected void getDataSource() throws ErroreDataSourceException{
 		 ;
 		String msg="";
 		try {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alek.mvcjquery.controller.servlet.service.generic.BookshopServletGeneric;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
@@ -18,7 +19,7 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
  * Servlet implementation class BookshopDispachServlet
  */
 @WebServlet(name="dispatchservleterror",urlPatterns="/bookshop/error")
-public class BookshopDispatchError extends  BookshopGenericServlet {
+public class BookshopDispatchError extends  BookshopServletGeneric {
 	private static final long serialVersionUID = 1L;
        
     /**

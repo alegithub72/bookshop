@@ -1,4 +1,4 @@
-package com.alek.mvcjquery.controller.servlet;
+package com.alek.mvcjquery.controller.servlet.service.generic;
 
 import java.io.IOException;
 
@@ -11,20 +11,20 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 /**
  * Servlet implementation class FunctionSingleObject
  */
-@WebServlet("/ricercaSingola")
-public class BookshopGenericSingleObject extends BookshopGenericJSONServlet {
+//TODO: is possible not usefuel
+public class BookshopServletJSONSingleObjectGeneric extends BookshopServletJSONGeneric {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see BookshopGenericJSONServlet#GenericJSONServlet()
+     * @see BookshopServletJSONGeneric#GenericJSONServlet()
      */
-    public BookshopGenericSingleObject() {
+    public BookshopServletJSONSingleObjectGeneric() {
         super();
 
     }
 
 	@Override
-	void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
+	protected void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
 		
 		
 	}

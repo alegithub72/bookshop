@@ -1,4 +1,4 @@
-package com.alek.mvcjquery.controller.servlet;
+package com.alek.mvcjquery.controller.servlet.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alek.mvcjquery.controller.servlet.service.generic.BookshopServletJSONGeneric;
 import com.alek.mvcjquery.model.service.ConsultazioneLibreriaService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
@@ -18,7 +19,7 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
  * Servlet implementation class ListaLibri
  */
 @WebServlet(name = "ricercalistejson", urlPatterns = { "/service/ricercalistejson" })
-public class FunctionRicercaJSON extends BookshopGenericJSONServlet {
+public class BookshopServletJSONRicercaBook extends BookshopServletJSONGeneric {
 	private static final long serialVersionUID = 1L;
 
 public static int  PAGE=4; 
@@ -26,7 +27,7 @@ public static int  PAGE=4;
     /**
      * @see HttpServlet#HttpServlet()
      */ 
-    public FunctionRicercaJSON() {
+    public BookshopServletJSONRicercaBook() {
         super();
       
     }
@@ -49,7 +50,7 @@ public static int  PAGE=4;
  
 
 	@Override
-	void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService,IOException{
+	protected void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService,IOException{
 		
 		List list=null;
 		String strFunction=req.getParameter("webfunction");
@@ -68,7 +69,7 @@ public static int  PAGE=4;
 
 		int start=convertParameterToInt(req.getParameter("startRow"),1);
 		int page=convertParameterToInt(req.getParameter("ricercaPage"),5);
-		if(page!=FunctionRicercaJSON.PAGE) throw new ErrorService("Paging fault");
+		if(page!=BookshopServletJSONRicercaBook.PAGE) throw new ErrorService("Paging fault");
 		List listaLibri=consultazioneLibreriaService.listaLibriPerGeneri(idgenere,start,page);
 		System.out.println("Lista Libri 8");
 		return listaLibri;

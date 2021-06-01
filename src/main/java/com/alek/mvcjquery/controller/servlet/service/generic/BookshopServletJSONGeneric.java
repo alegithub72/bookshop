@@ -1,4 +1,4 @@
-package com.alek.mvcjquery.controller.servlet;
+package com.alek.mvcjquery.controller.servlet.service.generic;
 
 import java.io.IOException;
 
@@ -18,22 +18,22 @@ import com.alek.mvcjquery.model.service.mock.ListaLibriSeviceMock;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public abstract class BookshopGenericJSONServlet extends BookshopGenericServlet {
+public abstract class BookshopServletJSONGeneric extends BookshopServletGeneric {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3901434231348304332L;
 
-	public BookshopGenericJSONServlet() {
+	public BookshopServletJSONGeneric() {
 		super();
 	}
 
-	Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+	protected Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
 
 
-	abstract void createjson(HttpServletRequest req,  HttpServletResponse resp) throws ErrorService,IOException;
+	protected abstract  void createjson(HttpServletRequest req,  HttpServletResponse resp) throws ErrorService,IOException;
 	
 	
 	
