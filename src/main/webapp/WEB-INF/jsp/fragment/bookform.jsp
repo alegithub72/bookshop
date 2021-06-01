@@ -26,7 +26,7 @@ $(document).ready(
 		
 		$("select").selectmenu();
 		
-		var data=$("#iddatapubblicazione").datepicker({dateFormat:"dd/MM/yy"});
+		var data=$("#iddatapubblicazione").datepicker({dateFormat:"dd/mm/yy"});
 		
 
 		
@@ -47,6 +47,7 @@ function createEditoreDialog() {
 					click: function() {
 						console.log("add editore....");		
 						$("#idlabeleditore").val($("#ideditoreauto").val());
+						$("#idhiddeneditore").val("200");
 						$( this ).dialog( "close" );
 					}
 				},
@@ -77,8 +78,10 @@ function createAutoreDialog() {
 			{
 				text: "add",
 				click: function() {
-					console.log("add editore....");		
+					console.log("add autore....");		
 					$("#idlabelautore").val($("#idautoreauto").val());
+					$("#idhiddenautore").val("100");
+					
 					$( this ).dialog( "close" );
 				}
 			},
@@ -119,7 +122,7 @@ background-color:red;
 color:yellow;
 }
 
-
+ 
 
 </style>  
 <fieldset>
@@ -148,11 +151,21 @@ color:yellow;
 </tr>
 <tr>
 <td class="formTitle" >Autore:</td>
-<td class="formValue"><input type="text" id="idlabelautore" disabled="disabled"><button id="idbuttonautore">+</button></td>
+<td class="formValue">
+<input type="text" id="idlabelautore" disabled="disabled">
+<input type="hidden" id="idhiddenautore" name="idautore">
+<button id="idbuttonautore">+</button>
+
+</td>
 </tr>
 <tr>
 <td class="formTitle">Editore:</td>
-<td class="formValue"><input type="text" id="idlabeleditore" disabled="disabled"><button id="idbuttoneditore">+</button></td>
+<td class="formValue">
+<input type="text" id="idlabeleditore" disabled="disabled">
+<input type="hidden" id="idhiddeneditore" name="ideditore">
+<button id="idbuttoneditore">+</button>
+
+</td>
 </tr>
 <tr>
 <td class="formTitle">Genere:</td>
@@ -170,22 +183,22 @@ color:yellow;
 </form>
 
 </fieldset>
-<div id="iddialogeditore" >
+<div id="iddialogeditore" class="ui-widget ui-widget-content ui-helper-hidden">
 
 <fieldset>
 <form>
-<input id="ideditoreauto" >
+<input id="ideditoreauto" class="ui-widget ui-widget-content">
 </form>
 
 
 </fieldset>
 </div>
 
-<div id="iddialogautore" >
+<div id="iddialogautore" class="ui-widget ui-widget-content ui-helper-hidden">
 
 <fieldset>
 <form>
-<input id="idautoreauto" >
+<input id="idautoreauto" class="ui-widget ui-widget-content">
 </form>
 
 
