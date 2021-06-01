@@ -102,8 +102,7 @@ function createAutoreDialog() {
 <style>
 .formTitle{
 text-align:end;
-color:;
-vertical-align:baseline;
+vertical-align:top;
 }
 
 .formValue{
@@ -125,12 +124,14 @@ color:yellow;
  
 
 </style>  
-<fieldset>
-<legend>Aggiungi un libro</legend>
+
+<br><br><br>
+<fieldset class="ui-widget ui-widget-content">
+<legend >Aggiungi un libro</legend>
 
 
-<form id="addbookformid">
-<table  id="formdivid">
+<form id="addbookformid" class="ui-widget ui-widget-content">
+<table  id="formdivid" >
 <tr>
 <td class="formTitle">Titolo:</td>
 <td class="formValue"><input type="text"   size="98" class="ui-input" /></td>
@@ -198,6 +199,7 @@ color:yellow;
 <div id="idbutton" style="text-align:center;">
 <button>ADD</button>
 <button>CANCEL</button>
+<br><br>
 </div>
 
 </form>
@@ -223,5 +225,6 @@ color:yellow;
 
 
 </fieldset>
-</div>
 
+</div>
+<br><br><br><br><br><br>
