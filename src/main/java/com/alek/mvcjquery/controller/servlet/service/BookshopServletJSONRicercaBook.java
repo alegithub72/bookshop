@@ -18,7 +18,7 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 /**
  * Servlet implementation class ListaLibri
  */
-@WebServlet(name = "ricercalistejson", urlPatterns = { "/service/ricercalistejson" })
+@WebServlet(name = "servicericercabooksjson", urlPatterns = { "/service/ricercalistejson" })
 public class BookshopServletJSONRicercaBook extends BookshopServletJSONGeneric {
 	private static final long serialVersionUID = 1L;
 

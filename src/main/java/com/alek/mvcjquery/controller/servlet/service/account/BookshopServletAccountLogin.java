@@ -17,14 +17,14 @@ import com.alek.mvcjquery.model.user.User;
 /**
  * Servlet implementation class LoginUser
  */
-@WebServlet("/service/loginuser")
-public class BookshopServletAccountUserLogin extends BookshopServletJSONGeneric {
+@WebServlet(name="servlertlogin" ,urlPatterns="/service/loginuser")
+public class BookshopServletAccountLogin extends BookshopServletJSONGeneric {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see BookshopServletJSONGeneric#GenericJSONServlet()
      */
-    public BookshopServletAccountUserLogin() {
+    public BookshopServletAccountLogin() {
         super();
 
     }

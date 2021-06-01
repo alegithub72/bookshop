@@ -19,7 +19,7 @@ $(document).ready(function(){
 						
 						console.log($("#loginform").serializeArray());
 						var request = $.ajax({
-							  url: "../service/logout",
+							  url: "../service/logoutuser",
 							  method: "POST",
 							  //data: $("#loginform").serializeArray(),
 							  dataType: "json"
@@ -28,13 +28,13 @@ $(document).ready(function(){
 							request.done(function( user ) {
 							  console.log( user );
 							  if (user.errore) displayAllerta(msg);
-							  $("#omino").attr("src","../img/outomino.jpg");
+							  $("#omino").attr("src","../img/outomino.png");
 							  $("#accedi").text("Accedi");
 
 //							  $("#dialogcont div").remove();
 							  //$("#accedi").unbind("click");
 							 // $("#accedi").click(function(){console.log("Non si attiva piu");})
-//							 if(user.profile.id>200) location.reload(true);
+							 if(user.profile.id<=200) location.reload(true);
 							});
 							 
 							request.fail(function( jqXHR, textStatus ) {

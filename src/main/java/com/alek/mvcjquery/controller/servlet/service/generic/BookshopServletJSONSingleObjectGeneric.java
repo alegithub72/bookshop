@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
+import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
+import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
+import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 
 /**
  * Servlet implementation class FunctionSingleObject
  */
-//TODO: is possible not usefuel
 public class BookshopServletJSONSingleObjectGeneric extends BookshopServletJSONGeneric {
 	private static final long serialVersionUID = 1L;
        
@@ -25,9 +27,11 @@ public class BookshopServletJSONSingleObjectGeneric extends BookshopServletJSONG
 
 	@Override
 	protected void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
-		
+		// TODO Auto-generated method stub
 		
 	}
+
+
 
 
 }

@@ -6,10 +6,10 @@
 <%
 User usrTmp=(User)request.getSession().getAttribute("user");
 if(usrTmp.getProfile().getId()<300){
-	System.out.println("user del admin page="+usrTmp);
+	System.out.println("user del admin page="+usrTmp.getId()+","+usrTmp.getName());
 	RequestDispatcher disp=  request.getRequestDispatcher("/WEB-INF/jsp/bookshop/default.jsp");
 	disp.forward(request, response);
-	return;
+	return;  
 }
 
 %>

@@ -18,7 +18,7 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 /**
  * Servlet implementation class BookshopDispachServlet
  */
-@WebServlet(name="dispatchadminservlet",urlPatterns="/admin/*")
+@WebServlet(name="dispatchservletadmin",urlPatterns="/admin/*")
 public class BookshopDispatchAdmin extends  BookshopServletGeneric {
 	private static final long serialVersionUID = 1L;
        
