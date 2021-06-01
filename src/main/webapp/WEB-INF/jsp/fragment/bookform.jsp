@@ -20,7 +20,7 @@ $(document).ready(
 		
 		$("select").selectmenu();
 		
-		var data=$("#iddatapubblicazione").datepicker();
+		var data=$("#iddatapubblicazione").datepicker({dateFormat:"dd/MM/yy"});
 	
  		});
 </script>  
