@@ -1,13 +1,13 @@
-drop table users_bks;
---drop table users_bookshop;
-drop table user_profile_bks;
-drop table profile_function_menu_bks;
-drop table function_bks;
-drop table libro_bks;
-drop table genere_bks;
-drop table autore_bks;
-drop table editore_bks;
+DROP TABLE USERS_BKS;
+--DROP TABLE USERS_BOOKSHOP;
+DROP TABLE USER_PROFILE_BKS;
+DROP TABLE PROFILE_FUNCTION_MENU_BKS;
+DROP TABLE FUNCTION_BKS;
+DROP TABLE LIBRO_BKS;
+DROP TABLE GENERE_BKS;
+DROP TABLE AUTORE_BKS;
+DROP TABLE EDITORE_BKS;
 
---drop table firsttable;
---drop table secondtable;
-select * from FIRSTTABLE;
+--DROP TABLE FIRSTTABLE;
+--DROP TABLE SECONDTABLE;
+SELECT * FROM FIRSTTABLE;

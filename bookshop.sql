@@ -1,62 +1,62 @@
-create table users_bks (
-nome varchar(20),
-cognome varchar(20),
-email varchar(100),
-password varchar(20),
-id int primary key,
-profile int );
+CREATE TABLE USERS_BKS (
+NOME VARCHAR(20),
+COGNOME VARCHAR(20),
+EMAIL VARCHAR(100),
+PASSWORD VARCHAR(20),
+ID INT PRIMARY KEY,
+PROFILE INT );
 -----------------------------------------------------
-create table user_profile_bks(
-id int primary key,
-nome varchar(30)
+CREATE TABLE USER_PROFILE_BKS(
+ID INT PRIMARY KEY,
+NOME VARCHAR(30)
 );
-create table profile_function_menu_bks(
-id_profile int,
-id_function int
+CREATE TABLE PROFILE_FUNCTION_MENU_BKS(
+ID_PROFILE INT,
+ID_FUNCTION INT
 );
 
 -----------------------------------------------------
-create table function_bks(
-id int primary key,
-nome varchar(40),
-url_function varchar(200)
+CREATE TABLE FUNCTION_BKS(
+ID INT PRIMARY KEY,
+NOME VARCHAR(40),
+URL_FUNCTION VARCHAR(200)
 );
 -----------------------------------------------------
-create table libro_bks(
-id int primary key,
-titolo varchar(1000),
-descrizione varchar(200),
-data_publicazione date,
-copertina blob,
-prezzo float, 
-genere_id int,
-editore_id int,
-autore_id int
+CREATE TABLE LIBRO_BKS(
+ID INT PRIMARY KEY,
+TITOLO VARCHAR(1000),
+DESCRIZIONE VARCHAR(200),
+DATA_PUBLICAZIONE DATE,
+COPERTINA BLOB,
+PREZZO FLOAT, 
+GENERE_ID INT,
+EDITORE_ID INT,
+AUTORE_ID INT
 
 );
 -----------------------------------------------------
-create table genere_bks(
-id int,
-tipologia varchar(50)
+CREATE TABLE GENERE_BKS(
+ID INT,
+TIPOLOGIA VARCHAR(50)
 );
 -----------------------------------------------------
-create table autore_bks(
-id int primary key,
-nome varchar(40),
-cognome varchar(40),
-descrizione varchar(200)
+CREATE TABLE AUTORE_BKS(
+ID INT PRIMARY KEY,
+NOME VARCHAR(40),
+COGNOME VARCHAR(40),
+DESCRIZIONE VARCHAR(200)
 
 );
 -----------------------------------------------------
-create table editore_bks(
-id int primary key,
-nome  varchar(100)
+CREATE TABLE EDITORE_BKS(
+ID INT PRIMARY KEY,
+NOME  VARCHAR(100)
 ) ;
 
 
 
 
 
-select LIBRO_BKS.* from LIBRO_BKS ;
+SELECT LIBRO_BKS.* FROM LIBRO_BKS ;
 
-delete table USERS_BOOKSHOP;
+DELETE TABLE USERS_BOOKSHOP;

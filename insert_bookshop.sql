@@ -1,113 +1,113 @@
 
 -------------------------------------COMNTROL QUERY--------------------------------------------------------
 
-select * from LIBRO_BKS;
+SELECT * FROM LIBRO_BKS;
 SELECT * FROM AUTORE_BKS;
-select * from GENERE_BKS;
+SELECT * FROM GENERE_BKS;
 SELECT * FROM EDITORE_BKS;
-SELECT p.id,u.email,u.password,p.nome FROM USERS_BKS as u,USER_PROFILE_BKS AS p where p.id=u.profile;
+SELECT P.ID,U.EMAIL,U.PASSWORD,P.NOME FROM USERS_BKS AS U,USER_PROFILE_BKS AS P WHERE P.ID=U.PROFILE;
 SELECT * FROM USER_PROFILE_BKS;
 
 
 
 -------------------------DELETE BEFORE INSERT-----------------------------------
-delete from LIBRO_BKS where id =1000;
-delete from LIBRO_BKS where id =1010;
-delete from LIBRO_BKS where id =1020;
-delete from LIBRO_BKS where id =1030;
-delete from LIBRO_BKS where id =1040;
-delete from LIBRO_BKS where id =1050;
+DELETE FROM LIBRO_BKS WHERE ID =1000;
+DELETE FROM LIBRO_BKS WHERE ID =1010;
+DELETE FROM LIBRO_BKS WHERE ID =1020;
+DELETE FROM LIBRO_BKS WHERE ID =1030;
+DELETE FROM LIBRO_BKS WHERE ID =1040;
+DELETE FROM LIBRO_BKS WHERE ID =1050;
 ------------------------------INSERT---LIBRO_BKS-------------------------------
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1000,'Il Ciclope','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1000,'IL CICLOPE','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,9.99);
 
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1010,'Il Ciclope II','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25.6);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1020,'La piramide dei Ghiacci','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,7.12);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1030,'Isola dei pirati','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1040,'Il giro del mondo in 80 giorni','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1010,'IL CICLOPE II','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,25.6);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1020,'LA PIRAMIDE DEI GHIACCI','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,7.12);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1030,'ISOLA DEI PIRATI','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,25);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1040,'IL GIRO DEL MONDO IN 80 GIORNI','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,9.99);
 
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1050,'Il loto bianco','Una spy story ambientata in antartide.','10/10/1970',5010,3010,4010,7);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1050,'IL LOTO BIANCO','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/1970',5010,3010,4010,7);
 
 -------------------------DELETE BEFORE INSERT-----------------------------------
-delete from LIBRO_BKS where id =1060;
-delete from LIBRO_BKS where id =1070;
-delete from LIBRO_BKS where id =1080;
-delete from LIBRO_BKS where id =1090;
-delete from LIBRO_BKS where id =1100;
-delete from LIBRO_BKS where id =1110;
+DELETE FROM LIBRO_BKS WHERE ID =1060;
+DELETE FROM LIBRO_BKS WHERE ID =1070;
+DELETE FROM LIBRO_BKS WHERE ID =1080;
+DELETE FROM LIBRO_BKS WHERE ID =1090;
+DELETE FROM LIBRO_BKS WHERE ID =1100;
+DELETE FROM LIBRO_BKS WHERE ID =1110;
 ------------------------------INSERT---LIBRO_BKS-------------------------------
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1060,'La guerra dei mondi','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1060,'LA GUERRA DEI MONDI','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,9.99);
 
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1070,'Minority report','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25.6);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1080,'Ocean eleven','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,7.12);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1090,'Nome della rosa','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1100,'Tre uomini a zonzo','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1070,'MINORITY REPORT','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,25.6);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1080,'OCEAN ELEVEN','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,7.12);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1090,'NOME DELLA ROSA','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,25);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1100,'TRE UOMINI A ZONZO','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,9.99);
 
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1110,'L ultimo dei moicani','Una spy story ambientata in antartide.','10/10/1970',5010,3010,4010,7);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1110,'L ULTIMO DEI MOICANI','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/1970',5010,3010,4010,7);
 
 -------------------------DELETE BEFORE INSERT-----------------------------------
-delete from LIBRO_BKS where id =1120;
-delete from LIBRO_BKS where id =1130;
-delete from LIBRO_BKS where id =1140;
-delete from LIBRO_BKS where id =1150;
-delete from LIBRO_BKS where id =1160;
-delete from LIBRO_BKS where id =1170;
+DELETE FROM LIBRO_BKS WHERE ID =1120;
+DELETE FROM LIBRO_BKS WHERE ID =1130;
+DELETE FROM LIBRO_BKS WHERE ID =1140;
+DELETE FROM LIBRO_BKS WHERE ID =1150;
+DELETE FROM LIBRO_BKS WHERE ID =1160;
+DELETE FROM LIBRO_BKS WHERE ID =1170;
 ------------------------------INSERT---LIBRO_BKS-------------------------------
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1120,'Dune','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1130,'Blad runner','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25.6);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1140,'I pilastri della terra','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,7.12);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1150,'Ulisse','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,25);
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1160,'I  promessi sposi','Una spy story ambientata in antartide.','10/10/2005',5010,3000,4000,9.99);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1120,'DUNE','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,9.99);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1130,'BLAD RUNNER','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,25.6);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1140,'I PILASTRI DELLA TERRA','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,7.12);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1150,'ULISSE','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,25);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1160,'I  PROMESSI SPOSI','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/2005',5010,3000,4000,9.99);
 
-insert into libro_bks (id,titolo,descrizione,data_publicazione,genere_id,editore_id,autore_id,prezzo)
-values (1170,'Divina commedia','Una spy story ambientata in antartide.','10/10/1970',5010,3010,4010,7);
+INSERT INTO LIBRO_BKS (ID,TITOLO,DESCRIZIONE,DATA_PUBLICAZIONE,GENERE_ID,EDITORE_ID,AUTORE_ID,PREZZO)
+VALUES (1170,'DIVINA COMMEDIA','UNA SPY STORY AMBIENTATA IN ANTARTIDE.','10/10/1970',5010,3010,4010,7);
 
 ----------------------------------DELETE  GENERE BKS------------------------------------------
 
-delete from genere_bks where id=5000;
-delete from genere_bks where id=5010;
-delete from genere_bks where id=5020;
-delete from genere_bks where id=5030;
+DELETE FROM GENERE_BKS WHERE ID=5000;
+DELETE FROM GENERE_BKS WHERE ID=5010;
+DELETE FROM GENERE_BKS WHERE ID=5020;
+DELETE FROM GENERE_BKS WHERE ID=5030;
 -------------------------------INSERT GENERE_BKS ------------------------------------------------
-insert into genere_bks values(5000,'Gialli');
-insert into genere_bks values(5010,'Avventura');
-insert into genere_bks values(5020,'Rosa');
-insert into genere_bks values(5030,'Storici');
+INSERT INTO GENERE_BKS VALUES(5000,'GIALLI');
+INSERT INTO GENERE_BKS VALUES(5010,'AVVENTURA');
+INSERT INTO GENERE_BKS VALUES(5020,'ROSA');
+INSERT INTO GENERE_BKS VALUES(5030,'STORICI');
 
 ------------------------------------DELETE EDITORE_BKS-------------------------------------------------------------------------
-delete from editore_bks where id=3000;
-delete from editore_bks where id=3010;
+DELETE FROM EDITORE_BKS WHERE ID=3000;
+DELETE FROM EDITORE_BKS WHERE ID=3010;
 --------------------------------------INSERT EDITORE_BKS---------------------------------------------------------------
-insert into editore_bks values(3000,'Feltrinelli');
-insert into editore_bks values(3010,'Mondadori');
+INSERT INTO EDITORE_BKS VALUES(3000,'FELTRINELLI');
+INSERT INTO EDITORE_BKS VALUES(3010,'MONDADORI');
 --------------------------------------DELETE AUTORE_BKS------------------------------------------------------------
-delete from autore_bks where id=4000;
-delete from autore_bks where id=4010;
+DELETE FROM AUTORE_BKS WHERE ID=4000;
+DELETE FROM AUTORE_BKS WHERE ID=4010;
 
 
 -------------------------------------------DELETE AUTORE_BKS-------------------------------------------
-delete from autore_bks where id=4000;
-delete from autore_bks where id=4010;
+DELETE FROM AUTORE_BKS WHERE ID=4000;
+DELETE FROM AUTORE_BKS WHERE ID=4010;
 
 ----------------------------------INSERT AUTORE_BKS-------------------------------------------------------------
-insert into autore_bks values(4000,'Smith','Wilbur','Scrittore libri avventura'); 
-insert into autore_bks values(4010,'Banana','Yoshimoto','Scrittore libri romantici'); 
+INSERT INTO AUTORE_BKS VALUES(4000,'SMITH','WILBUR','SCRITTORE LIBRI AVVENTURA'); 
+INSERT INTO AUTORE_BKS VALUES(4010,'BANANA','YOSHIMOTO','SCRITTORE LIBRI ROMANTICI'); 
 
 
 ---------------------------------------------DELETE USER_BKS-------------------------------------------------------
@@ -116,9 +116,9 @@ DELETE FROM USERS_BKS WHERE ID=20;
 DELETE FROM USERS_BKS WHERE ID=30;
 
 -----------------------------------------------INSERT USERS_BKS----------------------------------------------------
-INSERT INTO USERS_BKS(id,nome,cognome,email,password,profile) VALUES(10,'superadmin','Tazio','superadmin@spqr.it','superadmin',400);
-insert into USERS_BKS(ID,nome,cognome,email,password,profile) values(20,'admin','Semproni','admin@spqr.it','admin',300);
-insert into USERS_BKS(ID,nome,cognome,email,password,profile) values(30,'cartuser','Caio','user@spqr.it','cartuser',200);
+INSERT INTO USERS_BKS(ID,NOME,COGNOME,EMAIL,PASSWORD,PROFILE) VALUES(10,'SUPERADMIN','TAZIO','SUPERADMIN@SPQR.IT','SUPERADMIN',400);
+INSERT INTO USERS_BKS(ID,NOME,COGNOME,EMAIL,PASSWORD,PROFILE) VALUES(20,'ADMIN','SEMPRONI','ADMIN@SPQR.IT','ADMIN',300);
+INSERT INTO USERS_BKS(ID,NOME,COGNOME,EMAIL,PASSWORD,PROFILE) VALUES(30,'CARTUSER','CAIO','USER@SPQR.IT','CARTUSER',200);
 
 
 ---------------------------------------DELETE USER_PROFILE_BKS---------------------------------------
@@ -136,16 +136,16 @@ INSERT INTO USER_PROFILE_BKS(ID,NOME) VALUES(100,'USER');
 ---------------------------------------DELETE FUNCTION_BKS-------------------------------------------------------------
 DELETE FROM FUNCTION_BKS WHERE ID=10000;
 ---------------------------------------INSERT INTO FUNCTION_BKS-------------------------------------------------------------
-INSERT INTO FUNCTION_BKS(id,nome,url_function) values(10000,'ricerca libri','ricercalibrijson');
+INSERT INTO FUNCTION_BKS(ID,NOME,URL_FUNCTION) VALUES(10000,'RICERCA LIBRI','RICERCALIBRIJSON');
 ---------------------------------------DELETE PROFILE_FUNCTION_MENU_BKS----------------------------------------------------------
 
-DELETE FROM PROFILE_FUNCTION_MENU_BKS WHERE id_function=10000 and id_profile=100;
+DELETE FROM PROFILE_FUNCTION_MENU_BKS WHERE ID_FUNCTION=10000 AND ID_PROFILE=100;
 --------------------------------INSERT PROFILE_FUNCTION_MENU_BKS-------------------------------------
-INSERT INTO PROFILE_FUNCTION_MENU_BKS(id_function,id_profile) values(10000,100);
+INSERT INTO PROFILE_FUNCTION_MENU_BKS(ID_FUNCTION,ID_PROFILE) VALUES(10000,100);
 
-SELECT pf.id_profile,p.nome FROM FUNCTKION_BKS as f,
-PROFILE_FUNCTION_MENU_BKS as 
-pf , USER_PROFILE_BKS as p  WHERE p.id=pf.id_profile and f.id=pf.id_function and f.url_function = 'ricercalibrijson' ;
+SELECT PF.ID_PROFILE,P.NOME FROM FUNCTKION_BKS AS F,
+PROFILE_FUNCTION_MENU_BKS AS 
+PF , USER_PROFILE_BKS AS P  WHERE P.ID=PF.ID_PROFILE AND F.ID=PF.ID_FUNCTION AND F.URL_FUNCTION = 'RICERCALIBRIJSON' ;
 
 SELECT * FROM FUNCTKION_BKS;
 SELECT * FROM PROFILE_FUNCTION_MENU_BKS ;
