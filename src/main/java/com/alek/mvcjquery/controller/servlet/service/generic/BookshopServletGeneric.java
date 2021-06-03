@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.alek.mvcjquery.model.service.db.UserCheckServiceDB;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
@@ -19,19 +20,23 @@ import com.alek.mvcjquery.model.user.User;
 
 public abstract class BookshopServletGeneric extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4858527628893072463L;
 	public BookshopServletGeneric() {
 		super();
 	}
 	Context initContext ;
 	Context envContext  ;	
-	DataSource ds;
-	protected void getDataSource() throws ErroreDataSourceException{
+	protected DataSource ds;
+    protected UserCheckService serviceCheckService;
+	protected void initDataSource() throws ErroreDataSourceException{
 		 ;
 		String msg="";
 		try {
 			if(ds==null)
 			ds = (DataSource)envContext.lookup("jdbc/bookshop");
-			
 			System.out.println("dasource trovato");
 			
 		}catch (NamingException e) {
@@ -43,14 +48,14 @@ public abstract class BookshopServletGeneric extends HttpServlet {
 	}
 	protected void checkProfile(HttpServletRequest request, HttpServletResponse response) throws ErroreDataSourceException,ErroreFunctionPermission,ErroreLoginAccess {
 		
-		String functionStr;
+		String functionStr[];
 		Profile prf;
 		User usr = (User)request.getSession().getAttribute("user");
-		functionStr = request.getServletPath().substring(1);
+		functionStr = request.getRequestURI().split("/");
 		prf = null;
 		if(usr==null) {
 			// prf.setNome("Administrator");
-			 usr=new User(0, 100, "webuser", null, null);
+			 usr=new User(0, 100, "webuser","web", null, null);
 			 request.getSession().setAttribute("user", usr);
 
 		}
@@ -58,18 +63,22 @@ public abstract class BookshopServletGeneric extends HttpServlet {
 		 
 //		 prf.setNome("Administrator");
 //		 request.getSession().setAttribute("user", usr);
-		 
-		 UserCheckService userCheckService = getUserCheckService();
-		 if (!userCheckService.isFunctionAllowed(prf.getId(),functionStr))
+		 System.out.println("path 1="+functionStr[1]);
+		 System.out.println("path 2="+functionStr[2]);		 
+		 System.out.println("path 3="+functionStr[3]);
+
+		 if ("service".equals(functionStr[2]) && !serviceCheckService.isFunctionAllowed(prf.getId(),functionStr[3]))
 				 throw new ErroreFunctionPermission("Funtion Not Allowed with this user");				 
 }	
 	
-	protected UserCheckService getUserCheckService() throws ErroreDataSourceException {
-		
+	protected UserCheckService getUserCheckServiceMock() throws ErroreDataSourceException {
 		UserCheckService userCheckService=new UserCheckServiceMock(ds);
 		return userCheckService;
 	}
-
+	protected UserCheckService getUserCheckServiceDB() throws ErroreDataSourceException {
+		UserCheckService userCheckService=new UserCheckServiceDB(ds);
+		return userCheckService;
+	}
 	protected void printURLInfo(HttpServletRequest request) {
 	    String url = request.getRequestURL().toString();
 	
@@ -108,11 +117,12 @@ public abstract class BookshopServletGeneric extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		try {		
+
 			initContext = new InitialContext();
 			envContext  = (Context)initContext.lookup("java:/comp/env");
-	
-			
-		} catch (NamingException e) {
+			initDataSource();
+			serviceCheckService = getUserCheckServiceDB();
+		} catch (NamingException | ErroreDataSourceException e) {
 			e.printStackTrace();			
 		}			
 	}	

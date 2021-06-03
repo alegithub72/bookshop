@@ -30,11 +30,14 @@
 							  dataType: "json"
 							});
 							 
-							request.done(function( user ) {
-							  console.log( user );
-							  if (user.errore) displayAllerta(msg);
+							request.done(function( data ) {
+							  console.log( data );
+							  if (data.errore) {
+								  displayAllerta(data.msg);
+								  return;
+							  }
 							  $("#omino").attr("src","<%=request.getContextPath()%>/img/ominoin.jpg");
-							  $("#accedi").text(user.name);
+							  $("#accedi").text(data.name);
 
 //							  $("#dialogcont div").remove();
 							  //$("#accedi").unbind("click");
@@ -43,7 +46,7 @@
 							//var risultati=location.origin+location.pathname+"&startRow="+startRow+"&ricercaPage="+ricercaPage;
 							//console.log("--->"+risultati);
 							//location.replace(risultati);
-							if(user.profile.id>200) location.reload(true);
+							if(data.profile.id>200) location.reload(true);
 							});
 							 
 							request.fail(function( jqXHR, textStatus ) {

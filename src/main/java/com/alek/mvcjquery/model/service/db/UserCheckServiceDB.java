@@ -22,7 +22,7 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 	}
 
 	@Override
-	public boolean isFunctionAllowed(int id,String urlfunction) throws ErroreFunctionPermission {
+	public boolean isFunctionAllowed(int profileid,String urlfunction) throws ErroreFunctionPermission {
 		
 		
 		
@@ -31,16 +31,18 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 		boolean allowfunc=false;
 		try {
 			 conn = ds.getConnection();
-			PreparedStatement prep=conn.prepareStatement("SELECT pf.id_profile as id_profile,p.nome as nome "
-					+ "FROM FUNCTION_BKS as f ,   PROFILE_FUNCTION_MENU_BKS as pf ,"
-					+ "USER_PROFILE_BKS AS p where p.id=pf.id_profile and "
-					+ " f.id=pf.id_function and f.url_function = ? ");
+			String sql= "SELECT pf.id_profile as id_profile,p.nome as nome "
+				+ "FROM BKS_FUNCTION as f ,   BKS_PROFILE_FUNCTION_MENU as pf ,"
+				+ "BKS_USER_PROFILE AS p where p.id=pf.id_profile and "
+				+ " f.id=pf.id_function and f.url_function = ? ";
+			PreparedStatement prep=conn.prepareStatement(sql);
 			prep.setString(1, urlfunction);
 			ResultSet res=  prep.executeQuery();
 			profallowed = null;
 			System.out.println("--checkpermission--");
+			System.out.println(sql);
 			System.out.println("url fiunction:"+urlfunction);
-			System.out.println("id:"+id);
+			System.out.println("profileid:"+profileid);
 			while(res.next()) {
 				int idallowed=res.getInt("id_profile");
 				String nome=res.getString("nome");
@@ -60,15 +62,48 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 		}
 
 		if(profallowed==null )  allowfunc=false;
-		else if(id>=profallowed.getId())  allowfunc=true;
+		else if(profileid>=profallowed.getId())  allowfunc=true;
 		
 		return allowfunc;
 	}
 
 	@Override
 	public User loginuser(String userid, String password) throws ErroreLoginAccess {
-		// TODO Implementare la ricerca dell'utente sul DB
-		return null;
+		User user=null;
+		Connection conn=null;
+	
+		try {
+			conn=ds.getConnection();
+			PreparedStatement prep=conn.prepareStatement("SELECT * FROM BKS_USERS WHERE EMAIL=? AND PASSWORD=?",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			prep.setString(1, userid);
+			prep.setString(2, password);
+			ResultSet res=  prep.executeQuery();
+
+			if(res.next() && res.isLast())
+			{
+				String username=res.getString("EMAIL");
+				String pass=res.getString("password");
+				String nome=res.getString("NOME");
+				String cognome=res.getString("COGNOME");
+				int profileid=res.getInt("profile");
+				int id=res.getInt("id");
+				user=new User(id,profileid,nome,cognome,pass,username);			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			try {
+				conn.close();
+			} catch (SQLException e) {
+
+			}
+		}
+		
+		
+		
+		
+		return user;
 	}
 
 

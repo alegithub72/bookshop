@@ -1,5 +1,11 @@
 package com.alek.mvcjquery.controller.servlet.service.account;
 
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.alek.mvcjquery.controller.servlet.service.generic.BookshopServletGeneric;
 import com.alek.mvcjquery.controller.servlet.service.generic.BookshopServletJSONGeneric;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
@@ -7,12 +13,6 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
 import com.alek.mvcjquery.model.user.User;
-
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class BookshopServletAccountLogout
@@ -30,7 +30,7 @@ public class BookshopServletAccountLogout extends BookshopServletJSONGeneric {
 
 	@Override
 	protected void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
-		User usr=new User(0, 100, "webuser",null,null);
+		User usr=new User(0, 100, "webuser","webuser",null,null);
 		String json=gson.toJson(usr);
 		System.out.println(json);
  	    resp.getWriter().append(json);

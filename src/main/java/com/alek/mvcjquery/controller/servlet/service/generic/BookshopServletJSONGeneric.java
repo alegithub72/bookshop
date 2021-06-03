@@ -7,14 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alek.mvcjquery.model.libri.ErrorResponse;
-import com.alek.mvcjquery.model.service.ConsultazioneLibreriaService;
-import com.alek.mvcjquery.model.service.db.ListaLibriServiceDB;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
-import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
-import com.alek.mvcjquery.model.service.mock.ListaLibriSeviceMock;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -57,6 +53,7 @@ public abstract class BookshopServletJSONGeneric extends BookshopServletGeneric 
 		resp.setHeader("Access-Control-Allow-Origin", "*");
 		try {
 			System.out.println("-------------------------GENERIC REQUEST------------------------------------");
+
 			checkProfile(req, resp);
 			printURLInfo(req);
 			createjson(req,resp);
@@ -98,19 +95,7 @@ public abstract class BookshopServletJSONGeneric extends BookshopServletGeneric 
 
 		
 	
-	protected ConsultazioneLibreriaService getConsulatazioneServiceMock() throws ErroreDataSourceException {
-		ListaLibriService  listaLibriService=new ListaLibriSeviceMock(ds);
-		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
-	return 	consultazioneLibreriaService;
-		
-	}
 
-	protected ConsultazioneLibreriaService getConsulatazioneServiceDB() throws ErroreDataSourceException {
-		ListaLibriService  listaLibriService=new ListaLibriServiceDB(ds);
-		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
-	return 	consultazioneLibreriaService;		
-		
-	}
 
 
 

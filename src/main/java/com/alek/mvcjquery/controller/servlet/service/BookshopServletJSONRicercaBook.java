@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alek.mvcjquery.controller.servlet.service.generic.BookshopServletJSONGeneric;
 import com.alek.mvcjquery.model.service.ConsultazioneLibreriaService;
+import com.alek.mvcjquery.model.service.db.ListaLibriServiceDB;
 import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
+import com.alek.mvcjquery.model.service.interfaces.ListaLibriService;
+import com.alek.mvcjquery.model.service.mock.ListaLibriSeviceMock;
 
 
 /**
@@ -37,7 +40,6 @@ public static int  PAGE=4;
 	public void init() throws ServletException {
 		super.init();
 		try {
-			getDataSource();
 			consultazioneLibreriaService= getConsulatazioneServiceDB();
 		} catch (ErroreDataSourceException e) {
 			e.printStackTrace();
@@ -93,5 +95,20 @@ public static int  PAGE=4;
 		return n;
 		
 	}
+	
+	protected ConsultazioneLibreriaService getConsulatazioneServiceMock() throws ErroreDataSourceException {
+		ListaLibriService  listaLibriService=new ListaLibriSeviceMock(null);
+		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
+	return 	consultazioneLibreriaService;
+		
+	}
+
+	protected ConsultazioneLibreriaService getConsulatazioneServiceDB() throws ErroreDataSourceException {
+		initDataSource();
+		ListaLibriService  listaLibriService=new ListaLibriServiceDB(ds);
+		ConsultazioneLibreriaService consultazioneLibreriaService=new ConsultazioneLibreriaService(listaLibriService);
+	return 	consultazioneLibreriaService;		
+		
+	}	
 	
 }

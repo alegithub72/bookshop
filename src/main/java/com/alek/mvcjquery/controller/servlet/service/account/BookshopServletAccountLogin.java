@@ -11,7 +11,6 @@ import com.alek.mvcjquery.model.service.db.excpetion.ErrorService;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreDataSourceException;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreFunctionPermission;
 import com.alek.mvcjquery.model.service.db.excpetion.ErroreLoginAccess;
-import com.alek.mvcjquery.model.service.interfaces.UserCheckService;
 import com.alek.mvcjquery.model.user.User;
 
 /**
@@ -28,6 +27,7 @@ public class BookshopServletAccountLogin extends BookshopServletJSONGeneric {
         super();
 
     }
+
 
 	@Override
 	protected void createjson(HttpServletRequest req, HttpServletResponse resp) throws ErrorService, IOException {
@@ -54,8 +54,7 @@ public class BookshopServletAccountLogin extends BookshopServletJSONGeneric {
 		System.out.println("startRow="+startRow);
 		System.out.println("ricercaPage="+ricercaPage);
 		System.out.println("--");
-		UserCheckService service=getUserCheckService();
-		User usr=service.loginuser(userid, pass);
+		User usr=serviceCheckService.loginuser(userid, pass);
 		if(usr!=null ) {
 			usr.setRicercaURL(ricercaUSR);
 			usr.setStartRow(startRow);

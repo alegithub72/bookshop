@@ -10,6 +10,9 @@ public class User {
 	int id;
 	@Expose
 	String name;
+	@Expose
+	String surname;
+	
 	String pass;
 	@Expose
 	String email;
@@ -24,13 +27,14 @@ public class User {
 	String ricercaPage;
 	
 
-	public User(int id, int profileid, String name, String pass, String email) {
+	public User(int id, int profileid, String name, String surname,String pass, String email) {
 		super();
 		this.id = id;
 		this.profile = new Profile(profileid);
 		this.name = name;
 		this.pass = pass;
 		this.email = email;
+		this.surname=surname;
 		this.startRow="1";
 		this.ricercaPage=""+BookshopServletJSONRicercaBook.PAGE;
 
@@ -39,6 +43,20 @@ public class User {
 	
 	
 	
+	public String getSurname() {
+		return surname;
+	}
+
+
+
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+
+
+
 	public String getStartRow() {
 		return startRow;
 	}

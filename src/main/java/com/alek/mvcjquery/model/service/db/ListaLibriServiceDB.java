@@ -52,7 +52,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		try {
 			conn=ds.getConnection();
 			list = new ArrayList<Libro>();
-			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM LIBRO_BKS where  genere_id=? ",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM BKS_LIBRO where  genere_id=? ",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			prep.setString(1, idgenere);
 			
 			res=  prep.executeQuery();
@@ -102,7 +102,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		try {
 			conn=ds.getConnection();
 			genere = null;
-			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM GENERE_BKS WHERE id=?");
+			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM BKS_GENERE WHERE id=?");
 			prep.setInt(1, id);
 			ResultSet res=prep.executeQuery();
 			while(res.next()) {
@@ -129,7 +129,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 				
 		try {
 			conn=ds.getConnection();
-			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM EDITORE_BKS WHERE id=?");
+			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM BKS_EDITORE WHERE id=?");
 			prep.setInt(1, id);
 			ResultSet res=prep.executeQuery();
 			while(res.next()) {
@@ -155,7 +155,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		
 		try {
 			conn=ds.getConnection();
-			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM AUTORE_BKS WHERE id=?");
+			PreparedStatement prep=  conn.prepareStatement("SELECT * FROM BKS_AUTORE WHERE id=?");
 			prep.setInt(1, id);
 			ResultSet res=prep.executeQuery();
 			while(res.next()) {
@@ -185,7 +185,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 		
 		try {
 			conn=ds.getConnection();
-			PreparedStatement prep=conn.prepareStatement("SELECT * FROM GENERE_BKS");
+			PreparedStatement prep=conn.prepareStatement("SELECT * FROM BKS_GENERE");
 			ResultSet res=prep.executeQuery();
 			while(res.next()) {
 				int id=res.getInt("id");
