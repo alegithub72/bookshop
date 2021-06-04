@@ -13,15 +13,17 @@ $(document).ready(
 
 		$("button").button();
 		$("#idbuttonautore").click(function(){
+			event.preventDefault();
 			createAutoreDialog();	
 			$( "#iddialogautore" ).dialog("open");
-			 event.preventDefault();
+
 		}); 
 		
 		$("#idbuttoneditore").click(function(){
+			event.preventDefault();
 			createEditoreDialog();	
 			$( "#iddialogeditore" ).dialog("open");
-			 event.preventDefault();
+
 		});		
 		
 		$("select").selectmenu();
