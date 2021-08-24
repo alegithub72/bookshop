@@ -262,7 +262,7 @@ background-color: rgb(0, 123, 247);
     
     <li id="aboutid" class="menu0"><a href="#" class="menulink">About&nbsp;Us</a></li>
     
-    <li id="genereid" class="menu0" ng-controller="listGeneriNoDBCtrl" ><a href="#" ng-click="menuShowFunction()" class="menulink">Libri&nbsp;Genere</a>
+    <li id="genereid" class="menu0" ng-controller="listGeneriCtrl" ><a href="#" ng-click="menuShowGeneriFunction()" class="menulink">Libri&nbsp;Genere</a>
     <ul  ng-hide="menuShowGeneri"  class="sottomenu0">
     	<li ng-repeat="genere in listaGeneri" class="sottomenu1">
     		<a  class="menulink" href='../page/listalibri?webfunction=ricercaPergenere&genere={{genere.id}}&generenome={{genere.tipologia}}&startRow=1&ricercaPage=4'>
@@ -272,9 +272,9 @@ background-color: rgb(0, 123, 247);
     </ul>
     </li>
    
-   	<li id="bestid" class="menu0"><a href="#" class="menulink">Best&nbsp;Seller</a>
+   	<li id="bestid" ng-controller="listBestSellerCtrl" class="menu0"><a href="#"  ng-click="menuShowBestSellerFunction()" class="menulink">Best&nbsp;Seller</a>
   
-    <ul id="sottomenu_bestid" class="sottomenu0">
+    <ul id="sottomenu_bestid"    ng-hide="showBestSeller" class="sottomenu0">
     <li class="sottomenu1"><a href="#" class="menulink" >Piu Venduti</a></li>
     <li class="sottomenu1"><a href="#" class="menulink">Tascabili</a></li>
     <li class="sottomenu1"><a href="#" class="menulink">Economici</a></li>

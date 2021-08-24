@@ -92,184 +92,184 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 
 <script>
 
-var listaricerca;
-var libroId;
-startRow=1,ricercaPage=4,pageNum=1;
-function ricercaLibri(start,page){
-	let erroreApp=false;
-	urlRicerca="../service/ricercalistejson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage;
-	$.getJSON(urlRicerca,function(data){
+// var listaricerca;
+// var libroId;
+// startRow=1,ricercaPage=4,pageNum=1;
+// function ricercaLibri(start,page){
+// 	let erroreApp=false;
+<%-- 	urlRicerca="../service/ricercalistejson?webfunction=ricercaPergenere&genere=<%=request.getParameter("genere")%>&startRow="+startRow+"&ricercaPage="+ricercaPage; --%>
+// 	$.getJSON(urlRicerca,function(data){
 
-	listaricerca=data;
-	console.log("JSON return:")
-	console.log(data);
+// 	listaricerca=data;
+// 	console.log("JSON return:")
+// 	console.log(data);
 	
-	})
-	.done(function(){
+// 	})
+// 	.done(function(){
 
-		if(listaricerca.errore) {
-				displayAllerta(listaricerca.errore);
+// 		if(listaricerca.errore) {
+// 				displayAllerta(listaricerca.errore);
 				
-				return;
-			}
-			dataTableRicercaLibri();
+// 				return;
+// 			}
+// 			dataTableRicercaLibri();
 
 			
-		})
-	.fail(function(){
-		displayAllerta(listaricerca);
+// 		})
+// 	.fail(function(){
+// 		displayAllerta(listaricerca);
 		
 	
-	});
+// 	});
 
-}
+// }
 
-function nextRicerca(){
-	$("#listalilbri").html("");
-	startRow=startRow+ricercaPage;
-	pageNum++;
-	ricercaLibri(startRow,ricercaPage);
+// function nextRicerca(){
+// 	$("#listalilbri").html("");
+// 	startRow=startRow+ricercaPage;
+// 	pageNum++;
+// 	ricercaLibri(startRow,ricercaPage);
 
-}
-function prevRicerca(){
-	$("#listalibri").html("");
-	startRow=startRow-ricercaPage;
-	pageNum--;
-	if(startRow<0)startRow=0;
-	ricercaLibri(startRow,ricercaPage);
-}
-$(document).ready(function(){
-	startRow=<%=startRow%>;
-	ricercaPage=<%=ricercaPage%>;
-	pageNum=Math.round(startRow/ricercaPage)+1;
-	ricercaLibri(startRow,ricercaPage);
+// }
+// function prevRicerca(){
+// 	$("#listalibri").html("");
+// 	startRow=startRow-ricercaPage;
+// 	pageNum--;
+// 	if(startRow<0)startRow=0;
+// 	ricercaLibri(startRow,ricercaPage);
+// }
+// $(document).ready(function(){
+<%-- 	startRow=<%=startRow%>; --%>
+<%-- 	ricercaPage=<%=ricercaPage%>; --%>
+// 	pageNum=Math.round(startRow/ricercaPage)+1;
+// 	ricercaLibri(startRow,ricercaPage);
 
-	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>");
+<%-- 	$("#categoria").text($("#categoria").text()+"<%=request.getParameter("generenome")%>"); --%>
 	
-}
+// }
 
-);
+// );
 
-let cart=1;
-function dataTableRicercaLibri(){
+// let cart=1;
+// function dataTableRicercaLibri(){
 
-	let htmlEspositore="";
-	let categoria;
-	$("#risultatiricerca").html("");
-	$("#idprevnext").remove();
-	$.each(listaricerca,function(i,libro){
+// 	let htmlEspositore="";
+// 	let categoria;
+// 	$("#risultatiricerca").html("");
+// 	$("#idprevnext").remove();
+// 	$.each(listaricerca,function(i,libro){
 		
 		
-		console.log("id="+libro.id)
+// 		console.log("id="+libro.id)
 		
-		var divdettaglio=$("<div>")
-		.css({"display":"flex",
-			"flex-direction":"column",
-			"margin": "10px",
-	    	"align-items": "center"	,
-	    	"background-color":" rgb(166,210,255)",
-	    	"width":"15%",
-	    //	"height":"400px"
-		})
-		.attr("id","iddettaglio"+libro.id);
+// 		var divdettaglio=$("<div>")
+// 		.css({"display":"flex",
+// 			"flex-direction":"column",
+// 			"margin": "10px",
+// 	    	"align-items": "center"	,
+// 	    	"background-color":" rgb(166,210,255)",
+// 	    	"width":"15%",
+// 	    //	"height":"400px"
+// 		})
+// 		.attr("id","iddettaglio"+libro.id);
 		
-		var copertina =$("<img>")
-		.attr("src","../img/book"+(i+1)+".jpg")
-		.attr("width","100px")
-		.attr("height","150px");
+// 		var copertina =$("<img>")
+// 		.attr("src","../img/book"+(i+1)+".jpg")
+// 		.attr("width","100px")
+// 		.attr("height","150px");
 		
-		var titolo=$("<span>")
-		.text(libro.titolo)
-		.css({
-			"font-size": "larger",
-	    	"font-weight": "bold"
-	    	});
+// 		var titolo=$("<span>")
+// 		.text(libro.titolo)
+// 		.css({
+// 			"font-size": "larger",
+// 	    	"font-weight": "bold"
+// 	    	});
 		
 		
-		var autore=$("<span>")
-		.text("Autore:"+libro.autore.cognome+" "+libro.autore.nome);
+// 		var autore=$("<span>")
+// 		.text("Autore:"+libro.autore.cognome+" "+libro.autore.nome);
 		
-		var tipo=$("<span>")
-		.text("Tipo:"+libro.genere.tipologia);
+// 		var tipo=$("<span>")
+// 		.text("Tipo:"+libro.genere.tipologia);
 		
-		var editore=$("<span>")
-		.text("Editore:"+libro.edizione.editore);
-		var prezzo=$("<span>").html("Prezzo:")
-		.append($("<span>")		
-				.text(libro.prezzo)
-				.css({"margin-block-start":"auto","color":"blue"}));
-
-		
-		var  addCart=$("<button>")
-		.attr("id","buttonCart"+libro.id)
-		.button({"label":"Add to cart","classes":{"width":"100%"}})
-		.css({"margin-top":"auto",
-		"margin-top": "10px",
-	    "margin-bottom": "10px"	
-		
-		});
-		
-		addCart.click(function(){$("#cartItems").html(cart++);});
-		
-		divdettaglio
-		.append(copertina)
-		.append(addCart)
-		.append(titolo)
-		.append(tipo)
-		.append(autore)
-		.append(editore)
-		.append(prezzo)
-
+// 		var editore=$("<span>")
+// 		.text("Editore:"+libro.edizione.editore);
+// 		var prezzo=$("<span>").html("Prezzo:")
+// 		.append($("<span>")		
+// 				.text(libro.prezzo)
+// 				.css({"margin-block-start":"auto","color":"blue"}));
 
 		
+// 		var  addCart=$("<button>")
+// 		.attr("id","buttonCart"+libro.id)
+// 		.button({"label":"Add to cart","classes":{"width":"100%"}})
+// 		.css({"margin-top":"auto",
+// 		"margin-top": "10px",
+// 	    "margin-bottom": "10px"	
 		
-		$("#risultatiricerca")
-		.append(divdettaglio)
-		.css({"display":"flex","flex-direction":"row"});		
+// 		});
+		
+// 		addCart.click(function(){$("#cartItems").html(cart++);});
+		
+// 		divdettaglio
+// 		.append(copertina)
+// 		.append(addCart)
+// 		.append(titolo)
+// 		.append(tipo)
+// 		.append(autore)
+// 		.append(editore)
+// 		.append(prezzo)
 
-		categoria=libro.genere.tipologia;
 
-	});
+		
+		
+// 		$("#risultatiricerca")
+// 		.append(divdettaglio)
+// 		.css({"display":"flex","flex-direction":"row"});		
+
+// 		categoria=libro.genere.tipologia;
+
+// 	});
 
 	
-	var buttonprev=$( "<button>" ).button({
-		icon: "ui-icon-circle-arrow-w",
-		showLabel: false
-	})
-	.attr("id","idprev");
+// 	var buttonprev=$( "<button>" ).button({
+// 		icon: "ui-icon-circle-arrow-w",
+// 		showLabel: false
+// 	})
+// 	.attr("id","idprev");
 	
 	
-	var buttonnext=$( "<button>" ).button({
-		icon: "ui-icon-circle-arrow-e",
-		showLabel: false
-	})
-	.attr("id","idnext"); 
+// 	var buttonnext=$( "<button>" ).button({
+// 		icon: "ui-icon-circle-arrow-e",
+// 		showLabel: false
+// 	})
+// 	.attr("id","idnext"); 
 	
-	var nextprev=$("<div>")
-	.css({"display":"flex","flex-direction":"row"})
-	.append(buttonprev)
-	.append($("<span>").text(pageNum))
-	.append(buttonnext)
-	.attr("id","idprevnext");
+// 	var nextprev=$("<div>")
+// 	.css({"display":"flex","flex-direction":"row"})
+// 	.append(buttonprev)
+// 	.append($("<span>").text(pageNum))
+// 	.append(buttonnext)
+// 	.attr("id","idprevnext");
 	
-	$("#risultatiricerca")
-	.after(nextprev);
+// 	$("#risultatiricerca")
+// 	.after(nextprev);
 	
-	if(startRow>1) $("#idprev").click(prevRicerca);
-	else $("#idprev").remove()//css("text-decoration","none");
-	if(listaricerca.length<ricercaPage) $("#idnext").remove()//css("text-decoration","none");
-	else $("#idnext").click(nextRicerca); 
+// 	if(startRow>1) $("#idprev").click(prevRicerca);
+// 	else $("#idprev").remove()//css("text-decoration","none");
+// 	if(listaricerca.length<ricercaPage) $("#idnext").remove()//css("text-decoration","none");
+// 	else $("#idnext").click(nextRicerca); 
 	
-	if(listaricerca.length==0) { 
-		var zeroRisultati=$("<h2>")
-		.css({"margin": "inherit","color":"blue"})
-		.html("Nessun Risultato");
-		$("#risultatiricerca").html(zeroRisultati);
-		$("#idprevnext").remove();
-	}	
+// 	if(listaricerca.length==0) { 
+// 		var zeroRisultati=$("<h2>")
+// 		.css({"margin": "inherit","color":"blue"})
+// 		.html("Nessun Risultato");
+// 		$("#risultatiricerca").html(zeroRisultati);
+// 		$("#idprevnext").remove();
+// 	}	
 	
 
-}
+// }
 
 
 </script> 
@@ -280,9 +280,17 @@ function dataTableRicercaLibri(){
 
    
 
-<div id="risultatiricerca"  class="espositore">
+<div id="risultatiricerca"  ng-controller="listRicercaLibriCtrl"  ng-init="init(<%=request.getParameter("genere") %>)" class="espositore">
+<div ng-repeat="book in listaLibri" id="dettaglio{{book.id}}" style="display:flex;flex-direction:column;margin:10px;align-items: center;background-color: rgb(166,210,255);width:15%">
+<img src="../img/book{{$index + 1}}.jpg" width="100px" height="150px" />
+<button id="buttonCart{{book.id}}" label="Add to cart" style="width:100%;margin-top:auto;margin-top:10px;margin-bottom:10px">Add to Cart</button>
+<span style="font-size:larger;font-weight:bold;" >{{book.titolo}}</span>
+<span>Tipo:{{book.genere.tipologia}})</span>
+<span>Autore:{{book.autore.cognome}} &space {{book.autore.nome}}</span>
+<span>Editore:{{book.edizione.editore}}</span>
+<span style="margin-block-start:auto;color:blue"c>Price:{{book.prezzo}}</span>
 
-
+</div>
 
 
 

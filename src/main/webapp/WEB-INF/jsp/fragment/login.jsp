@@ -76,7 +76,7 @@
 // 	})
 	</script>
 
-	<div id="login"> 
+	<div id="login" ng-controller="loginCtrl" ng-hide="loginModalHide"> 
 	<p>Enter your email and password!!</p>
 	<form id="loginform" >
 	<fieldset>
