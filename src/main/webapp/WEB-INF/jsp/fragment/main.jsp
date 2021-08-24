@@ -5,11 +5,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Book Shop Online</title>
-<script src="<%=request.getContextPath()%>/jslib/jquery-3.6.0.js"></script>
-<script src="<%=request.getContextPath() %>/jslib/jquery-ui.js"></script>
+<script src="<%=request.getContextPath()%>/jslib/angular.js"></script>
+<script src="<%=request.getContextPath()%>/jslib/helloworld.js"></script>
 
 
- <script src="<%=request.getContextPath() %>/jslib/jquery-blue-ui.js"></script>
+ 
  <link id="idcss" rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery-blue-ui.css">
 
 <style type="text/css">
@@ -40,7 +40,7 @@ var urlRicerca;
 var startRow=1,ricercaPage=4,pageNum=1;
 </script>
 </head>
-<body id="bodyid">
+<body id="bodyid" ng-app="ngHelloWorld">
 
 <div style="width:100%;">
 

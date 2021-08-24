@@ -3,6 +3,14 @@
 
 
 
+  <div ng-controller="ngHelloWorldController">
+ 	{{message}}
+</div>
+
+  <div ng-controller="myController">
+ 	{{message2}}
+</div>
+
  <img src="../img/logo.jpg" width="200" height="180">
     <h2>Mission</h2>
 <p style="text-align: justify;">

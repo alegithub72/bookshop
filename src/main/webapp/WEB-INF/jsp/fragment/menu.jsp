@@ -73,7 +73,7 @@ ul#gestione_menuid {
 .sottomenu0 {
 font-family: Verdana, sans-serif;
     font-size: 11px;
-    display: none;
+    display: inline;
     /* opacity: 0.99; */
     width: 100%;
     padding-inline-start: 0!important;
@@ -113,100 +113,100 @@ background-color: rgb(0, 123, 247);
 
     </style>
 <script>
-let listageneri;
-$(document).ready(function(){
+// let listageneri;
+// $(document).ready(function(){
 	
-	$.getJSON("../service/ricercalistejson?webfunction=generi",function(data){
+// 	$.getJSON("../service/ricercalistejson?webfunction=generi",function(data){
 
-		listageneri=data;
-		console.log("----------------->"+data);
-		})
-		.done(function(){
-				if(listageneri.errore) {
-					displayAllerta(listageneri.errore);
+// 		listageneri=data;
+// 		console.log("----------------->"+data);
+// 		})
+// 		.done(function(){
+// 				if(listageneri.errore) {
+// 					displayAllerta(listageneri.errore);
 					
-					return;
-				}
-			buildGenereMenu();
+// 					return;
+// 				}
+// 			buildGenereMenu();
 
 				
-			})
-		.fail(function(){
-			displayAllerta(listageneri);
+// 			})
+// 		.fail(function(){
+// 			displayAllerta(listageneri);
 			
 		
-		});
+// 		});
 	
 	
-})
+// })
 
 
 
 
 
 
-var opcl=false;
-function closeAllMenu(){
+// var opcl=false;
+// function closeAllMenu(){
 	
-	$("#sottomenu0_generiid").css("display","none");
-	$("#sottomenu_bestid").css("display","none");
-	$("#gestione_sottomenuid").css("display","none");
+// 	$("#sottomenu0_generiid").css("display","none");
+// 	$("#sottomenu_bestid").css("display","none");
+// 	$("#gestione_sottomenuid").css("display","none");
 	
-}
-$(document).ready(function(){
+// }
+// $(document).ready(function(){
 	
 		
-		$("#genereid").click(function(){
+// 		$("#genereid").click(function(){
 	
-		if(!opcl) {
-			$("#sottomenu0_generiid").css("display","inline");
+// 		if(!opcl) {
+// 			$("#sottomenu0_generiid").css("display","inline");
 
-		}
-		else {
-			 closeAllMenu();
+// 		}
+// 		else {
+// 			 closeAllMenu();
 
-		}
-		opcl=!opcl;
-	});
-	$("#bestid").click(function(){
-		if(!opcl) {
-			$("#sottomenu_bestid").css("display","inline");
+// 		}
+// 		opcl=!opcl;
+// 	});
+// 	$("#bestid").click(function(){
+// 		if(!opcl) {
+// 			$("#sottomenu_bestid").css("display","inline");
 
-		}
-		else {
-			closeAllMenu();
+// 		}
+// 		else {
+// 			closeAllMenu();
 
-		}
-		opcl=!opcl;
-	});	
-});
-function buildGenereMenu(){
-	let htmlLi="";
-	for(let i=0;i<listageneri.length;i++)
-		$("#sottomenu0_generiid").append(
-				$("<li>")
-				.attr("class","sottomenu1")
-				.append(
-						$("<a>").
-						attr("href",
-							"../page/listalibri?webfunction=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"&startRow=1&ricercaPage=4"
-						).attr("class","menulink")
-						.text(listageneri[i].tipologia)		
-						)
+// 		}
+// 		opcl=!opcl;
+// 	});	
+// });
+// function buildGenereMenu(){
+// 	let htmlLi="";
+// 	for(let i=0;i<listageneri.length;i++)
+// 		$("#sottomenu0_generiid").append(
+// 				$("<li>")
+// 				.attr("class","sottomenu1")
+// 				.append(
+// 						$("<a>").
+// 						attr("href",
+// 							"../page/listalibri?webfunction=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"&startRow=1&ricercaPage=4"
+// 						).attr("class","menulink")
+// 						.text(listageneri[i].tipologia)		
+// 						)
 		
-		);
+// 		);
 
 		
 				
 		
-//		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\ class=\"mainmas\" >"
-	//			+listageneri[i].tipologia+"</a></li>";
+// //		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\ class=\"mainmas\" >"
+// 	//			+listageneri[i].tipologia+"</a></li>";
 	
 
 	
 	
 	
-}
+// }
 </script>
 <div style="display:flex;flex-direction:row;width:100%">
 
@@ -262,8 +262,14 @@ function buildGenereMenu(){
     
     <li id="aboutid" class="menu0"><a href="#" class="menulink">About&nbsp;Us</a></li>
     
-    <li id="genereid" class="menu0"><a href="#" class="menulink">Libri&nbsp;Genere</a>
-    <ul id="sottomenu0_generiid" class="sottomenu0"></ul>
+    <li id="genereid" class="menu0" ng-controller="listGeneriNoDBCtrl" ><a href="#" ng-click="menuShowFunction()" class="menulink">Libri&nbsp;Genere</a>
+    <ul  ng-hide="menuShowGeneri"  class="sottomenu0">
+    	<li ng-repeat="genere in listaGeneri" class="sottomenu1">
+    		<a  class="menulink" href='../page/listalibri?webfunction=ricercaPergenere&genere={{genere.id}}&generenome={{genere.tipologia}}&startRow=1&ricercaPage=4'>
+    		{{genere.tipologia}}
+    		</a>  
+    	</li>
+    </ul>
     </li>
    
    	<li id="bestid" class="menu0"><a href="#" class="menulink">Best&nbsp;Seller</a>
