@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Book Shop Online</title>
 <script src="<%=request.getContextPath()%>/jslib/angular.js"></script>
-<script src="<%=request.getContextPath()%>/jslib/helloworld.js"></script>
+<script src="<%=request.getContextPath()%>/jslib/bookshopApp.js"></script>
 
 
  
@@ -40,7 +40,7 @@ var urlRicerca;
 var startRow=1,ricercaPage=4,pageNum=1;
 </script>
 </head>
-<body id="bodyid" ng-app="ngHelloWorld">
+<body id="bodyid" ng-app="bookShop">
 
 <div style="width:100%;">
 
@@ -73,10 +73,10 @@ if(obj!=null && ((User)obj).getId()!=0){%>
 
 
 
-<div id="allerta" class="ui-widget" style="display:none;">
+<div id="allerta" class="ui-widget" ng-hide="errorDialogHide" style="display:inline;">
 	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
 		<p><span class="ui-icon ui-icon-alert" style="float: none; margin-right: .3em;"></span>
-		<strong>Alert:</strong> <span id="allertText" ></span></p>
+		<strong>Alert:</strong> <span id="allertText" >{{errorMessage}}</span></p>
 	</div>
 </div>
 </div>
