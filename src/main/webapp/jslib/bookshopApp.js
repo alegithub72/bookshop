@@ -104,5 +104,30 @@ app.controller('listRicercaLibriCtrl', function ($scope, $http) {
 
 });    
 
+//un casino per gestre il layout....
+app.component('adminMenu',{
+template:'<li id="gestione_menuid"  >'+ 
+		      '<a href="#"  ng-click="$ctrl.showAdminMenu()" class="menulink">Gestione Bookshop</a>'+ 
+          '<ul id="gestione_sottomenuid"  ng-hide="$ctrl.adminMenuHide"  class="sottomenu0" > '+
+          '<li class="sottomenu1" ng-repeat="item in $ctrl.adminItems"  >'+
+          '<a href="{{item.link}}" class="menulink">{{item.name}}</a>'+
+          '</li>'+
+          '</ul>'+
+          '</li>',				
+controller:function adminMenuController(){
+  this.adminItems=[
+    {link:'../admin/addbook',name:'Aggiugi Libro'},
+    {link:'../admin/default',name:'Aggiungi Editore'},
+     {link:'../admin/default',name:'Aggiungi Autore'},
+     {link:'../admin/default',name:'Aggiungi Genere'},
+
+  ];
+  this.adminMenuHide=false;
+  this.showAdminMenu= function showAdminMenu(){
+    this.adminMenuHide=!this.adminMenuHide;
+  };
+}
+
+})
 
  

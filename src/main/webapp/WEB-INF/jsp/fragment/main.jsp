@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Book Shop Online</title>
 <script src="<%=request.getContextPath()%>/jslib/angular.js"></script>
-<script src="<%=request.getContextPath()%>/jslib/bookshopApp.js"></script>
+<script src="<%=request.getContextPath()%>/jslib/bookshopApp.js?<%=new java.util.Date().toInstant() %>>"></script>
 
 
  

@@ -4,8 +4,9 @@
 
 
 	<script>
+	/* 		
 $(document).ready(function(){
-		
+
 		$( "#logout" ).dialog({
 			autoOpen: false,
 			resizable:false,
@@ -63,7 +64,7 @@ $(document).ready(function(){
 		
 	})
 	
-	
+	 */
 	</script>
 	<div id="logout"  class="ui-helper-hidden"> 
 	<p>

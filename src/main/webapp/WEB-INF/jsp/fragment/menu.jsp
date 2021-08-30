@@ -216,20 +216,17 @@ background-color: rgb(0, 123, 247);
 	User usr=(User) request.getSession().getAttribute("user");
 	if(usr.getProfile().getId()>=300){%>
 	
-		<li id="gestione_menuid"   class="menu0">
-		<a href="#" class="menulink">Gestione Bookshop</a>
-			<ul id="gestione_sottomenuid" class="sottomenu0" >
-				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li>
-				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li>
-				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Autore</a></li>
-				<li class="sottomenu1"><a href="../admin/default" class="menulink">Aggiungi Genere</a>
-				
-			</ul>
-				 
-		</li>
+
+			
+			<admin-menu class="menu0"></admin-menu>
+<!-- 				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li> -->
+<!-- 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li> -->
+<!-- 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Autore</a></li> -->
+<!-- 				<li class="sottomenu1"><a href="../admin/default" class="menulink">Aggiungi Genere</a> -->
+
 		
 	   <script>
-		$(document).ready(
+/* 		$(document).ready(
 		function(){
 			$("#gestione_menuid").click(function(){
 				if(!opcl) $("#gestione_sottomenuid").css("display","inline")
@@ -247,7 +244,7 @@ background-color: rgb(0, 123, 247);
 			
 			
 		}		
-		)
+		) */
 		
 		</script>
 		
