@@ -13,7 +13,9 @@ app.controller('myController', function ($scope) {
 app.run(function ($rootScope) {
   $rootScope.menuShowGeneri = true;
   $rootScope.showBestSeller = true;
+  $rootScope.adminMenuHide = true;
   $rootScope.errorDialogHide = true;
+
   $rootScope.errorMessage = "Errore generico!!";
 
 });
@@ -29,27 +31,17 @@ app.controller('listGeneriCtrl', function ($scope, $rootScope, $http) {
     });
   $scope.menuShowGeneriFunction = function () {
     $rootScope.showBestSeller = true;
+     $rootScope.adminMenuHide=true;
     $rootScope.menuShowGeneri = !$rootScope.menuShowGeneri;
 
   };
 });
-app.controller('listGeneriNoDBCtrl', function ($scope, $rootScope) {
-  $scope.listaGeneri = [
-    { id: 1, tipologia: 'Azione' },
-    { id: 2, tipologia: 'Thriller' },
-    { id: 3, tipologia: 'Rosa' },
-  ];
 
-  $scope.menuShowGeneriFunction = function () {
-    $rootScope.showBestSeller = true;
-    $rootScope.menuShowGeneri = !$rootScope.menuShowGeneri;
-
-  };
-});
 app.controller('listBestSellerCtrl', function ($scope, $rootScope) {
 
   $scope.menuShowBestSellerFunction = function () {
     $rootScope.menuShowGeneri = true;
+    $rootScope.adminMenuHide=true;
     $rootScope.showBestSeller = !$rootScope.showBestSeller;
 
   };
@@ -106,15 +98,8 @@ app.controller('listRicercaLibriCtrl', function ($scope, $http) {
 
 //un casino per gestre il layout....
 app.component('adminMenu',{
-template:'<li id="gestione_menuid"  >'+ 
-		      '<a href="#"  ng-click="$ctrl.showAdminMenu()" class="menulink">Gestione Bookshop</a>'+ 
-          '<ul id="gestione_sottomenuid"  ng-hide="$ctrl.adminMenuHide"  class="sottomenu0" > '+
-          '<li class="sottomenu1" ng-repeat="item in $ctrl.adminItems"  >'+
-          '<a href="{{item.link}}" class="menulink">{{item.name}}</a>'+
-          '</li>'+
-          '</ul>'+
-          '</li>',				
-controller:function adminMenuController(){
+templateUrl:'../template/adminMenu.html',				
+controller:function adminMenuController($rootScope){
   this.adminItems=[
     {link:'../admin/addbook',name:'Aggiugi Libro'},
     {link:'../admin/default',name:'Aggiungi Editore'},
@@ -122,8 +107,10 @@ controller:function adminMenuController(){
      {link:'../admin/default',name:'Aggiungi Genere'},
 
   ];
-  this.adminMenuHide=false;
+   this.adminMenuHide=true;
   this.showAdminMenu= function showAdminMenu(){
+    $rootScope.menuShowGeneri = true;
+    $rootScope.showBestSeller=true;
     this.adminMenuHide=!this.adminMenuHide;
   };
 }

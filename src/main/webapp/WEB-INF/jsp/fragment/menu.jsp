@@ -219,10 +219,7 @@ background-color: rgb(0, 123, 247);
 
 			
 			<admin-menu class="menu0"></admin-menu>
-<!-- 				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li> -->
-<!-- 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li> -->
-<!-- 				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Autore</a></li> -->
-<!-- 				<li class="sottomenu1"><a href="../admin/default" class="menulink">Aggiungi Genere</a> -->
+
 
 		
 	   <script>
