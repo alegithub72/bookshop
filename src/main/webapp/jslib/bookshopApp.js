@@ -11,40 +11,80 @@ app.controller('myController', function ($scope) {
 
 });
 app.run(function ($rootScope) {
-  $rootScope.menuShowGeneri = true;
-  $rootScope.showBestSeller = true;
-  $rootScope.adminMenuHide = true;
   $rootScope.errorDialogHide = true;
-
   $rootScope.errorMessage = "Errore generico!!";
 
 });
-app.controller('listGeneriCtrl', function ($scope, $rootScope, $http) {
-  $http.get("../service/ricercalistejson?webfunction=generi")
-    .then(function (response) {
-      $scope.listaGeneri = response.data;
-    }, function (response) {
-      console.log("response status " + response.status);
-      $rootScope.errorDialogHide = false;
-      $rootScope.errorMessage = "Errore ineterno del server!!";
 
-    });
-  $scope.menuShowGeneriFunction = function () {
-    $rootScope.showBestSeller = true;
-     $rootScope.adminMenuHide=true;
-    $rootScope.menuShowGeneri = !$rootScope.menuShowGeneri;
+app.component('generalMenu',{
+  templateUrl:'../template/generalMenu.jsp',
+  controller:function (){
+
+  this.generiMenuHide=true;
+  this.bestSellMenuHide=true;
+  this.adminMenuHide=true;
+
+  this.menuShowBestSellerFunction = function () {
+    this.generiMenuHide = true;
+    this.adminMenuHide=true;
+    this.bestSellMenuHide = !this.bestSellMenuHide;
+
+    };
+    this.menuShowGeneriFunction = function () {
+      this.adminMenuHide = true;
+      this.bestSellMenuHide =true;
+     this.generiMenuHide=!this.generiMenuHide;
+     
+
+    };
+  this.showAdminMenu= function (){
+    this.generiMenuHide = true;
+    this.bestSellMenuHide=true;
+    this.adminMenuHide=!this.adminMenuHide;
 
   };
+  }
+
+});
+app.component('generiMenu', {
+templateUrl: "../template/generiMenu.html",
+transclude:true,
+  require: {
+    generalCtrl: '^generalMenu'
+  },
+controller : function ($rootScope, $http) {
+
+
+
+    $http.get("../service/ricercalistejson?webfunction=generi")
+      .then(function (response) {
+        this.listaGeneri = response.data;
+        console.log(response.data);
+      }, function (response) {
+        console.log("response status " + response.status);
+        $rootScope.errorDialogHide = false;
+        $rootScope.errorMessage = "Errore ineterno del server!!";
+
+      });      
+
+
+
+
+  }
 });
 
-app.controller('listBestSellerCtrl', function ($scope, $rootScope) {
+app.component('bestMenu',{
+  templateUrl:"../template/bestMenu.html",
+  controller:function () {
+  this.bestItems=[
+    {link:'#',name:'Piu Venduti'},
+    {link:'#',name:'Tascabili'},
+     {link:'#',name:'Economici'},
+     {link:'#',name:'Classici'},
 
-  $scope.menuShowBestSellerFunction = function () {
-    $rootScope.menuShowGeneri = true;
-    $rootScope.adminMenuHide=true;
-    $rootScope.showBestSeller = !$rootScope.showBestSeller;
+  ];
 
-  };
+  }
 });
 app.controller('openloginCtrl', function ($scope, $rootScope) {
   $rootScope.loginModalHide = true;
@@ -98,8 +138,9 @@ app.controller('listRicercaLibriCtrl', function ($scope, $http) {
 
 //un casino per gestre il layout....
 app.component('adminMenu',{
+
 templateUrl:'../template/adminMenu.html',				
-controller:function adminMenuController($rootScope){
+controller:function adminMenuController(){
   this.adminItems=[
     {link:'../admin/addbook',name:'Aggiugi Libro'},
     {link:'../admin/default',name:'Aggiungi Editore'},
@@ -107,12 +148,10 @@ controller:function adminMenuController($rootScope){
      {link:'../admin/default',name:'Aggiungi Genere'},
 
   ];
-   this.adminMenuHide=true;
-  this.showAdminMenu= function showAdminMenu(){
-    $rootScope.menuShowGeneri = true;
-    $rootScope.showBestSeller=true;
-    this.adminMenuHide=!this.adminMenuHide;
-  };
+
+
+
+
 }
 
 })
