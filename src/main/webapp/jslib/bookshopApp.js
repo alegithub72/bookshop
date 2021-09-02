@@ -11,6 +11,11 @@ app.controller('myController', function ($scope) {
 
 });
 app.run(['$rootScope',function ($rootScope) {
+  $rootScope.bookCount=0;
+  var global = $rootScope;
+  $rootScope.incCountBook = function(){
+    global.bookCount++;
+  }
   $rootScope.errorDialogHide = true;
   $rootScope.errorMessage = "Errore generico!!";
 
@@ -50,9 +55,9 @@ app.component('generalMenu',{
 });
 app.component('generiMenu', {
 templateUrl: "../template/generiMenu.html",
-controller : function ( $http) {
+controller : function ( $rootScope,$http) {
 
-    //this.listaGeneri= [{"id":5000,"tipologia":"GIALLI"},{"id":5010,"tipologia":"AVVENTURA"},{"id":5020,"tipologia":"ROSA"},{"id":5030,"tipologia":"STORICI"}];
+    
     var self = this;
     $http.get("../service/ricercalistejson?webfunction=generi")
       .then(function (response) {
@@ -80,41 +85,66 @@ app.component('bestMenu',{
 
   }
 });
-app.controller('openloginCtrl', function ($scope, $rootScope) {
-  $rootScope.loginModalHide = true;
+app.controller('loginCtrl', function ($scope, $rootScope,$http) {
+  var global=$rootScope;
+  global.loginModalHide = true;
   $scope.openLoginDialog = function () {
-    $rootScope.loginModalHide = false;
+    global.loginModalHide = false;
     console.log("open dialog!!");
   }
-});
-app.controller('loginCtrl', function ($scope, $rootScope,$http) {
+  $scope.login = function () {
+    console.log("login with=(" + $scope.userid + "," + $scope.pswd + ")");
+    $http({
+      method : "POST",
+        url : "../service/loginuser",
+        params: {userid : $scope.userid, password : $scope.pswd}
+    }).then(function mySuccess(response) {
+      $rootScope.loginModalHide = true;
+      console.log("login sucess="+response.data);
+      if(response.data.profile.id>200) location.reload(true);
+      if(response.data.errore===true){
+        
+        $rootScope.errorDialogHide = false;
+        $rootScope.errorMessage = response.data.msg;
+      }
+    }, function myError(response) {
+      $rootScope.loginModalHide = true;
+      $rootScope.errorDialogHide = false;
+      $rootScope.errorMessage = "User not autentihcated!!!";
+    });    
+
+  }
   $scope.closeLoginDialog = function () {
     $rootScope.loginModalHide = true;
     console.log("close dialog!!");
   };
-  $scope.login = function () {
+  
+  $scope.logout = function () {
     console.log("login with=(" + $scope.userid + "," + $scope.pswd + ")");
-  $http({
-    method : "POST",
-      url : "../service/loginuser",
-      params: {userid : $scope.userid, password : $scope.pswd}
-  }).then(function mySuccess(response) {
-    $rootScope.loginModalHide = true;
-    console.log("login sucess="+response.data);
-    if(response.data.profile.id>200) location.reload(true);
-    if(response.data.errore===true){
-       
-       $rootScope.errorDialogHide = false;
-       $rootScope.errorMessage = response.data.msg;
-    }
-  }, function myError(response) {
-    $rootScope.loginModalHide = true;
-     $rootScope.errorDialogHide = false;
-     $rootScope.errorMessage = "User not autentihcated!!!";
-  });    
+    $http({
+      method : "POST",
+        url : "../service/logoutuser",
+    }).then(function mySuccess(response) {
+      $rootScope.loginModalHide = true;
+      console.log("login sucess="+response.data);
+
+      if(response.data.errore===true){
+        
+        $rootScope.errorDialogHide = false;
+        $rootScope.errorMessage = response.data.msg;
+      }
+      location.reload(true);
+    }, function myError(response) {
+      $rootScope.loginModalHide = true;
+      $rootScope.errorDialogHide = false;
+      $rootScope.errorMessage = "User not autentihcated!!!";
+    }); 
+
 
   }
+
 });
+
 app.controller('listRicercaLibriCtrl', function ($scope, $http) {
 
   $scope.init = function (id) {

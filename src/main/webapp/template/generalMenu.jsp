@@ -9,7 +9,7 @@
 	if(usr.getProfile().getId()>=300){%>
 	
 
-<li  class="menu0" id="gestione_menuid"  >
+<li  class="menu0" id="gestione_menuid"  style="color:white;">
 	<a href="#"  ng-click="$ctrl.showAdminMenu()" class="menulink">Gestione Bookshop</a>
 		<ul  ng-hide="$ctrl.adminMenuHide"   class="sottomenu0"  >
 			<admin-menu></admin-menu>

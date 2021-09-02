@@ -66,9 +66,16 @@ $(document).ready(function(){
 	
 	 */
 	</script>
-	<div id="logout"  class="ui-helper-hidden"> 
-	<p>
-	<span class="ui-icon ui-icon-alert"></span>
-	Do you  want to logout ?
-	</p>
+	<div id="logout" ng-controller="loginCtrl" ng-hide="loginModalHide" class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-dialog-buttons ui-draggable ui-resizable" aria-describedby="dialog-form" aria-labelledby="ui-id-1" style="position: absolute; height: 100px; width: 350px; top: 20%; left: 30%; display: block; z-index: 101;">
+  	<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle">
+  	<span id="ui-id-1" class="ui-dialog-title">	Do you  want to logout ?</span>
+  	<button type="button" ng-click="closeLoginDialog()" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close">
+  	<span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+  	<span class="ui-button-icon-space"  > </span>Close</button></div>
+	<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+		<div class="ui-dialog-buttonset">	
+			<button type="button" ng-click="logout()" class="ui-button ui-corner-all ui-widget">Logout</button>
+			<button type="button" ng-click="closeLoginDialog()"    class="ui-button ui-corner-all ui-widget">Cancel</button>
+		</div>
+	</div>
 	</div> 

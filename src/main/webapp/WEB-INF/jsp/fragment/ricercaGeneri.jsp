@@ -284,7 +284,7 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 <div ng-if="listaLibri.length === 0">Nessun libro</div>
 <div ng-repeat="book in listaLibri" id="dettaglio{{book.id}}" style="display:flex;flex-direction:column;margin:10px;align-items: center;background-color: rgb(166,210,255);width:15%">
 <img src="../img/book{{$index + 1}}.jpg" width="100px" height="150px" />
-<button id="buttonCart{{book.id}}" label="Add to cart" style="width:100%;margin-top:auto;margin-top:10px;margin-bottom:10px">Add to Cart</button>
+<button id="buttonCart{{book.id}}" label="Add to cart" ng-click="incCountBook()" style="width:100%;margin-top:auto;margin-top:10px;margin-bottom:10px">Add to Cart</button>
 <span style="font-size:larger;font-weight:bold;" >{{book.titolo}}</span>
 <span>Tipo:{{book.genere.tipologia}}</span>
 <span>Autore:{{book.autore.cognome}} &nbsp; {{book.autore.nome}}</span>

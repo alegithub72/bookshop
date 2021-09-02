@@ -123,16 +123,16 @@ User usr=(User)request.getSession().getAttribute("user");
 %>
 
 <img id="omino" src="<%=request.getContextPath()%>/img/ominoin.jpg"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
-<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;"><%=usr.getName()%></a>
+<a id="accedi" href="#" ng-controller="loginCtrl" ng-click="openLoginDialog()" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;"><%=usr.getName()%></a>
 <div style="position:relative;">
 	
 <% } else {%>
 <img id="omino" src="<%=request.getContextPath()%>/img/outomino.png"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
-<a id="accedi" href="#" ng-controller="openloginCtrl" ng-click="openLoginDialog()" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;" >Accedi</a>
+<a id="accedi" href="#" ng-controller="loginCtrl" ng-click="openLoginDialog()" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;" >Accedi</a>
 <div style="position:relative;">
 <%} %>
     
-<span id="cartItems" style="font-family: monospace;position:absolute;top:-4px;right: 14px;font-weight: bold;font-size: 17px;font-size: 17px;color:rgb(2,40,79);">0</span>
+<span id="cartItems"  style="font-family: monospace;position:absolute;top:-4px;right: 14px;font-weight: bold;font-size: 17px;font-size: 17px;color:rgb(2,40,79);">{{bookCount}}</span>
 <img src="<%=request.getContextPath() %>/img/cart2.png" style="background-color:rgb(0, 123, 247);margin-top:-4px;margin-right:3px;" width="35px" height="35px"  />
 </div>
 </div>
