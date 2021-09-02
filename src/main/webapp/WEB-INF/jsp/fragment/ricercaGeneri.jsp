@@ -279,8 +279,8 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 <h1 id="categoria">Libri per Categorie:</h1>
 
    
-
-<div id="risultatiricerca"  ng-controller="listRicercaLibriCtrl"  ng-init="init(<%=request.getParameter("genere") %>)" class="espositore">
+<div ng-controller="listRicercaLibriCtrl" style="width:100%" ng-init="searchBook(<%=request.getParameter("genere") %>,0)" >
+<div id="risultatiricerca"     class="espositore">
 <div ng-if="listaLibri.length === 0">Nessun libro</div>
 <div ng-repeat="book in listaLibri" id="dettaglio{{book.id}}" style="display:flex;flex-direction:column;margin:10px;align-items: center;background-color: rgb(166,210,255);width:15%">
 <img src="../img/book{{$index + 1}}.jpg" width="100px" height="150px" />
@@ -291,17 +291,20 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 <span>Editore:{{book.edizione.editore}}</span>
 <span style="margin-block-start:auto;color:blue">Price:{{book.prezzo}}</span>
 
-</div>
-
-
-
-
-
-
-
 
 
 </div>
+
+</div>
+<div>
+<a href="#" ng-hide="page<=0" ng-click="searchBook(<%=request.getParameter("genere") %>,-1)" >prev</a>&nbsp;
+<a href="#" ng-hide="listaLibri.length<pageSize && page>=0" ng-click="searchBook(<%=request.getParameter("genere") %>,1)" >next</a>
+  </div>
+
+
+
+</div>
+
 
 <p>Trova le email in un lampo
 Con l'efficace strumento di Ricerca Google nella Posta in arrivo, 

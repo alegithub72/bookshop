@@ -101,12 +101,14 @@ app.controller('loginCtrl', function ($scope, $rootScope,$http) {
     }).then(function mySuccess(response) {
       $rootScope.loginModalHide = true;
       console.log("login sucess="+response.data);
-      if(response.data.profile.id>200) location.reload(true);
+
       if(response.data.errore===true){
         
         $rootScope.errorDialogHide = false;
         $rootScope.errorMessage = response.data.msg;
-      }
+        
+      }else
+      if(response.data.profile.id>200) location.reload(true);
     }, function myError(response) {
       $rootScope.loginModalHide = true;
       $rootScope.errorDialogHide = false;
@@ -146,11 +148,13 @@ app.controller('loginCtrl', function ($scope, $rootScope,$http) {
 });
 
 app.controller('listRicercaLibriCtrl', function ($scope, $http) {
-
-  $scope.init = function (id) {
+  $scope.page=0;
+  $scope.pageSize=4;
+  $scope.searchBook = function (id,pageParam) {
     $scope.genereID = id;
+    $scope.page=$scope.page+pageParam;
     console.log("funciotn id===" + id);
-    $http.get("../service/ricercalistejson?webfunction=ricercaPergenere&genere=" + id + "&startRow=1&ricercaPage=4")
+    $http.get("../service/ricercalistejson?webfunction=ricercaPergenere&genere=" + id + "&startRow="+$scope.page+"&ricercaPage="+$scope.pageSize)
       .then(function (response) {
         $scope.listaLibri = response.data;
       }, function (response) {
