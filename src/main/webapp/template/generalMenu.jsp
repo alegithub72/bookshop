@@ -9,9 +9,9 @@
 	if(usr.getProfile().getId()>=300){%>
 	
 
-<li id="gestione_menuid" class="menu0" >
+<li  class="menu0" id="gestione_menuid"  >
 	<a href="#"  ng-click="$ctrl.showAdminMenu()" class="menulink">Gestione Bookshop</a>
-		<ul id="gestione_sottomenuid" ng-show="$ctrl.adminMenuHide"   class="sottomenu0" >
+		<ul  ng-hide="$ctrl.adminMenuHide"   class="sottomenu0"  >
 			<admin-menu></admin-menu>
 		</ul>
 </li>
@@ -24,18 +24,18 @@
 	
 	%>	
 
-<li id="homeid" class="menu0"><a href="<%=request.getContextPath() %>/page/default" class="menulink">Home</a></li>
+<li  class="menu0"><a href="<%=request.getContextPath() %>/page/default" class="menulink">Home</a></li>
     
-    <li id="aboutid" class="menu0"><a href="#" class="menulink">About&nbsp;Us</a></li>
-	<li id="genereid" class="menu0" z ><a href="#" ng-click="$ctrl.menuShowGeneriFunction()" class="menulink">Libri&nbsp;Genere</a>
+    <li  class="menu0"><a href="#" class="menulink">About&nbsp;Us</a></li>
+	<li  class="menu0" z ><a href="#" ng-click="$ctrl.menuShowGeneriFunction()" class="menulink">Libri&nbsp;Genere</a>
 	<ul  ng-hide="$ctrl.generiMenuHide"  class="sottomenu0"><generi-menu></generi-menu></ul>
     </li>
 
-   	<li id="bestid" 	class="menu0"><a href="#"  ng-click="$ctrl.menuShowBestSellerFunction()" class="menulink">Best&nbsp;Seller</a>
-    <ul id="sottomenu_bestid"  ng-hide="$ctrl.bestSellMenuHide"  class="sottomenu0">
+   	<li 	class="menu0"><a href="#"  ng-click="$ctrl.menuShowBestSellerFunction()" class="menulink">Best&nbsp;Seller</a>
+    <ul   ng-hide="$ctrl.bestSellMenuHide"  class="sottomenu0">
 	<best-menu></best-menu>
     </ul>
     
     </li>
-	<li id="contact" class="menu0"><a href="#" class="menulink">Contact</a></li>
+	<li  class="menu0"><a href="#" class="menulink">Contact</a></li>
 </ul>

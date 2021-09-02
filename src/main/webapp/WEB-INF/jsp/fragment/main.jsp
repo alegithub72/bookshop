@@ -35,10 +35,7 @@
     
 </style>
 
-<script type="text/javascript">
-var urlRicerca;
-var startRow=1,ricercaPage=4,pageNum=1;
-</script>
+
 </head>
 <body id="bodyid" ng-app="bookShop">
 

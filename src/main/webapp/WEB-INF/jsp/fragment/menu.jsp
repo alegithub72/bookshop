@@ -136,16 +136,6 @@ User usr=(User)request.getSession().getAttribute("user");
 <img src="<%=request.getContextPath() %>/img/cart2.png" style="background-color:rgb(0, 123, 247);margin-top:-4px;margin-right:3px;" width="35px" height="35px"  />
 </div>
 </div>
-<script type="text/javascript">
 
-function displayAllerta(errore){
-	if(errore)
-		$("#allertText").text("Errore Applicativo:"+errore.msg);
-	else $("#allertText").text("Servizio non siponibile!!");
-	$("#allerta").css("display","inherit");
-	
-}
-
-</script>
 
  

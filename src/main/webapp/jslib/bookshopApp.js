@@ -10,55 +10,53 @@ app.controller('myController', function ($scope) {
   $scope.message2 = 'Ciao Alessio due controller';
 
 });
-app.run(function ($rootScope) {
+app.run(['$rootScope',function ($rootScope) {
   $rootScope.errorDialogHide = true;
   $rootScope.errorMessage = "Errore generico!!";
 
-});
+}]);
 
 app.component('generalMenu',{
   templateUrl:'../template/generalMenu.jsp',
-  controller:function (){
+  controller:['$rootScope',function ($rootScope){
+    var global = $rootScope;
+    var self = this;
+    self.generiMenuHide = true;
+    self.adminMenuHide=true;
+    self.bestSellMenuHide = true;
 
-  this.generiMenuHide=true;
-  this.bestSellMenuHide=true;
-  this.adminMenuHide=true;
 
   this.menuShowBestSellerFunction = function () {
-    this.generiMenuHide = true;
-    this.adminMenuHide=true;
-    this.bestSellMenuHide = !this.bestSellMenuHide;
+    self.generiMenuHide = true;
+    self.adminMenuHide=true;
+    self.bestSellMenuHide = !self.bestSellMenuHide;
 
     };
-    this.menuShowGeneriFunction = function () {
-      this.adminMenuHide = true;
-      this.bestSellMenuHide =true;
-     this.generiMenuHide=!this.generiMenuHide;
+  this.menuShowGeneriFunction = function () {
+    self.adminMenuHide = true;
+    self.bestSellMenuHide =true;
+    self.generiMenuHide=!self.generiMenuHide;
      
 
     };
   this.showAdminMenu= function (){
-    this.generiMenuHide = true;
-    this.bestSellMenuHide=true;
-    this.adminMenuHide=!this.adminMenuHide;
+    self.generiMenuHide = true;
+    self.bestSellMenuHide=true;
+    self.adminMenuHide=!self.adminMenuHide;
 
   };
-  }
+  }]
 
 });
 app.component('generiMenu', {
 templateUrl: "../template/generiMenu.html",
-transclude:true,
-  require: {
-    generalCtrl: '^generalMenu'
-  },
-controller : function ($rootScope, $http) {
+controller : function ( $http) {
 
-
-
+    //this.listaGeneri= [{"id":5000,"tipologia":"GIALLI"},{"id":5010,"tipologia":"AVVENTURA"},{"id":5020,"tipologia":"ROSA"},{"id":5030,"tipologia":"STORICI"}];
+    var self = this;
     $http.get("../service/ricercalistejson?webfunction=generi")
       .then(function (response) {
-        this.listaGeneri = response.data;
+        self.listaGeneri= response.data;
         console.log(response.data);
       }, function (response) {
         console.log("response status " + response.status);
@@ -66,10 +64,6 @@ controller : function ($rootScope, $http) {
         $rootScope.errorMessage = "Errore ineterno del server!!";
 
       });      
-
-
-
-
   }
 });
 
