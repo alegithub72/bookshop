@@ -297,8 +297,10 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 
 </div>
 <div>
-<a href="#" ng-hide="page<=0" ng-click="searchBook(<%=request.getParameter("genere") %>,-1)" >prev</a>&nbsp;{{page}}
+<a href="#" ng-hide="page<=0" ng-click="searchBook(<%=request.getParameter("genere") %>,-1)" >prev</a>
+<a href="#" ng-if="page<=0" style="text-decoration: none;">prev</a>&nbsp;Page:{{page+1}}&nbsp;
 <a href="#" ng-hide="listaLibri.length<pageSize && page>=0" ng-click="searchBook(<%=request.getParameter("genere") %>,1)" >next</a>
+<a href="#" ng-if="listaLibri.length<pageSize && page>=0" style="text-decoration: none;" >next</a>
   </div>
 
 

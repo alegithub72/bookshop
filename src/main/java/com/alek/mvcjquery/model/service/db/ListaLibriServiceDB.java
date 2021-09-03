@@ -59,7 +59,7 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			ResultSetMetaData data=  res.getMetaData();
 
 			int max=0;
-			res.absolute(start);
+			res.absolute(start*page);
 			while(res.next()) {
 				if (max>=page) break;
 				
