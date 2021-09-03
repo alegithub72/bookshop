@@ -2,14 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 
 
+<hello-world></hello-world>
+<hello-world2></hello-world2>
 
-  <div ng-controller="ngHelloWorldController">
- 	{{message}}
-</div>
 
-  <div ng-controller="myController">
- 	{{message2}}
-</div>
 
  <img src="../img/logo.jpg" width="200" height="180">
     <h2>Mission</h2>

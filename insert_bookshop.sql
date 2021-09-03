@@ -119,16 +119,11 @@ INSERT INTO BKS_EDITORE VALUES(3010,'MONDADORI');
 --------------------------------------DELETE BKS_AUTORE------------------------------------------------------------
 DELETE FROM BKS_AUTORE WHERE ID=4000;
 DELETE FROM BKS_AUTORE WHERE ID=4010;
-
-
--------------------------------------------DELETE BKS_AUTORE-------------------------------------------
-DELETE FROM BKS_AUTORE WHERE ID=4000;
-DELETE FROM BKS_AUTORE WHERE ID=4010;
 DELETE FROM BKS_AUTORE WHERE ID=4020;
 ----------------------------------INSERT BKS_AUTORE-------------------------------------------------------------
 INSERT INTO BKS_AUTORE VALUES(4000,'Smith','Wilbur','SCRITTORE LIBRI AVVENTURA'); 
 INSERT INTO BKS_AUTORE VALUES(4010,'Banana','Yoshimoto','SCRITTORE LIBRI ROMANTICI'); 
-INSERT INTO BKS_AUTORE VALUES(4020,'Arthur Conan',' Doyle','SCRITTORE LIBRI GIALLI'); 
+INSERT INTO BKS_AUTORE VALUES(4020,' Doyle','Arthur Conan','SCRITTORE LIBRI GIALLI'); 
 
 
 

@@ -3,11 +3,31 @@
  */
 
 var app = angular.module('bookShop', []);
-app.controller('ngHelloWorldController', function ($scope) {
-  $scope.message = 'Ciao AngularJS by Alessio';
+
+
+app.component('helloWorld',{
+  templateUrl:'../template/helloWorld.html',
+  controller: function ($rootScope) {
+  this.message = 'Ciao AngularJS by Alessio';
+  var global=$rootScope;
+  this.hideTestTest= function(){
+        global.testHide =   !global.testHide ;
+        console.log("hide:"+global.testHide);
+    };
+  }
+
 });
-app.controller('myController', function ($scope) {
-  $scope.message2 = 'Ciao Alessio due controller';
+app.component('helloWorld2',{
+  templateUrl:'../template/helloWorld2.html',
+  controller: function ($rootScope) {
+  this.message = 'AngularJS by 2';
+  var self=this;
+  this.testHide2= $rootScope.testHide;
+  this.logTest= function(){
+      console.log("hide:"+self.testHide2);
+      this.testHide2= $rootScope.testHide;
+    }
+  }
 
 });
 app.filter('range', function() {
@@ -30,6 +50,7 @@ app.run(['$rootScope',function ($rootScope) {
   }
   $rootScope.errorDialogHide = true;
   $rootScope.errorMessage = "Errore generico!!";
+  $rootScope.testHide = false;
 
 }]);
 
