@@ -10,6 +10,18 @@ app.controller('myController', function ($scope) {
   $scope.message2 = 'Ciao Alessio due controller';
 
 });
+app.filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+
+    for (var i=0; i<total; i++) {
+      input.push(i);
+    }
+
+    return input;
+  };
+});
+
 app.run(['$rootScope',function ($rootScope) {
   $rootScope.bookCount=0;
   var global = $rootScope;

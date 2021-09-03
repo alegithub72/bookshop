@@ -280,6 +280,11 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 
    
 <div ng-controller="listRicercaLibriCtrl" style="width:100%" ng-init="searchBook(<%=request.getParameter("genere") %>,0)" >
+<div><a href="#" ng-if="page>0" ng-click="searchBook(<%=request.getParameter("genere") %>,-1)" >prev</a>
+<a href="#" ng-if="page<=0" title="first page" style="text-decoration:none;" >prev</a>
+Page:{{page+1}}
+<a href="#" ng-if="listaLibri.length==pageSize && page>=0" ng-click="searchBook(<%=request.getParameter("genere") %>,1)" >next</a>
+<a href="#" ng-if="listaLibri.length<pageSize && page>0"  title="last page"  style="text-decoration:none;" >next</a></div>
 <div id="risultatiricerca"  class="espositore"   >
 <div ng-if="listaLibri.length === 0">Nessun libro</div>
 <div ng-repeat="book in listaLibri" id="dettaglio{{book.id}}" style="display:flex;flex-direction:column;margin:10px;align-items: center;background-color: rgb(166,210,255);width:15%">
@@ -290,20 +295,17 @@ if(obj2!=null && ((User)obj2).getId()!=0){
 <span>Autore:{{book.autore.cognome}} &nbsp; {{book.autore.nome}}</span>
 <span>Editore:{{book.edizione.editore}}</span>
 <span style="margin-block-start:auto;color:blue">Price:{{book.prezzo}}</span>
-
-
+</div>
+<div ng-repeat="n in [] | range:4-listaLibri.length" id="{{n}}" style="display:flex;flex-direction:column;margin:10px;align-items: center;background-color: rgb(166,210,255);width:15%">
 
 </div>
 
 </div>
-<div>
-<a href="#" ng-hide="page<=0" ng-click="searchBook(<%=request.getParameter("genere") %>,-1)" >prev</a>
-<a href="#" ng-if="page<=0" style="text-decoration: none;">prev</a>&nbsp;Page:{{page+1}}&nbsp;
-<a href="#" ng-hide="listaLibri.length<pageSize && page>=0" ng-click="searchBook(<%=request.getParameter("genere") %>,1)" >next</a>
-<a href="#" ng-if="listaLibri.length<pageSize && page>=0" style="text-decoration: none;" >next</a>
-  </div>
-
-
+<div><a href="#" ng-if="page>0" ng-click="searchBook(<%=request.getParameter("genere") %>,-1)" >prev</a>
+<a href="#" ng-if="page<=0" title="first page" style="text-decoration:none;" >prev</a>
+Page:{{page+1}}
+<a href="#" ng-if="listaLibri.length==pageSize && page>=0" ng-click="searchBook(<%=request.getParameter("genere") %>,1)" >next</a>
+<a href="#" ng-if="listaLibri.length<pageSize && page>0"  title="last page"  style="text-decoration:none;" >next</a></div>
 
 </div>
 
