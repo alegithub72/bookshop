@@ -22,10 +22,10 @@ app.component('helloWorld2',{
   controller: function ($rootScope) {
   this.message = 'AngularJS by 2';
   var self=this;
-  this.testHide2= $rootScope.testHide;
+
   this.logTest= function(){
-      console.log("hide:"+self.testHide2);
-      this.testHide2= $rootScope.testHide;
+      console.log("hide:"+self.testHide);
+ 
     }
   }
 
