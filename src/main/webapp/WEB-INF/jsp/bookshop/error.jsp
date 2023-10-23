@@ -2,18 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Error Page</title>
-</head>
-<body>
-<div class="centerPage"  >
+
+<%@include file="/WEB-INF/jsp/fragment/header.jsp" %>
+
+<body id="bodyid">
+
+<%@include file="/WEB-INF/jsp/fragment/menu.jsp" %>
 
 
-<%@include file="/WEB-INF/jsp/fragment/main.jsp" %>
-
-
-
+<%@ page isErrorPage = "true" %>
 
 <div class="centerPage"  >
 <script type="text/javascript">
@@ -29,9 +26,13 @@ $(document).ready(
 
 </script>
 <%@include file="/WEB-INF/jsp/fragment/error.jsp" %>
-
+<%= exception.getMessage()%>
+<% exception.printStackTrace(System.out); %>
 </div>
 
 </div>
+<%@include file="/WEB-INF/jsp/fragment/footer.jsp" %>
+
+
 </body>
 </html>

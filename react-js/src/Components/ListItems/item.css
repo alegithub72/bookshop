@@ -1,0 +1,9 @@
+
+.item {
+    flex-basis: 10%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    margin: 10px 20px 10px 20px;
+    
+
+}

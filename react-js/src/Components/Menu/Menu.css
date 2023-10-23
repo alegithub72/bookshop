@@ -1,0 +1,30 @@
+
+ .bannerStyle  { 
+    height: 175px ;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .menusStyle  {
+    margin-block-end: 0;
+    margin-block-start: 0;
+    background-color: trasparent;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    width: 90%;
+    padding: 0 0 0 0
+  }
+   .menusItemStyle  {
+    background-color: trasparent;
+    padding: 0 0 0 0
+
+  }
+  .menusIconStyle  {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    background-color: bkColor;
+  };

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    
+<Resource name="jdbc/bookshop" auth="Container" type="javax.sql.DataSource"
+  driverClassName="org.apache.derby.jdbc.ClientDriver"
+  url="jdbc:derby://localhost:1527/bookshop"
+  username="app" password="app" maxActive="20"
+  maxIdle="10" maxWait="-1" />       
+</Context>

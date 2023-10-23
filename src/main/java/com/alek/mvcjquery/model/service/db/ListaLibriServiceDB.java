@@ -83,14 +83,14 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			throw new ErrorService("Errore applicativo!!!");
 		}finally {
 			try {
 				res.close();
 				conn.close();
 			} catch (Exception e) {
-
+				e.printStackTrace(System.out);
 			}
 		}
 		return list;
@@ -201,7 +201,9 @@ public class ListaLibriServiceDB extends GenericService implements ListaLibriSer
 			try {
 				conn.close();
 				
-			}catch(Exception e) {	}
+			}catch(Exception e) {
+				e.printStackTrace(System.out);
+			}
 		}
 		
 		

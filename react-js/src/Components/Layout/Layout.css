@@ -1,0 +1,11 @@
+.bodyContainer{
+    /* max-width: 900px; */
+    margin-top: 80px;
+}
+.totalContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

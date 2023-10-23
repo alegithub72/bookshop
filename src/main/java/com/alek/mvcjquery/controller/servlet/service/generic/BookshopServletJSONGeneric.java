@@ -59,22 +59,22 @@ public abstract class BookshopServletJSONGeneric extends BookshopServletGeneric 
 			createjson(req,resp);
 			System.out.println("----------------------------------------------------------------------------");
 		} catch (ErroreDataSourceException e) {
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			throw new ServletException("DataSource Problem");
 		}catch(ErroreFunctionPermission e) {
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			ErrorResponse error=new ErrorResponse(e.getMessage(),"1000");
 			String json=gson.toJson(error);
 			resp.getWriter().append(json);
 			System.out.println(json);
 		} catch (ErrorService e) {
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			ErrorResponse error=new ErrorResponse(e.getMessage(),"1010");
 			String json=gson.toJson(error);
 			resp.getWriter().append(json);
 			System.out.println(json);			
 		} catch (ErroreLoginAccess e) {
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			ErrorResponse error=new ErrorResponse("Accesso negato", "1030");
 			String json=gson.toJson(error);
 			resp.getWriter().append(json);

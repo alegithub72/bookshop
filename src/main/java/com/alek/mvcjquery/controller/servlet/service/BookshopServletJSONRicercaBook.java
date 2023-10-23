@@ -40,9 +40,10 @@ public static int  PAGE=4;
 	public void init() throws ServletException {
 		super.init();
 		try {
+			//TODO: application.properties where to switch between DB and Mock
 			consultazioneLibreriaService= getConsulatazioneServiceDB();
 		} catch (ErroreDataSourceException e) {
-			e.printStackTrace();
+			e.printStackTrace(System.out);
 			throw new ServletException(e.getMessage());
 		}
 	}
@@ -56,7 +57,7 @@ public static int  PAGE=4;
 		
 		List list=null;
 		String strFunction=req.getParameter("webfunction");
-		
+		System.out.println("-------------------------------------createjson--------------------------------------");
 		if("generi".equals(strFunction)) list=listaGeneri();
 		else if ("ricercaPergenere".equals(strFunction)) 
 			list=listaLibriPerGenere(req);

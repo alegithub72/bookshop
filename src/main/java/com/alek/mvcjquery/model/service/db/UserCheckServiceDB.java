@@ -30,6 +30,8 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 		Connection conn =null;
 		boolean allowfunc=false;
 		try {
+			System.out.println("url fiunction:"+urlfunction);
+			System.out.println("profileid:"+profileid);
 			 conn = ds.getConnection();
 			String sql= "SELECT pf.id_profile as id_profile,p.nome as nome "
 				+ "FROM BKS_FUNCTION as f ,   BKS_PROFILE_FUNCTION_MENU as pf ,"
@@ -51,11 +53,12 @@ public class UserCheckServiceDB extends GenericService implements UserCheckServi
 			}
 			System.out.println("--checkpermission--");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("--SQLException--");
+			e.printStackTrace(System.out);
 			throw new ErroreFunctionPermission("Richiesta non permessa!!!");
 		}finally {
 			try {
-				conn.close();
+				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 
 			}

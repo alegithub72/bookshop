@@ -35,9 +35,14 @@ public abstract class BookshopServletGeneric extends HttpServlet {
 		 ;
 		String msg="";
 		try {
-			if(ds==null)
-			ds = (DataSource)envContext.lookup("jdbc/bookshop");
-			System.out.println("dasource trovato");
+			if(ds==null) {
+				
+				ds = (DataSource)envContext.lookup("jdbc/bookshop");
+				System.out.println("dasource trovato " +ds);
+				
+			
+			}
+
 			
 		}catch (NamingException e) {
 				e.printStackTrace();
@@ -117,7 +122,7 @@ public abstract class BookshopServletGeneric extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		try {		
-
+			//TODO: application.properties where to switch between DB and Mock
 			initContext = new InitialContext();
 			envContext  = (Context)initContext.lookup("java:/comp/env");
 			initDataSource();

@@ -1,117 +1,15 @@
 <%@page import="com.alek.mvcjquery.model.user.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
+
 <style type="text/css"> 
-.menus {
-    font-family: Verdana, sans-serif;
-    font-size: 11px;
-    opacity: 0.99;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 30px;
-    padding-inline-start: 0 !important;
-    margin-top: -6px;
-    width: 98%;
-
-}
-.menu0 {
-	background-color: rgb(0, 123, 247);
-    border-bottom: 5px solid rgb(0, 64, 128);
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    height: 100%;
-    margin: 2px;
-    text-align: center;
-    padding-inline-start: 0 !important;
-}
-.menulink {
-	color: #ffff;
-    display: flex;
-    flex-direction: row;
-    font-weight: bold;
-    font-size: large;
-    text-decoration: none;
-    justify-content: center;
-    /* margin-top: 30px; */
-    text-align: center;
-    margin-left: 10px;
-    margin-right: 10px;
-} 
-
-ul#menusid li:active,ul#menusid li:hover {
-    background-color: rgb(166, 210, 255);/*#54BAE2;*/
-/*     border-bottom: 5px solid rgb(0, 64, 128); */
-}
-
-
-ul#menusid li#gestione_menuid:hover{
-	background-color: yellow;
-}
-
-li#gestione_menuid {
-	background-color: red;
-	border-color: rgb(174,0,0);
-}
-
-li#gestione_menuid li{
-	background-color: red;
-	border: 2px solid yellow;
-
-
-}
-li#gestione_menuid li:hover,li#gestione_menuid li:hover{
-	background-color: yellow;
-
-}
-ul#gestione_menuid {
-	background-color:none;
-
-}
-.sottomenu0 {
-font-family: Verdana, sans-serif;
-    font-size: 11px;
-    display: none;
-    /* opacity: 0.99; */
-    width: 100%;
-    padding-inline-start: 0!important;
-    margin-top: 11px;
-    margin-left: 0px;
-    padding: 1px;
-    /* width: 800px; */
-    text-align: center;
-
-
-
-}
-.sottomenu1 {
-background-color: rgb(0, 123, 247);
-    /* border-bottom: 5px solid rgb(0, 64, 128); */
-    /* display: block; */
-    /* width: 15%; */
-    /* height: 80px; */
-    margin: 3px;
-    /* text-align: -webkit-center; */
-    /* float: left; */
-    list-style: none;
-    border: 3px  solid  rgb(166, 210, 255);
-}
-
-/* .mainmas { */
-/* color: #ffff; */
-/*     /* display: block; */ */
-/*     font-weight: bold; */
-/*     /* line-height: 80px; */ */
-/*     font-size: large; */
-/*     text-decoration: none; */
-/*     /* width: 18%; */ */
-/*     /* height: 30px; */ */
-/*     /* text-align: justify; */
-/* }  */
 
     </style>
+
+
+
+
+
 <script>
 let listageneri;
 $(document).ready(function(){
@@ -127,7 +25,7 @@ $(document).ready(function(){
 					
 					return;
 				}
-			buildGenereMenu();
+			//buildGenereMenu();
 
 				
 			})
@@ -140,163 +38,6 @@ $(document).ready(function(){
 	
 })
 
-
-
-
-
-
-var opcl=false;
-function closeAllMenu(){
-	
-	$("#sottomenu0_generiid").css("display","none");
-	$("#sottomenu_bestid").css("display","none");
-	$("#gestione_sottomenuid").css("display","none");
-	
-}
-$(document).ready(function(){
-	
-		
-		$("#genereid").click(function(){
-	
-		if(!opcl) {
-			$("#sottomenu0_generiid").css("display","inline");
-
-		}
-		else {
-			 closeAllMenu();
-
-		}
-		opcl=!opcl;
-	});
-	$("#bestid").click(function(){
-		if(!opcl) {
-			$("#sottomenu_bestid").css("display","inline");
-
-		}
-		else {
-			closeAllMenu();
-
-		}
-		opcl=!opcl;
-	});	
-});
-function buildGenereMenu(){
-	let htmlLi="";
-	for(let i=0;i<listageneri.length;i++)
-		$("#sottomenu0_generiid").append(
-				$("<li>")
-				.attr("class","sottomenu1")
-				.append(
-						$("<a>").
-						attr("href",
-							"../page/listalibri?webfunction=ricercaPergenere&genere="+listageneri[i].id+"&generenome="+listageneri[i].tipologia+"&startRow=1&ricercaPage=4"
-						).attr("class","menulink")
-						.text(listageneri[i].tipologia)		
-						)
-		
-		);
-
-		
-				
-		
-//		htmlLi=htmlLi+"<li class=\"sottogs\"><a href=\ class=\"mainmas\" >"
-	//			+listageneri[i].tipologia+"</a></li>";
-	
-
-	
-	
-	
-}
-</script>
-<div style="display:flex;flex-direction:row;width:100%">
-
-<ul id="menusid" class="menus">
-<%if(request.getSession().getAttribute("user")!=null){
-	
-	User usr=(User) request.getSession().getAttribute("user");
-	if(usr.getProfile().getId()>=300){%>
-	
-		<li id="gestione_menuid"   class="menu0">
-		<a href="#" class="menulink">Gestione Bookshop</a>
-			<ul id="gestione_sottomenuid" class="sottomenu0" >
-				<li class="sottomenu1"  ><a href="../admin/addbook" class="menulink">Aggiugi Libro</a></li>
-				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Editore</a></li>
-				<li class="sottomenu1"  ><a href="../admin/default" class="menulink">Aggiungi Autore</a></li>
-				<li class="sottomenu1"><a href="../admin/default" class="menulink">Aggiungi Genere</a>
-				
-			</ul>
-				 
-		</li>
-		
-	   <script>
-		$(document).ready(
-		function(){
-			$("#gestione_menuid").click(function(){
-				if(!opcl) $("#gestione_sottomenuid").css("display","inline")
-				else {
-					$("#gestione_sottomenuid").css("display","none")
-					closeAllMenu();
-				}
-				opcl=!opcl;
-//				attr("style","display:flex;flex-direction:column;")
-;
-				
-				
-			})
-			
-			
-			
-		}		
-		)
-		
-		</script>
-		
-	<% }   
-	}
-	
-	%>
-	
-	
-
-    <li id="homeid" class="menu0"><a href="<%=request.getContextPath() %>/page/default" class="menulink">Home</a></li>
-    
-    <li id="aboutid" class="menu0"><a href="#" class="menulink">About&nbsp;Us</a></li>
-    
-    <li id="genereid" class="menu0"><a href="#" class="menulink">Libri&nbsp;Genere</a>
-    <ul id="sottomenu0_generiid" class="sottomenu0"></ul>
-    </li>
-   
-   	<li id="bestid" class="menu0"><a href="#" class="menulink">Best&nbsp;Seller</a>
-  
-    <ul id="sottomenu_bestid" class="sottomenu0">
-    <li class="sottomenu1"><a href="#" class="menulink" >Piu Venduti</a></li>
-    <li class="sottomenu1"><a href="#" class="menulink">Tascabili</a></li>
-    <li class="sottomenu1"><a href="#" class="menulink">Economici</a></li>
-    </ul>
-    
-    </li>
-    <li id="contact" class="menu0"><a href="#" class="menulink">Contact</a></li>
-</ul>
-<% if(request.getSession().getAttribute("user")!=null && ((User)request.getSession().getAttribute("user")).getId()!=0){
-User usr=(User)request.getSession().getAttribute("user");
-%>
-
-<img id="omino" src="<%=request.getContextPath()%>/img/ominoin.jpg"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
-<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;"><%=usr.getName()%></a>
-<div style="position:relative;">
-	
-<% } else {%>
-<img id="omino" src="<%=request.getContextPath()%>/img/outomino.png"  style="margin-right:2px;margin-top:-1px;" width="35px"  height="30px" />
-<a id="accedi" href="#" style="text-align:center;margin-top:6px;height:24px;margin-right:2px;" >Accedi</a>
-<div style="position:relative;">
-<%} %>
-    
-<span id="cartItems" style="font-family: monospace;position:absolute;top:-4px;right: 14px;font-weight: bold;font-size: 17px;font-size: 17px;color:rgb(2,40,79);">0</span>
-<img src="<%=request.getContextPath() %>/img/cart2.png" style="background-color:rgb(0, 123, 247);margin-top:-4px;margin-right:3px;" width="35px" height="35px"  />
-</div>
-</div>
-<script type="text/javascript">
-
 function displayAllerta(errore){
 	if(errore)
 		$("#allertText").text("Errore Applicativo:"+errore.msg);
@@ -306,5 +47,138 @@ function displayAllerta(errore){
 }
 
 </script>
+<div id="menuBar" style="width:100%">
 
- 
+
+
+<%-- <%if(request.getSession().getAttribute("user")!=null){ --%>
+	
+// 	User usr=(User) request.getSession().getAttribute("user");
+<%-- 	if(usr.getProfile().getId()>=300){%> --%>
+		
+<!-- 		menu admin -->
+<%-- 	<% } --%>
+<%-- 	}%> --%>
+	
+
+
+
+<% if(request.getSession().getAttribute("user")!=null && ((User)request.getSession().getAttribute("user")).getId()!=0){
+User usr=(User)request.getSession().getAttribute("user");
+%>
+
+	
+<% } else {%>
+
+<%} %>
+    
+
+</div>
+
+<script type="text/babel">
+function Menu() {
+	const menusStyle= { 
+	marginBlockEnd: "0",
+	marginBlockStart: "0",	
+	backgroundColor : "#cce6ff",
+	color:"blue",
+	justifyContent:"space-evenly",
+	flexWrap:"nowrap",
+	display: "flex",
+	flexDirection:"row",
+	listStyleType:"none",
+	width:"90%"
+	};
+	const menusItemStyle= {
+		fontSize:"30px"
+	};
+	const bannerStyle={height:'175px'};
+	const menusIconStyle ={
+		display:"flex",
+		flexWrap:"nowrap",
+		justifyContent:"space-beteween",
+		backgroundColor : "#cce6ff"
+	};
+	const avatarStyle ={
+		display:"flex",
+		flexWrap:"nowrap"
+	};
+	const cartStyle ={
+		position:"absolute",
+		left:"0px",
+		top:"10px",
+		color:"darkblue"
+	};
+	const accediStyle ={
+		position:"absolute",
+		left:"0px",
+		top:"20px"
+	};
+    return <>
+			
+			<div id="menuId" >
+			<div id="banner"  style={bannerStyle} >
+			<img src="<%=request.getContextPath() %>/img/banner.png" width="100%"  style={{height:'175px', margin:'0 0 0 0'}} />
+			</div>
+			<div style={menusIconStyle}>
+			<ul style={menusStyle}>
+			<li style={menusItemStyle}>Home</li>
+			<li style={menusItemStyle}>About us</li>
+			<li style={menusItemStyle}>Book List</li>
+			<li style={menusItemStyle}>Contact</li>
+			</ul>
+			<div style={avatarStyle}>
+			<div style={{float:"left",position:"relative"}} >
+			<img src="<%=request.getContextPath() %>/img/cart2.png"  width="35px" height="35px"  />
+			<span id="cartItems" style={cartStyle} >0</span>
+			</div>
+			<div style={{float:"left",position:"relative",marginLeft:"10px"}} >
+			<img id="omino" src="<%=request.getContextPath()%>/img/outomino.png"  style={{marginRight:"2px",marginTop:"-1px"}} width="35px"  height="30px" />
+			<a id="accedi" href="#" style={accediStyle} >Accedi</a>
+			</div>
+
+			</div>
+			</div>
+			</div>
+</>;
+  }
+const navDomNode = document.getElementById('menuBar');
+const navRoot = ReactDOM.createRoot(navDomNode); 
+navRoot.render(<Menu />);
+
+
+</script>
+
+
+
+<%
+Object obj=request.getSession().getAttribute("user");
+
+if(obj!=null && ((User)obj).getId()!=0){%>
+
+		
+	
+		<%@include file="/WEB-INF/jsp/fragment/logout.jsp" %>
+		
+	<% } else { %>
+	
+		<%@include file="/WEB-INF/jsp/fragment/login.jsp" %>
+
+		
+		
+	<% } %>
+
+
+
+	
+	
+
+
+
+<div id="allerta" class="ui-widget" style="display:none;">
+	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+		<p><span class="ui-icon ui-icon-alert" style="float: none; margin-right: .3em;"></span>
+		<strong>Alert:</strong> <span id="allertText" ></span></p>
+	</div>
+</div>
+</div>
