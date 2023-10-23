@@ -1,7 +1,7 @@
 # Bookshop demo
 Example of MVC EE application of a bookshop using Java,  React.js!
 
-#####Prequisities
+##### Prequisities
 
 1. Install jdk 17  or above
 2. Install Tomcat 8 
@@ -74,13 +74,13 @@ You could see the following pages:
 
 </div>
 
-#React application
+# React application
 
-#####Prerequisities 
+##### Prerequisities 
 
 1. Install npm
 
-#####Build application
+##### Build application
 
 Use react-js folder to  play with react , after launch the build:
 
