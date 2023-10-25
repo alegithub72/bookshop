@@ -1,14 +1,20 @@
 # Bookshop demo
-Example of MVC EE application of a bookshop using Java,  React.js!
+Example of MVC EE (J2EE) application of a bookshop using Java back-end and React.js as front-end.
 
 ##### Prequisities
 
 1. Install jdk 17  or above
 2. Install Tomcat 8 
-2. Install Maven apache-maven-3.8.1 or above
+2. Install Maven 3.8.1 or above
 3. Install Derby 10.15.2.0 
-4. Create bookshop database  
-5. Run Database
+
+##### Bookshop application
+
+
+1. Create bookshop database  
+2. Run Database
+3. Build web-application
+4. Deploy and run web-application
 
 
 
@@ -37,7 +43,7 @@ In the folder where is created the database launch this command:
 
 ```
 
-##### Build application
+##### Build web-application
 
 Run the following command :
 
@@ -48,10 +54,10 @@ mvn  clean compile war:war
 ```
 
 
-##### Deploy  application
+##### Deploy and run web-application
 
 
-Deploying the artifact bookshop.war in Tomcat 8 server, test the application with this link.
+Deploying the artifact bookshop.war in Tomcat 8 server and run it, test the application with this link.
 
 
 [http://localhost:8080/bookshop/index.html](http://localhost:8080/bookshop/index.html) 
@@ -90,7 +96,7 @@ npm run build
 
 ```
 
-When updated deploy the project wepapp again on the server.
+When updated deploy the project web-application again on the server.
 
 
 
